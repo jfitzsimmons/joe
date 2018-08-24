@@ -1,11 +1,93 @@
-
 <html>
-  <head>
-    <title>Joe</title>
-    <link rel="stylesheet" type="text/css" href="css/main.css">
-  </head>
-  <body>
-    <canvas id="bg"  style="background:  #1D0C20"></canvas>
-    <script src="js/bg.js"></script>
-  </body>
- </html>
+
+<head>
+  <title>Joe</title>
+  <!--<link rel="stylesheet" type="text/css" href="css/main2.css">-->
+  <link rel="stylesheet/less" href="css/style.less" type="text/css" />
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700|Libre+Baskerville:400,700|Montserrat:400,700" rel="stylesheet">
+</head>
+<nav class="flex">
+
+  <div class="topnav" id="myTopnav">
+    <a href="#home" class="active page-link">{{ J }}</a>
+    <a href="#news" class="page-link">about</a>
+    <a href="#contact" class="page-link">skills</a>
+    <div class="bars icon" onclick="myFunction(this)">
+  <div class="bar1"></div>
+  <div class="bar2"></div>
+  <div class="bar3"></div>
+</div>
+  </div>
+
+</nav>
+
+<section id="home" class="flex">
+
+  <div class="canvas">
+    <canvas id="bg2"></canvas>
+    <div id="bg"></div>
+  </div>
+
+  <div class="flex row">
+
+
+    <div class="flex lede">
+      <div class="flex t-right">
+        <h6>h6 {</h6>
+        <h6>&nbsp;font-size: 10pt;</h6>
+        <h6>&nbsp;color: #5a3960;</h6>
+        <h6>}</h6>
+      </div>
+      <div class="flex brace">
+        }
+      </div>
+      <h1>Joe Fitzsimmons</h1>
+      <h2>Web Developer</h2>
+      <h5>let webDev = ['J','o','e'];</h5>
+      <div class="flex brace">
+        {
+      </div>
+      <h6>webDev = (joke</h6>
+      <h6>=== 'bad' ? 'Joe'</h6>
+      <h6>: 'Fitzsimmons');</h6>
+    </div>
+    <div class="flex grow">
+      <p class="large-j">
+        {J}
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container flex">
+    <h1>about</h1>
+    <p>
+      I have spent my career in IT, Communications and Marketing, working on the web the entire time. My approach to the job is to contribute, take on a meaningful amount of the workload, be a resource for my coworkers and help maintain a positive environment.
+      I enjoy the reward of solving a problem like tracking down a stubborn bug or coming up with a big picture ideas, breaking them down into manageable tasks and seeing them through to launch while continually improving the product. The values I listed
+      seem to align perfectly with Bonfyre. I’m a programmer who can adapt to different technologies, but also have a deep appreciation of art, design and aesthetics. I foresee my skills and knowledge being utilized at Bonfyre. If given the opportunity,
+      I’d make the most of it.
+    </p>
+  </div>
+</section>
+
+<section id="skills">
+
+</section>
+
+<script src="js/iDOMelem.js"></script>
+<script src="js/less.min.js" type="text/javascript"></script>
+<script>
+function myFunction(x) {
+    var n = document.getElementById("myTopnav");
+     x.classList.toggle("change");
+    if (n.className === "topnav") {
+        n.className += " responsive";
+    } else {
+        n.className = "topnav";
+    }
+}
+</script>
+</body>
+
+</html>
