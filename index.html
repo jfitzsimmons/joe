@@ -106,30 +106,22 @@
         <h1 id="aboutlink">about</h1>
 
         <p>
-          I have spent my career in IT, Marketing and Communications, working
-           on the web the entire time. My approach to the job is to contribute,
-           take on a meaningful amount of the workload, be a resource for my
-           coworkers and help maintain a positive environment.
+          I have spent my career in IT, Marketing and Communications, working on the web the entire time. My approach to the job is to contribute, take on a meaningful amount of the workload, be a resource for my coworkers and help maintain a positive environment.
         </p>
 
         <p>
-          I enjoy the reward of solving a problem like tracking down a stubborn
-          bug or coming up with a big picture ideas, breaking them down into
-          manageable tasks and seeing them through to launch while continually
-          improving the product. The values I listed seem to align perfectly with
+          I enjoy the reward of solving a problem like tracking down a stubborn bug or coming up with a big picture ideas, breaking them down into manageable tasks and seeing them through to launch while continually improving the product. The values I listed seem
+          to align perfectly with
         </p>
 
         <p>
 
-          Bonfyre. I’m a programmer who can adapt to different technologies, but
-          also have a deep appreciation of art, design and aesthetics. I foresee
-          my skills and knowledge being utilized at Bonfyre. If given the opportunity,
-          I’d make the most of it.
+          Bonfyre. I’m a programmer who can adapt to different technologies, but also have a deep appreciation of art, design and aesthetics. I foresee my skills and knowledge being utilized at Bonfyre. If given the opportunity, I’d make the most of it.
         </p>
         <div class="pic">
 
         </div>
-        </div>
+      </div>
     </div>
 
   </div>
@@ -140,7 +132,7 @@
 <section id="skills">
   <div class="flex row">
 
-      <h1 id="skillslink">skills</h1>
+    <h1 id="skillslink">skills</h1>
 
   </div>
   <div class="flex row">
@@ -159,33 +151,27 @@
             </p>
             <p class="score">
               3
-              <br />
-              -
-              <br />
-              5
+              <br /> -
+              <br /> 5
             </p>
           </div>
           <p>
             4
-            <br />
-            -
-            <br />
-            5
+            <br /> -
+            <br /> 5
           </p>
         </div>
         <p>
           5
-          <br />
-          -
-          <br />
-          5
+          <br /> -
+          <br /> 5
         </p>
       </div>
     </div>
   </div>
   <div class="flex row">
 
-      <h5>Tools: Compass, Foundation</h5>
+    <h5>Tools: Compass, Foundation</h5>
 
   </div>
   <div class="flex row">
@@ -204,33 +190,27 @@
             </p>
             <p class="score">
               3
-              <br />
-              -
-              <br />
-              5
+              <br /> -
+              <br /> 5
             </p>
           </div>
           <p>
             4
-            <br />
-            -
-            <br />
-            5
+            <br /> -
+            <br /> 5
           </p>
         </div>
         <p>
           5
-          <br />
-          -
-          <br />
-          5
+          <br /> -
+          <br /> 5
         </p>
+      </div>
     </div>
   </div>
-</div>
   <div class="flex row">
 
-      <h5>Tools: JSHint, RequireJS, JSlint</h5>
+    <h5>Tools: JSHint, RequireJS, JSlint</h5>
 
   </div>
   <div class="flex row">
@@ -249,33 +229,27 @@
             </p>
             <p class="score">
               3
-              <br />
-              -
-              <br />
-              5
+              <br /> -
+              <br /> 5
             </p>
           </div>
           <p>
             4
-            <br />
-            -
-            <br />
-            5
+            <br /> -
+            <br /> 5
           </p>
         </div>
         <p>
           5
-          <br />
-          -
-          <br />
-          5
+          <br /> -
+          <br /> 5
         </p>
       </div>
     </div>
   </div>
   <div class="flex row">
 
-      <h5>Tools: JSHint, RequireJS, JSlint</h5>
+    <h5>Tools: JSHint, RequireJS, JSlint</h5>
 
   </div>
   <div class="flex row">
@@ -294,26 +268,20 @@
             </p>
             <p class="score">
               3
-              <br />
-              -
-              <br />
-              5
+              <br /> -
+              <br /> 5
             </p>
           </div>
           <p>
             4
-            <br />
-            -
-            <br />
-            5
+            <br /> -
+            <br /> 5
           </p>
         </div>
         <p>
           5
-          <br />
-          -
-          <br />
-          5
+          <br /> -
+          <br /> 5
         </p>
       </div>
     </div>
@@ -325,8 +293,7 @@
     <h1>Links / Contact / Social</h1>
     <p>
       &nbsp;
-      <br />&nbsp;<br />&nbsp;<br />&nbsp;<br />&nbsp;<br />
-      &nbsp;
+      <br />&nbsp;<br />&nbsp;<br />&nbsp;<br />&nbsp;<br /> &nbsp;
     </p>
   </div>
 </section>
@@ -355,29 +322,29 @@
 
     var target = $(this.getAttribute('href'));
 
-    if( target.length ) {
-        event.preventDefault();
-        $('html, body').stop().animate({
-            scrollTop: (target.offset().top) - ($('nav').height() + 43)
-        }, 1000);
+    if (target.length) {
+      event.preventDefault();
+      $('html, body').stop().animate({
+        scrollTop: (target.offset().top) - ($('nav').height() + 43)
+      }, 1000);
     }
-});
-$(document).ready(function(){
-  if ($(document).scrollTop() > 280) {
-    console.log('add');
-     $('nav').addClass('changeColor')
-  }
+  });
+  $(document).ready(function() {
+    if ($(document).scrollTop() > 280) {
+      console.log('add');
+      $('nav').addClass('changeColor')
+    }
     $(document).scroll(function() {
-  if ($(document).scrollTop() > 280) {
-    console.log('add');
-     $('nav').addClass('changeColor')
-  }
-  if ($(document).scrollTop() < 280) {
-    console.log('remove');
-     $('nav').removeClass('changeColor')
-  }
-});
-});
+      if ($(document).scrollTop() > 280) {
+        console.log('add');
+        $('nav').addClass('changeColor')
+      }
+      if ($(document).scrollTop() < 280) {
+        console.log('remove');
+        $('nav').removeClass('changeColor')
+      }
+    });
+  });
 </script>
 </body>
 
