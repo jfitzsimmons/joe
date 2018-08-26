@@ -1,15 +1,17 @@
 @darker-bg: #1D0C20;
 @dark-bg: #28112c;
-@light-font2: #c98cd4;
-@light-font1: #e033ff;
+@light-font2: #dbb1e2;
+@light-font1: #d247eb;
+@light-blue: #68B2F8;
 @dark-blue: #6200FF;
+@dark-purple: #5a3960;
+@light-purple: #a273ab;
+@dark-grey: #616161;
 @white: #fff;
 @dark-shadow: 0 0 6px hsla(291, 45%, 9%, 0.5);
 
 body,
 html {
-  width: 100%;
-  height: 100%;
   margin: 0;
   background-color: @dark-bg;
   background-image: url(img/58.png),url(img/74.png), url(img/106.png);
@@ -23,13 +25,11 @@ html {
 nav {
   width: 100%;
   background: fade(@dark-bg, 60%);
-  border-bottom: 4px solid #68B2F8;
-  text-align: left;
+  border-bottom: 4px solid @light-blue;
   z-index: 99;
   position: fixed;
-  top: 0;
-  left: 0;
   text-transform: uppercase;
+  transition: 0.9s all;
 }
 
 nav .link-wrap {
@@ -44,11 +44,17 @@ nav .link-wrap a {
   text-decoration: none;
 }
 
-.canvas {
-  position: absolute;
-  left: 0;
-  top: 0;
+.changeColor {
+   background: fade(@dark-bg, 100%);
 }
+
+.canvas, #bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+
 
 .circle {
   position: absolute;
@@ -69,34 +75,126 @@ nav .link-wrap a {
 .flex.wrap {
   flex-wrap: wrap;
 }
+
 .flex.grow{
   flex-grow: 1;
   overflow: hidden;
 }
 
 section {
-  padding: 30px;
-  color: #616161;
+  color: @dark-grey;
   line-height: 11pt;
-  position: relative;
-  border-bottom: 1px solid @dark-bg;
   background-color: @white;
+  flex-direction: column;
 }
 
 #home {
   height: calc(100vh + 53px);
   padding: 0;
-
-  color: @light-font1;
+  color: @white;
   text-shadow: @dark-shadow;
+  text-align: right;
+  border-bottom: 4px solid #e033ff;
   background: -moz-linear-gradient(-45deg, rgba(40,17,44,1) 0%, rgba(40,17,44,0.4) 100%); /* FF3.6-15 */
-background: -webkit-linear-gradient(-45deg, rgba(40,17,44,1) 0%,rgba(40,17,44,0.4) 100%); /* Chrome10-25,Safari5.1-6 */
-background: linear-gradient(187deg, rgba(40,17,44,1) 0%,rgba(40,17,44,0.1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+background: -webkit-linear-gradient(-45deg, rgba(40,17,44,1) 0%,rgba(40,17,44,0.4) 100%);
+/* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(187deg, rgba(40,17,44,1) 0%,rgba(40,17,44,0.1) 100%);
+/* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#007db9e8',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
 
-#about p{
+#about, #skills {
   font-family: 'Montserrat', sans-serif;
+  line-height: 12pt;
+  font-size: 10pt;
+  border-bottom: 4px solid @dark-blue;
+  padding: 20px 0;
+
+  h1 {
+    color: @darker-bg;
+  }
+  h5 {
+    margin: 5px 0;
+  }
+  .grow {
+    align-self: flex-start;
+    margin-top: 20px;
+  }
+  .lede {
+    align-self: flex-start;
+  }
+}
+#links {
+  background: none;
+}
+#skills {
+  display: flex;
+
+  .skill1 {
+    border-left: 3px solid @light-purple;
+    border-top: 3px solid @light-purple;
+  }
+  .skill2 {
+    border-left: 3px solid @light-font1;
+    border-top: 3px solid @light-font1;
+    color: @white;
+  }
+  .skill3 {
+    border-left: 3px solid @light-font2;
+    border-top: 3px solid @light-font2;
+    color: #d4d4d4;
+  }
+  h1 {
+    margin: 12px 0;
+  }
+  h5, h1 {
+    width: 90%;
+  }
+  .row {
+    margin: 8px 0;
+  }
+}
+
+.skill {
+  width: 90%;
+  display: flex;
+
+  div {
+    background: rgba(0,0,0,0.2);
+    padding: 6px 6px 0 0;
+    display: flex;
+    justify-content: right;
+    border-radius: 6px 0 0 0;
+  }
+  p {
+    margin: 0;
+    padding: 0 6px 6px;
+    font-size: 8pt;
+    line-height: 8pt;
+  }
+  .label {
+    width: 100vh;
+    word-break: break-all;
+  }
+  .score {
+    text-align: center;
+  }
+
+}
+
+.pic {
+  background-image: url('img/joe.jpg');
+  min-width: 190px;
+  min-height: 190px;
+  background-size: cover;
+  width: 50%;
+  border-radius: 50%;
+  margin: 0 auto;
+  &:after{
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+  }
 }
 
 h1 {
@@ -118,25 +216,38 @@ h2 {
 h5 {
   font-family: 'Montserrat', sans-serif;
   font-size: 10pt;
-  color: #a273ab;
+  color: @light-purple;
   margin: 0;
   font-weight: normal;
   line-height: 12pt;
 }
+
 h6 {
   font-family: 'Inconsolata', monospace;
   font-size: 10pt;
-  color: #5a3960;
+  color: @dark-purple;
   margin: 0;
   line-height: 12pt;
 }
 
 .lede {
-  background: fade(@dark-bg, 50%);
   padding: 0 20px;
-  color: @white;
-  text-align: right;
   z-index: 1;
+}
+
+.overlay {
+  background: fade(@dark-bg, 50%);
+}
+
+.symbol {
+  border-radius: 50%;
+  background: @dark-grey;
+  padding: 20px;
+  font-size: 25pt;
+  color: @white;
+  text-align: center;
+  margin: 10px 0;
+  min-width: 40px;
 }
 
 .t-right {
@@ -144,41 +255,37 @@ h6 {
 }
 
 .page-link {
-  color: @white;
+
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-image: linear-gradient(to right, #e033ff, #e033ff 50%, @white 50%);
   background-size: 200% 100%;
   background-position: 100%;
-}
-
-.page-link:hover {
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.000, 0.000, 0.230, 1);
-  background-position: 0;
-}
-
-.page-link::after,
-.page-link::before {
-  margin: 4px 0;
-  content: '';
-  display: block;
-  width: 0;
-  height: 2px;
-  background: @dark-blue;
-  transition: width 0.3s;
-}
-
-.page-link:hover::after,
-.page-link:hover::before {
-  width: 100%;
-  color: #0084FF;
+  &:hover {
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.000, 0.000, 0.230, 1);
+    background-position: 0;
+  }
+  &::after,
+  &::before {
+    margin: 4px 0;
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: @dark-blue;
+    transition: width 0.3s;
+  }
+  &:hover::after,
+  &:hover::before {
+    width: 100%;
+    color: #0084FF;
+  }
 }
 
 .brace {
-  margin: 40px;
-  padding: 0 40px;
-  width: 40px;
+  margin: 26px;
+  padding: 0 60px;
   font-size: 100px;
   color: @light-font2;
   opacity: .7;
@@ -198,6 +305,7 @@ h6 {
   opacity: .1;
   cursor: default;
   margin: 0;
+  color: @light-font1;
   /* Safari */
   -webkit-transform: rotate(30deg);
   /* Firefox */
@@ -217,7 +325,7 @@ h6 {
 .bar1, .bar2, .bar3 {
     width: 30px;
     height: 2px;
-    background-color: #fff;
+    background-color: @white;
     margin: 6px 0;
     transition: 0.4s;
 }
@@ -234,12 +342,52 @@ h6 {
     transform: rotate(45deg) translate(-4px, -3px);
 }
 
-@media screen and (max-width: 400px) {
+.topnav a {
+  float: left;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.active {
+
+}
+
+.topnav .icon {
+  display: none;
 }
 
 @media screen and (min-width: 600px) {
   .large-j{
     font-size: 200pt;
+  }
+
+  #about {
+    font-family: 'Montserrat', sans-serif;
+    line-height: 16pt;
+    font-size: 12pt;
+      .grow {
+        background: @white;
+      }
+      .book {
+        border-left: 36px dotted #d4d4d4;
+        padding: 0 20px;
+      }
+  }
+
+  .symbol {
+    margin: 10px 0;
+    padding: 34px;
+    font-size: 40pt;
+    min-width: 53px;
+  }
+  .pic {
+    height: 370px;
+    width: 370px;
+  }
+
+  .skill p {
+    font-size: 10pt;
   }
 }
 
@@ -249,55 +397,28 @@ h6 {
   }
 }
 
-
-
-  .topnav a {
-    float: left;
-    display: block;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
+@media screen and (max-width: 600px) {
+  nav {
+    background: fade(@dark-bg, 90%);
   }
-
-  .topnav a:hover {
-    background-color: #ddd;
-    color: black;
+  .page-link::after,
+  .page-link::before {
+    background: none;
   }
-
-  .active {
-    background-color: #4CAF50;
-    color: white;
-  }
-
+  .topnav a:not(:first-child) {display: none;}
   .topnav .icon {
-    display: none;
+    float: right;
+    display: block;
   }
 
-  @media screen and (max-width: 600px) {
-    nav {
-      background: fade(@dark-bg, 90%);
-    }
-    .page-link::after,
-    .page-link::before {
-      background: none;
-    }
-    .topnav a:not(:first-child) {display: none;}
-    .topnav .icon {
-      float: right;
-      display: block;
-    }
-
-    .topnav.responsive {position: relative;}
-    .topnav.responsive .icon {
-      position: absolute;
-      right: 0;
-      top: 0;
-    }
-    .topnav.responsive a {
-      float: none;
-      display: block;
-      text-align: left;
-    }
+  .topnav.responsive {position: relative;}
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
   }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+  }
+}
