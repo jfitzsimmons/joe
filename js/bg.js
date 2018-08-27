@@ -60,7 +60,7 @@ let Circle = {
     c.element.style.left = `${c.x}px`;
     c.element.style.top = `${c.y}px`;
     if (c.radius < c.randomRad && typeof c.radius !== 'undefined') {
-      c.radius += (c.randomRad / 90);
+      c.radius += (c.randomRad / 80);
       c.element.style.width = c.radius + 'px';
       c.element.style.height = c.radius + 'px';
       c.element.style.backgroundColor = `hsl(${(c.xform[2] += .3)},
@@ -79,7 +79,7 @@ let Circle = {
     ctx2.arc(c.x + (c.radius / 2), c.y + (c.radius / 2),
       (c.radius / 2) + 4, c.start, drawTo, false);
     ctx2.stroke();
-    c.curr += 1.5;
+    c.curr += 1.7;
     if (c.curr < 101) {
       requestAnimationFrame(function() {
         c.addStroke(c, (Math.PI * 2) * c.curr / 100 + c.start);
@@ -89,8 +89,8 @@ let Circle = {
       let circBlock = c.radiusStroke * 3.3;
       ctx2.clearRect((c.x - (circBlock / 2)), (c.y - (circBlock / 2)),
         circBlock, circBlock);
-      c.x -= 2;
-      c.y -= 2;
+      c.x -= 3;
+      c.y -= 3;
       c.move(c);
       newCircle();
     }
@@ -138,7 +138,6 @@ function doneResizing() {
     selectTag[0].parentNode.removeChild(selectTag[0]);
   }
   canvas.initialize();
-  newCircle();
 }
 
 canvas.initialize();

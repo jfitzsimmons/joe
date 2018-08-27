@@ -212,7 +212,10 @@ h6 {
   font-size:   10pt;
   border-bottom: 4px solid @dark-blue;
   h1 {color: @darkest-purple;}
-  h5 {margin: 5px 0;}
+  h5 {
+    margin: 5px 0;
+    text-align: center;
+  }
 }
 
 .about {padding: 20px 0;}
@@ -244,7 +247,7 @@ h6 {
   background-size: cover;
   width: 50%;
   border-radius: 50%;
-  margin: 20px auto;
+  margin: 40px auto;
   &:after{
     content: "";
     display: block;
@@ -315,7 +318,7 @@ h6 {
   flex-wrap: wrap;
   display: flex;
   background: @light-gray;
-  padding:  8px 16px 16px;
+  padding:  8px 16px 32px;
   border-radius: 6px;
   align-self: flex-start;
   justify-content: center;
@@ -350,7 +353,11 @@ h6 {
   border: 3px solid @neon-purple;
 }
 
-.links {background: none;}
+.links {
+  background: none;
+  min-height: 150px;
+  h5{margin:20px}
+}
 
 @media screen and (min-width: 600px) {
   .large-j{font-size: 200pt;}
