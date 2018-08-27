@@ -1,7 +1,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 
 <head>
-  <title>Joe</title>
+  <title>Joe Fitzsimmons: Web Developer - Javascript, CSS, Front End, Full Stack</title>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#28112c" />
 
   <link rel="stylesheet/less" href="css/style.less" type="text/css" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
@@ -10,9 +14,6 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="shortcut icon" href="favicon.ico">
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#28112c" />
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 </head>
@@ -23,7 +24,7 @@
     <a class="page-link" href="#aboutlink">about</a>
     <a class="page-link" href="#skillslink">skills</a>
     <a class="page-link" target="_blank" href="https://drive.google.com/file/d/1Ihfj00wOddh7FZYsB4bcSIzS8SsIig5P/view?usp=sharing">Resume</a>
-    <div class="bars icon" onclick="myFunction(this)">
+    <div class="bars icon" onclick="responsiveNav(this)">
       <div class="bar1"></div>
       <div class="bar2"></div>
       <div class="bar3"></div>
@@ -110,26 +111,16 @@
         <h1 id="aboutlink">about</h1>
 
         <p>
-          I have spent my career in IT, Marketing and Communications, working on
-          the web the entire time. My approach to the job is to contribute, take
-          on an impactful amount of work, be a resource for my colleagues
-          and help maintain a positive environment.
+          I have spent my career in IT, Marketing and Communications, working on the web the entire time. My approach to the job is to contribute, take on an impactful amount of work, be a resource for my colleagues and help maintain a positive environment.
         </p>
 
         <p>
-          I enjoy the reward of solving a problem like tracking down a stubborn
-          bug or coming up with big picture ideas, breaking them down into
-          manageable tasks and seeing them through to launch, while continually
-          improving the product.
+          I enjoy the reward of solving a problem like tracking down a stubborn bug or coming up with big picture ideas, breaking them down into manageable tasks and seeing them through to launch, while continually improving the product.
         </p>
 
         <p>
-          I'm a programmer who has adapted to different technologies, who
-          also has a deep appreciation of art, design and aesthetics. I make
-          the most of my opportunities.  If you think I'd be a good fit and
-          would like to work together, check out my
-          <a href="https://drive.google.com/file/d/1Ihfj00wOddh7FZYsB4bcSIzS8SsIig5P/view?usp=sharing">resume</a>
-          and reach out to me.
+          I'm a programmer who has adapted to different technologies, who also has a deep appreciation of art, design and aesthetics. I make the most of my opportunities. If you think I'd be a good fit and would like to work together, check out my
+          <a href="https://drive.google.com/file/d/1Ihfj00wOddh7FZYsB4bcSIzS8SsIig5P/view?usp=sharing">resume</a> and reach out to me.
         </p>
         <div class="pic">
 
@@ -326,18 +317,18 @@
     </div>
   </div>
 </section>
-<!--
-<section id="links" class="links">
+
+<section id="links" class="links content">
   <div class="flex row">
-    <h1>Links / Contact / Social</h1>
-    <p>
-      &nbsp;
-      <br />&nbsp;<br />&nbsp;<br />&nbsp;<br />&nbsp;<br /> &nbsp;
-    </p>
+
+    <br />&nbsp;
+    <h5>Joe Fitzsimmons &#9400;2018</h5>
+
   </div>
 </section>
--->
-<script src="js/iDOMelem.js" type="text/javascript"></script>
+
+<script src="js/bg.js" type="text/javascript"></script>
+<script src="js/init.js" type="text/javascript"></script>
 <script src="js/less.min.js" type="text/javascript"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
 <script>
@@ -345,44 +336,6 @@
     google: {
       families: ['Inconsolata:400,700', 'Libre+Baskerville:400,700', 'Montserrat:400,700']
     }
-  });
-
-  function myFunction(x) {
-    var n = document.getElementById("nav");
-    x.classList.toggle("change");
-    if (n.className === "top-nav") {
-      n.className += " responsive";
-    } else {
-      n.className = "top-nav";
-    }
-  }
-
-  $('a[href^="#"]').on('click', function(event) {
-
-    var target = $(this.getAttribute('href'));
-
-    if (target.length) {
-      event.preventDefault();
-      $('html, body').stop().animate({
-        scrollTop: (target.offset().top) - ($('nav').height() + 43)
-      }, 1000);
-    }
-  });
-  $(document).ready(function() {
-    if ($(document).scrollTop() > 280) {
-      console.log('add');
-      $('nav').addClass('changeColor')
-    }
-    $(document).scroll(function() {
-      if ($(document).scrollTop() > 280) {
-        console.log('add');
-        $('nav').addClass('changeColor')
-      }
-      if ($(document).scrollTop() < 280) {
-        console.log('remove');
-        $('nav').removeClass('changeColor')
-      }
-    });
   });
 </script>
 </body>

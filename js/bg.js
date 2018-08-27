@@ -1,146 +1,145 @@
+let circles = [];
+let color;
+let count = 0;
+let canvas2 = document.getElementById('bg2');
+let ctx2 = canvas2.getContext('2d');
+const colors = [209, 291, 263];
+const strokeColors = ['#506EE5', '#68B2F8', '#7037CD'];
+const canvas = {
+  element: document.getElementById('bg'),
+  width: window.innerWidth,
+  height: window.innerHeight,
+  initialize: function() {
+    circles = [];
+    count = 0;
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    this.element.style.width = `${window.innerWidth}px`;
+    this.element.style.height = `${window.innerHeight}px`;
+    ctx2.canvas.width = window.innerWidth;
+    ctx2.canvas.height = window.innerHeight;
+    ctx2.canvas.style.width = window.innerWidth;
+    ctx2.canvas.style.height = window.innerHeight;
+    document.body.appendChild(this.element);
+  },
+};
 
-var strokeColors = ['#506EE5', '#68B2F8', '#7037CD'];
-var colors = [209, 291, 263];
-var canvas = document.getElementById('bg');
-var ctx = canvas.getContext('2d');
-var circles = [];
-
-var requestAnimationFrame = window.requestAnimationFrame ||
+const requestAnimationFrame = window.requestAnimationFrame ||
   window.mozRequestAnimationFrame ||
   window.webkitRequestAnimationFrame ||
   window.msRequestAnimationFrame;
 
-ctx.canvas.width = window.innerWidth;
-ctx.canvas.height = window.innerHeight;
-ctx.lineWidth = 1;
-//var dx = 2;
-//var dy = -2;
-var circumStroke = Math.PI * 2;
-var finish = 100; // Finish (in %)
-
-
-function Circle() {
-  radius = 0;
-  var randomRad = Math.random() * (5 - 2.5) + 2.5;
-  var radiusStroke = randomRad + 3.5;
-  var x = Math.random() * (ctx.canvas.width);
-  var y = Math.random() * (ctx.canvas.height);
-  var curr = 0;
-  var color = colors[Math.floor(Math.random() * colors.length)];
-  ctx.strokeStyle = strokeColors[Math.floor(Math.random() * strokeColors.length)];
-  ctx.shadowColor=ctx.strokeStyle;
-  var colorStart = Math.floor(Math.random() * (color  - (color-50)) + (color-50));
-  var light = Math.floor(Math.random() * (60 - 10) + 10);
-  var start = Math.random() * Math.PI * 2; // Start position (top)
-  let speed = Math.floor(Math.random() * (5 - 2) + 2);
-
-
-
-
-
-
-
-  function draw() {
-    radius += (randomRad / 100);
-    if (radius < randomRad) {
-      //ctx.globalAlpha=0.1;
-      //let colorEnd = (colorStart < color ? colorStart += 1 : colorStart = color);
-
-      ctx.beginPath();
-      ctx.arc(x, y, radius, 0, Math.PI * 2, false); // inner circle
-      ctx.fillStyle = 'hsl(' + (colorStart += 0.25) + ',100%,' + (light += 0.25) + '%)';
-      ctx.fill();
-      //console.log('color: ' + color + ' colorStart: ' + colorStart + ' light: ' + light );
-      requestAnimationFrame(draw);
-
+let Circle = {
+  create: function(dx, dy, xform) {
+    let newCirc = Object.create(this);
+    newCirc.radius = 0;
+    newCirc.randomRad = xform[0];
+    newCirc.radiusStroke = xform[0] + 3;
+    newCirc.x = rndmRng((canvas.width - 30), 30);
+    newCirc.y = rndmRng((canvas.height - 30), 30);
+    newCirc.curr = 0;
+    newCirc.strokeStyle = rndmArrI(strokeColors);
+    newCirc.light = rndmRng(60, 10);
+    newCirc.start = Math.random() * Math.PI * 2; // Start position (top)
+    newCirc.speed = rndmRng(10, 2);
+    newCirc.xform = xform;
+    newCirc.dx = (Math.cos(newCirc.start) / newCirc.speed);
+    newCirc.dy = (Math.sin(newCirc.start) / newCirc.speed);
+    newCirc.element = document.createElement('div');
+    newCirc.element.style.backgroundColor = `hsl(${xform[2]},100%,
+      ${xform[1]}%)`;
+    newCirc.element.style.width = `${newCirc.radius}px`;
+    newCirc.element.style.height = `${newCirc.radius}px`;
+    newCirc.element.className += 'circle';
+    newCirc.width = parseInt(newCirc.element.style.width);
+    newCirc.height = parseInt(newCirc.element.style.height);
+    canvas.element.appendChild(newCirc.element);
+    return newCirc;
+  },
+  draw: function(c) {
+    c.element.style.left = `${c.x}px`;
+    c.element.style.top = `${c.y}px`;
+    if (c.radius < c.randomRad && typeof c.radius !== 'undefined') {
+      c.radius += (c.randomRad / 90);
+      c.element.style.width = c.radius + 'px';
+      c.element.style.height = c.radius + 'px';
+      c.element.style.backgroundColor = `hsl(${(c.xform[2] += .3)},
+        100%,${(c.xform[1] += .3)}%)`;
+      setTimeout(function() {
+        c.draw(c);
+      }, rndmRng(30, 15));
     } else {
-
-      console.log('draw else');
-      console.log('stroke: ' + ctx.strokeStyle);
-      animate();
-newCircle();
+      ctx2.lineWidth = 2;
+      ctx2.strokeStyle = c.strokeStyle;
+      c.addStroke(c);
     }
-  }
-
-  function animate(draw_to) {
-    ctx.beginPath();
-    ctx.arc(x, y, radiusStroke, start, draw_to, false);
-    ctx.stroke();
-//
-    // Increment percent
-    curr++;
-    // Animate until end
-    if (curr < finish + 1) {
-      // Recursive repeat this function until the end is reached
+  },
+  addStroke: function(c, drawTo) {
+    ctx2.beginPath();
+    ctx2.arc(c.x + (c.radius / 2), c.y + (c.radius / 2),
+      (c.radius / 2) + 4, c.start, drawTo, false);
+    ctx2.stroke();
+    c.curr += 1.5;
+    if (c.curr < 101) {
       requestAnimationFrame(function() {
-        animate(circumStroke * curr / 100 + start);
+        c.addStroke(c, (Math.PI * 2) * c.curr / 100 + c.start);
       });
-
     } else {
-      console.log('animate else');
-      ctx.lineWidth = 2;
-      preMove();
-      //circles.pop();
+      // TODO: delete circBlock
+      let circBlock = c.radiusStroke * 3.3;
+      ctx2.clearRect((c.x - (circBlock / 2)), (c.y - (circBlock / 2)),
+        circBlock, circBlock);
+      c.x -= 2;
+      c.y -= 2;
+      c.move(c);
+      newCircle();
     }
-  }
-
-  function preMove() {
-    let circBlock = radiusStroke*3.3;
-    ctx.clearRect((x - (circBlock/2)),(y - (circBlock/2)),circBlock,circBlock);
-    ctx.beginPath();
-    ctx.arc(x, y, radiusStroke-2, 0, Math.PI * 2, false); // inner circle
-    ctx.shadowBlur=6;
-
-    ctx.shadowOffsetX=0;
-    ctx.shadowOffsetY=0;
-    ctx.fillStyle = 'hsl(' + colorStart + ',100%,' + light + '%)';
-    ctx.fill();
-
-    ctx.strokeStyle="#1D0C20";
-    ctx.stroke();
-
-
-    let angle = start;
-
-    //direction = vector(cos(angle), sin(angle))
-
-    //xPosition += (speed * direction.x)
-    //yPosition += (speed * direction.y)
-
-    x -=  (Math.cos(start)/speed);
-    y -=  (Math.sin(start)/speed);
-
-
-
-    //x += 0.3;
-    requestAnimationFrame(preMove);
-  }
-
-  function move() {
-    console.log('move begin x: ' + x);
-    let direction = 1;
-     //Random speed between 0 and 20
-    //  ctx.beginPath();
-    //ctx.globalAlpha = 0.3;
-
-    //  xc = x-30;
-    //  yc = y+10;
-x = x++;
-
-
-    requestAnimationFrame(move);
-    //ctx.clearRect(xc, yc, 20, 20);
-  }
-  draw();
-
-}
+  },
+  move: function(c) {
+    c.element.style.boxShadow = `0 0 0 3px ${c.strokeStyle}`;
+    c.element.style.border = '3px solid #1D0C20';
+    if (c.x > (canvas.width - (c.randomRad + 10)) || c.x < 0) {
+      c.dx = -c.dx;
+    }
+    if (c.y > (canvas.height - (c.randomRad + 10)) || c.y < 0) {
+      c.dy = -c.dy;
+    }
+    c.x -= c.dx;
+    c.y -= c.dy;
+    c.element.style.left = `${c.x}px`;
+    c.element.style.top = `${c.y}px`;
+    requestAnimationFrame(() => this.move(c));
+  },
+};
+const circleInit = (c) => c.draw(c);
+const rndmRngArr = (r, l, c) => [r, l, c];
+const rndmRng = (h, l) => Math.random() * (h - l) + l;
+const rndmArrI = (a) => a[Math.floor(Math.random() * a.length)];
 
 function newCircle() {
-  //console.log('new circle call (Circles.legnth) ' + circles.length);
-  if (circles.length < 40) {
-    var circle = new Circle();
-    circles.push(circle);
-    //  console.log('new circle call if stat < 20');
+  color = rndmArrI(colors);
+  if (circles.length < 30) {
+    circles.push(Circle.create(rndmRng(2, -2), rndmRng(2, -2),
+      rndmRngArr(rndmRng(25, 8), rndmRng(60, 10), rndmRng(color, color - 60))));
+    circleInit(circles[count]);
+    count++;
   }
 }
+
+let resizeId;
+window.onresize = function() {
+  clearTimeout(resizeId);
+  resizeId = setTimeout(doneResizing, 500);
+};
+
+function doneResizing() {
+  let selectTag = document.getElementsByClassName('circle');
+  while (selectTag[0]) {
+    selectTag[0].parentNode.removeChild(selectTag[0]);
+  }
+  canvas.initialize();
+  newCircle();
+}
+
+canvas.initialize();
 newCircle();
