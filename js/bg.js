@@ -30,8 +30,9 @@ const requestAnimationFrame = window.requestAnimationFrame ||
   window.msRequestAnimationFrame;
 
 let Circle = {
-  create: function(dx, dy, xform) {
+  create: function(count, dx, dy, xform) {
     let newCirc = Object.create(this);
+    newCirc.id = count;
     newCirc.radius = 0;
     newCirc.randomRad = xform[0];
     newCirc.radiusStroke = xform[0] + 3;
@@ -41,7 +42,7 @@ let Circle = {
     newCirc.strokeStyle = rndmArrI(strokeColors);
     newCirc.light = rndmRng(60, 10);
     newCirc.start = Math.random() * Math.PI * 2; // Start position (top)
-    newCirc.speed = rndmRng(10, 2);
+    newCirc.speed = rndmRng(9, 1);
     newCirc.xform = xform;
     newCirc.dx = (Math.cos(newCirc.start) / newCirc.speed);
     newCirc.dy = (Math.sin(newCirc.start) / newCirc.speed);
@@ -50,24 +51,20 @@ let Circle = {
       ${xform[1]}%)`;
     newCirc.element.style.width = `${newCirc.radius}px`;
     newCirc.element.style.height = `${newCirc.radius}px`;
-    newCirc.element.className += 'circle';
-    newCirc.width = parseInt(newCirc.element.style.width);
-    newCirc.height = parseInt(newCirc.element.style.height);
+    newCirc.element.classList.add('circle');
+    newCirc.element.style.left = `${newCirc.x}px`;
+    newCirc.element.style.top = `${newCirc.y}px`;
     canvas.element.appendChild(newCirc.element);
     return newCirc;
   },
   draw: function(c) {
-    c.element.style.left = `${c.x}px`;
-    c.element.style.top = `${c.y}px`;
     if (c.radius < c.randomRad && typeof c.radius !== 'undefined') {
       c.radius += (c.randomRad / 80);
       c.element.style.width = c.radius + 'px';
       c.element.style.height = c.radius + 'px';
       c.element.style.backgroundColor = `hsl(${(c.xform[2] += .3)},
         100%,${(c.xform[1] += .3)}%)`;
-      setTimeout(function() {
-        c.draw(c);
-      }, rndmRng(30, 15));
+      requestAnimationFrame(() => this.draw(c));
     } else {
       ctx2.lineWidth = 2;
       ctx2.strokeStyle = c.strokeStyle;
@@ -91,13 +88,15 @@ let Circle = {
         circBlock, circBlock);
       c.x -= 3;
       c.y -= 3;
-      c.move(c);
+      c.element.style.boxShadow = `0 0 0 3px ${c.strokeStyle}`;
+      c.element.style.border = '3px solid #1D0C20';
+      (c.id % 2 === 0 ? c.move(c) : c.rotate(c));
+      //c.move(c);
+      //c.rotate(c);
       newCircle();
     }
   },
   move: function(c) {
-    c.element.style.boxShadow = `0 0 0 3px ${c.strokeStyle}`;
-    c.element.style.border = '3px solid #1D0C20';
     if (c.x > (canvas.width - (c.randomRad + 10)) || c.x < 0) {
       c.dx = -c.dx;
     }
@@ -110,6 +109,15 @@ let Circle = {
     c.element.style.top = `${c.y}px`;
     requestAnimationFrame(() => this.move(c));
   },
+  rotate: function(c) {
+    let orbit = (1000 / (Math.abs(c.y - (canvas.height/2))+100)*150);
+    if (c.x > (canvas.width/2)) {
+      c.element.style.transformOrigin = `-${orbit}% center`;
+    } else {
+      c.element.style.transformOrigin = `${orbit}% center`;
+    }
+    c.element.classList.add('circle-2');
+  },
 };
 const circleInit = (c) => c.draw(c);
 const rndmRngArr = (r, l, c) => [r, l, c];
@@ -118,8 +126,8 @@ const rndmArrI = (a) => a[Math.floor(Math.random() * a.length)];
 
 function newCircle() {
   color = rndmArrI(colors);
-  if (circles.length < 30) {
-    circles.push(Circle.create(rndmRng(2, -2), rndmRng(2, -2),
+  if (circles.length < 12) {
+    circles.push(Circle.create(count, rndmRng(2, -2), rndmRng(2, -2),
       rndmRngArr(rndmRng(25, 8), rndmRng(60, 10), rndmRng(color, color - 60))));
     circleInit(circles[count]);
     count++;
@@ -138,6 +146,7 @@ function doneResizing() {
     selectTag[0].parentNode.removeChild(selectTag[0]);
   }
   canvas.initialize();
+  newCircle();
 }
 
 canvas.initialize();

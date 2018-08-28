@@ -165,12 +165,36 @@ h6 {
   position: absolute;
   top:  0;
   left: 0;
+  overflow: hidden;
 }
 
 .circle {
   position: absolute;
   border-radius: 50%;
+  will-change: left, top, width, height;
 }
+
+.circle-2 {
+  animation: rotate-cw 75s linear infinite;
+
+}
+
+@keyframes rotate-ccw {
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+@keyframes rotate-cw {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+
+
+
 
 .lede {
   padding: 0 20px;
