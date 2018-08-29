@@ -172,11 +172,38 @@ h6 {
   position: absolute;
   border-radius: 50%;
   will-change: left, top, width, height;
+
+}
+
+.circle-1 {
+  transition: transform 3s;
+  transition-timing-function: linear;
+
 }
 
 .circle-2 {
   animation: rotate-cw 75s linear infinite;
+  will-change: left, top;
+}
 
+@keyframes moveL {
+  50%  {left: -0%}
+  100%  {left: 95%}
+}
+
+@keyframes moveR {
+  50%  {left: 95%}
+  100%  {left: -0%}
+}
+
+@keyframes moveU {
+  50%  {top: -0%}
+  100%  {top: 95%}
+}
+
+@keyframes moveD {
+  50%  {top: 95%}
+  100%  {top: -0%}
 }
 
 @keyframes rotate-ccw {
@@ -189,12 +216,6 @@ h6 {
     transform: rotate(360deg);
   }
 }
-
-
-
-
-
-
 
 .lede {
   padding: 0 20px;
