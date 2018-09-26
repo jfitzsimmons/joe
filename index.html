@@ -65,6 +65,27 @@
       </p>
     </div>
   </div>
+  <div class="info">
+    <i class="fas fa-info-circle"></i>
+    <i class="fas fa-times-circle"></i>
+    <div class="info-text">
+      <p>
+        I aimed for a relaxing, eye catching animation that would be like staring at a fish tank.  I started experimenting with HTML5 Canvas, JS and CSS animations.  My first and coolest iteration was pure javascript.  A circle would grow from a random point on the screen, change hue, and lightness, create a border at a random point around the circle, and then move away from that point, moving at a random speed.  It would then bounce around the screen in perpetuity.
+</p><p>
+I loved the way this animation looked but it was too resource intensive.  I then experimented with similar functionality, but using CSS.  I couldn’t make the circle move at an angle quite as precisely as pure JS.  To mimic the functionality, I split the screen into four quadrants. If the circle was generated in a specific quad, it would move across the screen diagonally towards the furthest quad.  The circle would then move at a random speed on both the x and y axis so the angles random, while moving away from the starting point, although not quite as precisely as the JS animation.
+</p><p>
+The problem with this animation style is that it’s not much more efficient than the JS animation.  This is because animating the properties of top/left/width/height (properties that affect document flow) are more resource intensive than transforms due to current web and browser standards.
+</p><p>
+So, I added another css animation that only uses transform.  This animation wouldn't bounce off the sides of the window, but would instead, revolve 360 degrees.  This time I split the screen in half.  If the circle was generated in the right half of the screen, the starting point would be at the top of the circle and the circle would move down.  If it generated on the left side, the starting point would be at the bottom of the circle and move up.  Also, if the circle is closer to the center of the screen, it has a wider orbit than at the edge of the screen.  This is to increase to amount of time the circle remains in view.
+</p><p>
+This animation is far less intensive than the prior two, though not as cool looking in my opinion.  So now I decided to use all three animations.  Each time a circle is created, it randomly uses one of the three types of animation.  I weighted the css transform animation to show up twice as much as the other two in order to save resources.
+</p><p>
+One other resource consideration was to change the number of circles generated based on screen size.  This might help with performance on mobile devices.
+</p><p>
+Some other highlights.  I heavily leaned on randomization.  The circles grow to different sizes.  The hue of the circles change and so does the lightness as the circle grows.  This makes each circle a unique color, but still fit with the style of the site.  There are three different border colors that are chosen at random.  I mentioned the different starting points of the border, and the different animations, speeds and angles each circle has.
+      </p>
+    </div>
+  </div>
 </section>
 
 <section id="about" class="about content">
@@ -134,10 +155,22 @@
 
         </div>
       </div>
+
     </div>
-
   </div>
-
+  <div class="info">
+    <i class="fas fa-info-circle"></i>
+    <i class="fas fa-times-circle"></i>
+    <div class="info-text">
+      <p>
+        I spent most of my time working on the Home section so this section is
+        lacking.  I’m not a fan of talking about myself, and had to come up with
+         a way to fill this section with enough material.  My photo is outdated
+         and a little smug.  This section definitely needs a second pass.  I’ll
+         probably go with a more minimal aesthetic.
+      </p>
+    </div>
+  </div>
 
 </section>
 
@@ -324,6 +357,22 @@
       </div>
     </div>
   </div>
+  <div class="info">
+    <i class="fas fa-info-circle"></i>
+    <i class="fas fa-times-circle"></i>
+    <div class="info-text">
+      <p>
+        I came up with an idea on how to visualize data that I thought was
+        original and neat looking.  It might not be the best way to present Web
+        Development skills, and I took some liberties in the grouping and
+        display.  It’s not the most intuitive way to group this data and the
+        grouping is a little arbitrary, and the scores aren’t precise.  Overall,
+        it’s still accurate.  I might spend time communicating my skills more
+        efficiently, but I’m proud of the concept.  I think the layout could be
+        cleaned up and more readable.
+      </p>
+    </div>
+  </div>
 </section>
 
 <section id="links" class="links content">
@@ -332,6 +381,20 @@
     <br />&nbsp;
     <h5>Joe Fitzsimmons &#9400;2018</h5>
 
+  </div>
+  <div class="info">
+    <i class="fas fa-info-circle"></i>
+    <i class="fas fa-times-circle"></i>
+    <div class="info-text">
+      <p>
+        Right now it’s just a copyright.  I’ll add some links to my online
+        accounts like Github, and Stack Overflow.  I should probably add a
+        contact form but can’t think of a better reason to than just ‘everyone
+        has one’.  That might be as good a reason as any.  There’s plenty I
+        could add in this section, but it may just be content for content’s
+        sake.
+      </p>
+    </div>
   </div>
 </section>
 

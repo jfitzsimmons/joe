@@ -18,6 +18,21 @@ $('a[href^="#"]').on('click', function(event) {
   }
 });
 
+$('.info').on('click', function(e) {
+  $(this).addClass('info-expand');
+  $(this).children('.fa-times-circle').show();
+  $(this).children('.fa-info-circle').hide();
+  $(this).children('.info-text').delay(1200).fadeIn(600);
+});
+
+$('.fa-times-circle').on('click', function(e) {
+  e.stopPropagation();
+  $(this).parent('.info').removeClass('info-expand');
+  $(this).next('.info-text').hide();
+  $(this).hide();
+  $(this).prev('.fa-info-circle').show();
+});
+
 $(document).ready(function() {
   if ($(document).scrollTop() > 280) {
     $('nav').addClass('changeColor')

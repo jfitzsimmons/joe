@@ -99,6 +99,7 @@ section {
   line-height: 11pt;
   background-color: @white;
   flex-direction: column;
+  position: relative;
 }
 
 h1 {font-weight: 700;}
@@ -148,12 +149,65 @@ h6 {
   overflow:  hidden;
 }
 
+.info {
+  border: 1px solid @light-gray;
+  border-radius: 6px;
+  padding: 8px;
+  margin:  16px;
+  position: absolute;
+  right:  0px;
+  bottom: 0px;
+  z-index: 9;
+  box-shadow: 0 2px 6px 0 hsla(291, 45%, 9%, 0.5);
+  &:hover {
+    bottom: 1px;
+    box-shadow: 0 2px 6px 2px hsla(291, 45%, 9%, 0.5);
+  }
+  i {
+    color: @light-gray;
+    font-size: 12pt;
+  }
+  .fa-times-circle {
+    display: none;
+  }
+}
+
+.info-expand {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10pt;
+  max-width: 80%;
+  max-height: 70vh;
+  overflow-y: scroll;
+
+  -webkit-animation: growInfo 1s ease-in 1; /* Safari, Chrome and Opera > 12.1 */
+     -moz-animation: growInfo 1s ease-in 1; /* Firefox < 16 */
+      -ms-animation: growInfo 1s ease-in 1; /* Internet Explorer */
+       -o-animation: growInfo 1s ease-in 1; /* Opera < 12.1 */
+          animation: growInfo 1s ease-in 1;
+  -webkit-animation-fill-mode: forwards; /* Safari 4.0 - 8.0 */
+          animation-fill-mode: forwards;
+}
+
+@keyframes growInfo {
+    0% {
+      background: none;
+      min-width: 0%;
+      min-height: 0vh;
+    }
+    100% {
+      background: #fff;
+      min-width: 80%;
+      min-height: 70vh;
+     }
+}
+
+.info-text {
+  display: none;
+}
+
 .home {
   height: calc(100vh);
   padding: 0;
-  color:       @white;
-  text-shadow: @dark-shadow;
-  text-align:  right;
   border-bottom: 4px solid #e033ff;
   background: -moz-linear-gradient(-45deg, rgba(40,17,44,1) 0%, rgba(40,17,44,0.4) 100%); /* FF3.6-15 */
   background: -webkit-linear-gradient(-45deg, rgba(40,17,44,1) 0%,rgba(40,17,44,0.4) 100%);
@@ -222,7 +276,12 @@ h6 {
   z-index: 1;
 }
 
-.overlay {background: fade(@darker-purple, 50%);}
+.overlay {
+  background: fade(@darker-purple, 50%);
+  color:       @white;
+  text-shadow: @dark-shadow;
+  text-align:  right;
+}
 
 .text-left {text-align: left;}
 
@@ -356,6 +415,7 @@ h6 {
   border-left: 3px solid @lighter-purple;
   border-top:  3px solid @lighter-purple;
   color: @light-gray;
+  height: 50px;
 }
 
 .other-skills {
@@ -367,6 +427,7 @@ h6 {
   border-radius: 6px;
   align-self: flex-start;
   justify-content: center;
+  margin-bottom: 50px;
 }
 
 .other-skill {
@@ -405,7 +466,10 @@ h6 {
 }
 
 @media screen and (min-width: 600px) {
+
   .large-j{font-size: 200pt;}
+
+  .info-expand {font-size: 12pt;}
 
   .about {
     font-family: 'Montserrat', sans-serif;
@@ -431,6 +495,8 @@ h6 {
     height: 370px;
     width:  370px;
   }
+
+  .skill3 {height: 60px;}
 
   .skill p {font-size: 10pt;}
 
