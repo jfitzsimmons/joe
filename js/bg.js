@@ -189,7 +189,6 @@ function doneResizing() {
     selectTag[0].parentNode.removeChild(selectTag[0]);
   }
   canvas.initialize();
-  console.log('doneresizing: ' + circles.length);
   newCircle();
 }
 
