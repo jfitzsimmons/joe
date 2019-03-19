@@ -1,6 +1,21 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 
 <head>
+
+  <script type="text/javascript">
+  WebFontConfig = {
+    google: { families: ['Inconsolata:400,700', 'Libre+Baskerville:400,700', 'Montserrat:400,700'] }
+  };
+  (function() {
+    var wf = document.createElement('script');
+    wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+      '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+    wf.type = 'text/javascript';
+    wf.async = 'true';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(wf, s);
+  })(); </script>
+
   <title>Joe Fitzsimmons: Web Developer - Javascript, CSS, Front End, Full Stack</title>
 
   <meta charset="utf-8" />
@@ -15,7 +30,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="shortcut icon" href="favicon.ico">
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js" async></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 </head>
 <nav class="flex">
 
@@ -401,14 +416,7 @@ Some other highlights.  I heavily leaned on randomization.  The circles grow to 
 <script src="js/bg.min.js" type="text/javascript" defer></script>
 <script src="js/init.js" type="text/javascript" defer></script>
 <script src="js/less.min.js" type="text/javascript" async></script>
-<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js" async></script>
-<script>
-  WebFont.load({
-    google: {
-      families: ['Inconsolata:400,700', 'Libre+Baskerville:400,700', 'Montserrat:400,700']
-    }
-  });
-</script>
+
 </body>
 
 </html>
