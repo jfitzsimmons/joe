@@ -34,6 +34,7 @@ $('.fa-times-circle').on('click', function(e) {
 });
 
 $(document).ready(function() {
+  document.body.style.visibility = 'visible';
   if ($(document).scrollTop() > 280) {
     $('nav').addClass('changeColor')
   }
