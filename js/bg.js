@@ -1,5 +1,6 @@
 const CIRCLES = (function() {
-  const circles = [];
+  let width = window.innerWidth;
+  let circles = [];
   let count = 0;
   let circAmount = 1;
   const canvas2 = document.getElementById('bg2');
@@ -9,19 +10,19 @@ const CIRCLES = (function() {
   const strokeColors = ['#506EE5', '#68B2F8', '#7037CD'];
   const cvs = {
     element: document.getElementById('bg'),
-    width: window.innerWidth,
-    height: window.innerHeight,
     initialize: function() {
-      circAmount = Math.round((cvs.width * cvs.height) / 30000);
-      this.width = window.innerWidth;
-      this.height = window.innerHeight;
+      const cvsWrap = window.getComputedStyle(document.getElementById('home'), null);
+      const cvsWidth = parseInt(cvsWrap.getPropertyValue('width'));
+      this.width = cvsWidth;
+      this.height = 434;
       this.hw = this.width / 2;
       this.hh = this.height / 2;
-      this.element.style.width = `${this.width}px`;
-      this.element.style.height = `${this.height}px`;
+      this.element.style.width = `${cvsWidth}px`;
+      this.element.style.height = `434px`;
       ctx2.canvas.width = this.width;
       ctx2.canvas.height = this.height;
       document.body.appendChild(this.element);
+      circAmount = Math.round((this.width * this.height) / 30000);
     },
   };
 
@@ -172,11 +173,16 @@ const CIRCLES = (function() {
 
   let timeout = false;
   window.addEventListener('resize', function() {
-    clearTimeout(timeout);
-    timeout = setTimeout(doneResizing, 800);
+    if (width !== window.innerWidth) {
+      width = window.innerWidth;
+      clearTimeout(timeout);
+      timeout = setTimeout(doneResizing, 800);
+    }
   });
 /**   */
   function doneResizing() {
+    circles = [];
+    count = 0;
     const selectTag = document.getElementsByClassName('circle');
     while (selectTag[0]) {
       selectTag[0].parentNode.removeChild(selectTag[0]);
