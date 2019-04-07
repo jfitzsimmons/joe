@@ -3,10 +3,10 @@
 @darkest-purple: #1D0C20;
 @darker-purple:  #28112c;
 @lighter-purple: #dbb1e2;
-@neon-purple:    #d247eb;
+@neon-purple:    #9623AF;
 @dark-purple:    #5a3960;
 @light-purple:   #a273ab;
-@light-gray:     #d4d4d4;
+@light-gray:     #cbc;
 @dark-grey:      #616161;
 @white:          #fff;
 @dark-shadow: 0 0 6px hsla(291, 45%, 9%, 0.5);
@@ -17,7 +17,7 @@ html {
   background-color: @darker-purple;
   background-image: url(img/58.png),url(img/74.png), url(img/106.png);
   background-repeat: repeat-x;
-  font-family: 'Libre Baskerville', serif;
+  font-family: 'Lora', serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   animation: animatedBackground 222s linear infinite;
@@ -26,7 +26,7 @@ html {
 nav {
   width: 100%;
   background: fade(@darker-purple, 60%);
-  border-bottom: 4px solid @light-blue;
+  border-bottom: 1px solid @light-blue;
   z-index: 99;
   position: fixed;
   text-transform: uppercase;
@@ -45,7 +45,6 @@ nav {
   float: left;
   padding: 14px 16px;
   text-decoration: none;
-  font-weight: bold;
   &:hover {
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.000, 0.000, 0.230, 1);
@@ -57,7 +56,7 @@ nav {
     content: '';
     display: block;
     width: 0;
-    height: 2px;
+    height: 1px;
     background: @dark-blue;
     transition: width 0.3s;
   }
@@ -95,11 +94,12 @@ nav {
 }
 
 section {
-  color: @dark-grey;
+  background: rgba(16, 8, 18, .8);
+  color: @light-gray;
   line-height: 11pt;
-  background-color: @white;
   flex-direction: column;
   position: relative;
+  z-index: 1;
 }
 
 h1 {font-weight: 700;}
@@ -115,7 +115,7 @@ h2 {
 h2 {font-weight: 400;}
 
 h5 {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Arimo', sans-serif;
   font-size:   10pt;
   line-height: 12pt;
   color: @light-purple;
@@ -173,10 +173,10 @@ h6 {
 }
 
 .info-expand {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Arimo', sans-serif;
   font-size: 10pt;
   max-width: 80%;
-  max-height: 70vh;
+  height: 300px;
   overflow-y: scroll;
 
   -webkit-animation: growInfo 1s ease-in 1; /* Safari, Chrome and Opera > 12.1 */
@@ -197,18 +197,19 @@ h6 {
     100% {
       background: #fff;
       min-width: 80%;
-      min-height: 70vh;
+      height: 300px;
      }
 }
 
 .info-text {
+  color: @darker-purple;
   display: none;
 }
 
 .home {
   min-height: 362px;
   padding: 68px 0 0;
-  border-bottom: 4px solid #e033ff;
+  border-bottom: 1px solid #e033ff;
   background: -moz-linear-gradient(-45deg, rgba(40,17,44,1) 0%, rgba(40,17,44,0.4) 100%); /* FF3.6-15 */
   background: -webkit-linear-gradient(-45deg, rgba(40,17,44,1) 0%,rgba(40,17,44,0.4) 100%);
   background: linear-gradient(187deg, rgba(40,17,44,1) 0%,rgba(40,17,44,0.1) 100%);
@@ -216,7 +217,7 @@ h6 {
 }
 
 .canvas {
-  position: absolute;
+  position: fixed;
   top:  0;
   left: 0;
   overflow: hidden;
@@ -311,18 +312,17 @@ h6 {
 }
 
 .content {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Arimo', sans-serif;
   line-height: 12pt;
   font-size:   10pt;
-  border-bottom: 4px solid @dark-blue;
-  h1 {color: @darkest-purple;}
+  border-bottom: 1px solid @dark-blue;
   h5 {
     margin: 5px 0;
     text-align: center;
   }
 }
 
-.about {padding: 20px 0;}
+.about {padding: 16px;}
 
 .bio {
   align-self: flex-start;
@@ -342,8 +342,6 @@ h6 {
   min-width: 40px;
 }
 
-.book{padding-right: 20px;}
-
 .pic {
   background-image: url('img/joe.jpg');
   min-width:  190px;
@@ -352,13 +350,19 @@ h6 {
   width: 50%;
   border-radius: 50%;
   margin: 40px auto;
+  border: 1px solid @light-gray;
+  box-shadow: 0 0 40px 10px #402048;
   &:after{
     content: "";
     display: block;
     padding-bottom: 100%;
   }
 }
-
+.row-container{
+  flex: 1;
+  min-width: 64%;
+  margin-right: 20px;
+}
 .skills {
   display: flex;
   padding: 16px;
@@ -371,16 +375,14 @@ h6 {
 .skill-container {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
-.row-container {flex: 71%;}
-
 .skill {
-  width: 100%;
+  min-width: 100%;
   display: flex;
-  margin-right: 24px;
   div {
-    background: rgba(0,0,0,0.2);
+    background: rgba(255,255,255,0.1);
     padding-top: 6px;
     display: flex;
     justify-content: flex-end;
@@ -408,26 +410,25 @@ h6 {
 .skill2 {
   border-left: 3px solid @neon-purple;
   border-top:  3px solid @neon-purple;
-  color: @white;
 }
 
 .skill3 {
   border-left: 3px solid @lighter-purple;
   border-top:  3px solid @lighter-purple;
-  color: @light-gray;
   height: 50px;
 }
 
 .other-skills {
-  flex: 26%;
+  flex: 2;
   flex-wrap: wrap;
   display: flex;
-  background: @light-gray;
+  background: rgba(255, 255, 255, 0.1);
   padding:  8px 16px 32px;
   border-radius: 6px;
   align-self: flex-start;
   justify-content: center;
   margin-bottom: 50px;
+  min-width: 220px;
 }
 
 .other-skill {
@@ -472,9 +473,9 @@ h6 {
   .info-expand {font-size: 12pt;}
 
   .about {
-    font-family: 'Montserrat', sans-serif;
-    line-height: 16pt;
-    font-size:   12pt;
+    font-family: 'Arimo', sans-serif;
+    line-height: 21px;
+    font-size: 14px;
   }
 
   .symbol {
@@ -482,13 +483,6 @@ h6 {
     padding:   34px;
     font-size: 40pt;
     min-width: 53px;
-  }
-
-  .bio {background: @white;}
-
-  .book {
-    border-left:  36px dotted @light-gray;
-    padding-left: 20px;
   }
 
   .pic {

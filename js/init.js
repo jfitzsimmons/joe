@@ -13,7 +13,7 @@ $('a[href^="#"]').on('click', function(event) {
   if (target.length) {
     event.preventDefault();
     $('html, body').stop().animate({
-      scrollTop: (target.offset().top) - ($('nav').height() + 43)
+      scrollTop: (target.offset().top) - ($('nav').height() + 37)
     }, 1000);
   }
 });
