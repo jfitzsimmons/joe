@@ -1,5 +1,4 @@
 const CIRCLES = (function() {
-  let width = window.innerWidth;
   let circles = [];
   let count = 0;
   let circAmount = 1;
@@ -11,18 +10,16 @@ const CIRCLES = (function() {
   const cvs = {
     element: document.getElementById('bg'),
     initialize: function() {
-      const cvsWrap = window.getComputedStyle(document.getElementById('home'), null);
-      const cvsWidth = parseInt(cvsWrap.getPropertyValue('width'));
-      this.width = cvsWidth;
-      this.height = 434;
+      this.width = window.innerWidth;
+      this.height = window.innerHeight;
       this.hw = this.width / 2;
       this.hh = this.height / 2;
-      this.element.style.width = `${cvsWidth}px`;
-      this.element.style.height = `434px`;
+      this.element.style.width = `${this.width}px`;
+      this.element.style.height = `${this.height}px`;
       ctx2.canvas.width = this.width;
       ctx2.canvas.height = this.height;
       document.body.appendChild(this.element);
-      circAmount = Math.round((this.width * this.height) / 30000);
+      circAmount = Math.round((this.width * this.height) / 40000);
     },
   };
 
@@ -92,7 +89,7 @@ const CIRCLES = (function() {
     addStroke: function(c, drawTo) {
       ctx2.beginPath();
       ctx2.arc(this.x + (this.radius / 2), this.y + (this.radius / 2),
-          (this.radius / 2) + 4, this.start, drawTo, false);
+        (this.radius / 2) + 4, this.start, drawTo, false);
       ctx2.stroke();
       this.curr += 1.7;
       if (this.curr < 101) {
@@ -102,7 +99,7 @@ const CIRCLES = (function() {
       } else {
         const circBlock = this.radiusStroke * 3.3;
         ctx2.clearRect((this.x - (circBlock / 2)), (this.y - (circBlock / 2)),
-            circBlock, circBlock);
+          circBlock, circBlock);
         jQuery(this.element).css({
           boxShadow: `0 0 0 3px ${this.strokeStyle}`,
           border: '3px solid #1D0C20',
@@ -173,13 +170,10 @@ const CIRCLES = (function() {
 
   let timeout = false;
   window.addEventListener('resize', function() {
-    if (width !== window.innerWidth) {
-      width = window.innerWidth;
-      clearTimeout(timeout);
-      timeout = setTimeout(doneResizing, 800);
-    }
+    clearTimeout(timeout);
+    timeout = setTimeout(doneResizing, 800);
   });
-/**   */
+  /**   */
   function doneResizing() {
     circles = [];
     count = 0;
