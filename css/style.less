@@ -23,6 +23,9 @@ html {
   animation: animatedBackground 222s linear infinite;
 }
 
+a:link, a:visited, a:hover, a:active { color:#fff; }
+
+
 nav {
   width: 100%;
   background: fade(@darker-purple, 60%);
@@ -169,10 +172,10 @@ h6 {
   right:  0px;
   bottom: 0px;
   z-index: 9;
-  box-shadow: 0 2px 6px 0 hsla(291, 45%, 9%, 0.5);
+  box-shadow: 0 2px 6px 0 hsla(0, 0, 50%, 0.5);
   &:hover {
     bottom: 1px;
-    box-shadow: 0 2px 6px 2px hsla(291, 45%, 9%, 0.5);
+    box-shadow: 0 2px 6px 2px hsla(0, 0, 100%, 0.5);
   }
   i {
     color: @light-gray;
@@ -186,8 +189,8 @@ h6 {
 .info-expand {
   font-family: 'Arimo', sans-serif;
   font-size: 10pt;
-  max-width: 80%;
-  height: 300px;
+  width: 0;
+  height: 0;
   overflow-y: scroll;
 
   -webkit-animation: growInfo 1s ease-in 1; /* Safari, Chrome and Opera > 12.1 */
@@ -202,13 +205,15 @@ h6 {
 @keyframes growInfo {
     0% {
       background: none;
-      min-width: 0%;
-      min-height: 0vh;
+      min-width: 0;
+      min-height: 0;
     }
     100% {
       background: #fff;
-      min-width: 80%;
+      width: 80%;
       height: 300px;
+      max-width: 80%;
+      max-height: 300px;
      }
 }
 
@@ -534,6 +539,7 @@ h6 {
   .top-nav.responsive a {
     float:   none;
     display: block;
+    padding: 14px 16px 0;
   }
   .right {
     float: right!important;
