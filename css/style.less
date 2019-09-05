@@ -352,11 +352,18 @@ h6 {
   }
 }
 
-.about {padding: 16px;}
+.about {
+  padding: 16px 16px 25%;
+}
 
 .bio {
   align-self: flex-start;
   margin-top: 20px;
+}
+
+.emphasis {
+  font-weight: bold;
+  color: #fef;
 }
 
 .symbols {align-self: flex-start;}
@@ -379,7 +386,7 @@ h6 {
   background-size: cover;
   width: 50%;
   border-radius: 50%;
-  margin: 40px auto;
+  margin: -26% auto 0;
   border: 1px solid @light-gray;
   box-shadow: 0 0 40px 10px #402048;
   &:after{
@@ -400,6 +407,10 @@ h6 {
   h5,
   h1 {width: 100%;}
   .row {margin: 8px 0;}
+  svg {
+    width: 24px;
+    padding: 14%;
+  }
 }
 
 .skill-container {
@@ -435,12 +446,18 @@ h6 {
 .skill1 {
   border-left: @border-skill @light-purple;
   border-top:  @border-skill @light-purple;
+  svg {
+    fill: #a9a;
+  }
 }
 
 .skill2 {
   border-left: @border-skill @neon-purple;
   border-top:  @border-skill @neon-purple;
   color: @lighter-purple;
+  svg {
+    fill: #b990c0;
+  }
 }
 
 .skill3 {
@@ -479,18 +496,28 @@ h6 {
     right:  0;
     margin: 16px;
   }
+  svg {
+    padding: 5%;
+    fill: #ddd;
+  }
 }
 
 .score3{
   background: rgba(0, 0, 0, 0.4);
   color: @light-gray;
   border: @border-skill @lighter-purple;
+  svg {
+    fill: #b990c0;
+  }
 }
 
 .score4{
   background: rgba(0, 0, 0, 0.2);
   color: @lighter-purple;
   border: @border-skill @neon-purple;
+  svg {
+    fill: #b990c0;
+  }
 }
 
 .links {
