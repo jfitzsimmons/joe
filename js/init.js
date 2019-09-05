@@ -36,14 +36,14 @@ $('.fa-times-circle').on('click', function(e) {
 $(document).ready(function() {
   document.body.style.visibility = 'visible';
   if ($(document).scrollTop() > 280) {
-    $('nav').addClass('changeColor')
+    $('nav').addClass('change-color')
   }
   $(document).scroll(function() {
     if ($(document).scrollTop() > 280) {
-      $('nav').addClass('changeColor')
+      $('nav').addClass('change-color')
     }
     if ($(document).scrollTop() < 280) {
-      $('nav').removeClass('changeColor')
+      $('nav').removeClass('change-color')
     }
   });
 });

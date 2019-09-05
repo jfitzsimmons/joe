@@ -1,6 +1,5 @@
 @light-blue:     #68B2F8;
 @dark-blue:      #6200FF;
-@darkest-purple: #1D0C20;
 @darker-purple:  #28112c;
 @lighter-purple: #dbb1e2;
 @neon-purple:    #9623AF;
@@ -10,6 +9,17 @@
 @dark-grey:      #616161;
 @white:          #fff;
 @dark-shadow: 0 0 6px hsla(291, 45%, 9%, 0.5);
+@gradient-start: rgba(40,17,44,.7) 30%;
+@gradient-end: rgba(40,17,44,.1) 100%;
+@font-serif: 'Lora', serif;
+@font-sans:  'Arimo', sans-serif;
+@font-mono:  'Inconsolata', monospace;
+@border-skill: 3px solid;
+
+.font-props {
+  line-height: 12pt;
+  font-size:   10pt;
+}
 
 body,
 html {
@@ -17,7 +27,7 @@ html {
   background-color: @darker-purple;
   background-image: url(img/58.png),url(img/74.png), url(img/106.png);
   background-repeat: repeat-x;
-  font-family: 'Lora', serif;
+  font-family: @font-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   animation: animatedBackground 222s linear infinite;
@@ -28,32 +38,28 @@ a:link, a:visited, a:hover, a:active {
   text-decoration: none;
 }
 
-a:hover {
-  text-decoration: underline;
-}
+a:hover {text-decoration: underline;}
 
 nav {
   width: 100%;
   background: fade(@darker-purple, 60%);
   border-bottom: 1px solid @light-blue;
-  z-index: 99;
+  z-index: 2;
   position: fixed;
   text-transform: uppercase;
   transition: 0.9s all;
   .icon {display: none;}
 }
 
-.changeColor {background: fade(@darker-purple, 100%);}
+.change-color {background: fade(@darker-purple, 100%);}
 
 .page-link {
   -webkit-background-clip: text;
-  color: #fff;
   background-image: linear-gradient(to right, #e033ff, #e033ff 50%, @white 50%);
   background-size: 200% 100%;
   background-position:  100%;
   float: left;
   padding: 14px 16px;
-  text-decoration: none;
   &:hover {
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.000, 0.000, 0.230, 1);
@@ -73,7 +79,6 @@ nav {
   &:hover::after,
   &:hover::before {
     width: 100%;
-    color: #0084FF;
   }
 }
 
@@ -85,7 +90,6 @@ nav {
 .logo-icon {
   width: 20px;
   display: block;
-
 }
 
 .fill {
@@ -97,29 +101,29 @@ nav {
 }
 
 .bars {
-    display: inline-block;
-    cursor: pointer;
-    padding: 20px 16px 0;
+  display: inline-block;
+  cursor: pointer;
+  padding: 20px 16px 0;
 }
 
 .bar1, .bar2, .bar3 {
-    width: 30px;
-    height: 2px;
-    background-color: @white;
-    margin: 6px 0;
-    transition: 0.4s;
+  width: 30px;
+  height: 2px;
+  background-color: @white;
+  margin: 6px 0;
+  transition: 0.4s;
 }
 
 .change .bar1 {
-    -webkit-transform: rotate(-45deg) translate(-9px, 6px);
-    transform:         rotate(-45deg) translate(-9px, 6px);
+  -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+  transform:         rotate(-45deg) translate(-9px, 6px);
 }
 
 .change .bar2 {opacity: 0;}
 
 .change .bar3 {
-    -webkit-transform: rotate(45deg) translate(-4px, -3px);
-    transform:         rotate(45deg) translate(-4px, -3px);
+  -webkit-transform: rotate(45deg) translate(-4px, -3px);
+  transform:         rotate(45deg) translate(-4px, -3px);
 }
 
 section {
@@ -144,18 +148,16 @@ h2 {
 h2 {font-weight: 400;}
 
 h5 {
-  font-family: 'Arimo', sans-serif;
-  font-size:   10pt;
-  line-height: 12pt;
+  font-family: @font-sans;
+  .font-props();
   color: @light-purple;
   margin: 0;
   font-weight: normal;
 }
 
 h6 {
-  font-family: 'Inconsolata', monospace;
-  font-size:   10pt;
-  line-height: 12pt;
+  font-family: @font-mono;
+  .font-props();
   color: @dark-purple;
   margin: 0;
 }
@@ -202,7 +204,7 @@ h6 {
 }
 
 .info-expand {
-  font-family: 'Arimo', sans-serif;
+  font-family: @font-sans;
   font-size: 10pt;
   width: 0;
   height: 0;
@@ -241,9 +243,9 @@ h6 {
   height: 100vh;
   min-height: 362px;
   border-bottom: 1px solid #e033ff;
-  background: -moz-linear-gradient(-45deg, rgba(40,17,44,.7) 0%, rgba(40,17,44,0.1) 100%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(-45deg, rgba(40,17,44,.7) 0%,rgba(40,17,44,0.1) 100%);
-  background: linear-gradient(95deg, rgba(40,17,44,.7) 30%,rgba(40,17,44,0.1) 100%);
+  background: -moz-linear-gradient(-45deg, @gradient-start, @gradient-end); /* FF3.6-15 */
+  background: -webkit-linear-gradient(-45deg, @gradient-start, @gradient-end);
+  background: linear-gradient(95deg, @gradient-start, @gradient-end);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#007db9e8',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
 
@@ -258,13 +260,11 @@ h6 {
   position: absolute;
   border-radius: 50%;
   will-change: left, top, width, height;
-
 }
 
 .circle-1 {
   transition: transform 3s;
   transition-timing-function: linear;
-
 }
 
 .circle-2 {
@@ -329,7 +329,7 @@ h6 {
   -o-transform:      rotate(-90deg);
 }
 
-.large-j{
+.large-j {
   font-size: 110px;
   text-align: center;
   opacity: .1;
@@ -343,9 +343,8 @@ h6 {
 }
 
 .content {
-  font-family: 'Arimo', sans-serif;
-  line-height: 12pt;
-  font-size:   10pt;
+  font-family: @font-sans;
+  .font-props();
   border-bottom: 1px solid @dark-blue;
   h5 {
     margin: 5px 0;
@@ -434,19 +433,19 @@ h6 {
 }
 
 .skill1 {
-  border-left: 3px solid @light-purple;
-  border-top:  3px solid @light-purple;
+  border-left: @border-skill @light-purple;
+  border-top:  @border-skill @light-purple;
 }
 
 .skill2 {
-  border-left: 3px solid @neon-purple;
-  border-top:  3px solid @neon-purple;
+  border-left: @border-skill @neon-purple;
+  border-top:  @border-skill @neon-purple;
   color: @lighter-purple;
 }
 
 .skill3 {
-  border-left: 3px solid @lighter-purple;
-  border-top:  3px solid @lighter-purple;
+  border-left: @border-skill @lighter-purple;
+  border-top:  @border-skill @lighter-purple;
   height: 50px;
   color: #fff;
 }
@@ -466,7 +465,7 @@ h6 {
 
 .other-skill {
   border-radius: 6px;
-  border: 3px solid @light-purple;
+  border: @border-skill @light-purple;
   padding: 16px;
   margin:   8px;
   position: relative;
@@ -485,13 +484,13 @@ h6 {
 .score3{
   background: rgba(0, 0, 0, 0.4);
   color: @light-gray;
-  border: 3px solid @lighter-purple;
+  border: @border-skill @lighter-purple;
 }
 
 .score4{
   background: rgba(0, 0, 0, 0.2);
   color: @lighter-purple;
-  border: 3px solid @neon-purple;
+  border: @border-skill @neon-purple;
 }
 
 .links {
@@ -512,7 +511,7 @@ h6 {
   .info-expand {font-size: 12pt;}
 
   .about {
-    font-family: 'Arimo', sans-serif;
+    font-family: @font-sans;
     line-height: 21px;
     font-size: 14px;
   }
@@ -564,6 +563,7 @@ h6 {
     display: block;
     padding: 14px 16px 0;
   }
+
   .right {
     float: right!important;
   }
