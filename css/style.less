@@ -23,8 +23,14 @@ html {
   animation: animatedBackground 222s linear infinite;
 }
 
-a:link, a:visited, a:hover, a:active { color:#fff; }
+a:link, a:visited, a:hover, a:active {
+  color:#fff;
+  text-decoration: none;
+}
 
+a:hover {
+  text-decoration: underline;
+}
 
 nav {
   width: 100%;
@@ -52,6 +58,7 @@ nav {
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.000, 0.000, 0.230, 1);
     background-position: 0;
+    text-decoration: none;
   }
   &::after,
   &::before {
@@ -178,12 +185,12 @@ h6 {
   margin:  16px;
   position: absolute;
   right:  0px;
-  bottom: 0px;
   z-index: 9;
-  box-shadow: 0 2px 6px 0 hsla(0, 0, 50%, 0.5);
+  bottom: 1px;
+  box-shadow: 0 1px 6px 1px hsla(0, 0, 100%, 0.5);
   &:hover {
-    bottom: 1px;
-    box-shadow: 0 2px 6px 2px hsla(0, 0, 100%, 0.5);
+    box-shadow: 0 2px 6px 0 hsla(0, 0, 50%, 0.5);
+    bottom: 0px;
   }
   i {
     color: @light-gray;
