@@ -1,10 +1,12 @@
 const CIRCLES = (function() {
+
   let circles = [];
   let count = 0;
   let circAmount = 1;
   const canvas2 = document.getElementById('bg2');
   const ctx2 = canvas2.getContext('2d');
   const movement = ['rotate', 'move', 'move2', 'rotate'];
+
   const colors = [209, 291, 263];
   const strokeColors = ['#506EE5', '#68B2F8', '#7037CD'];
   const cvs = {
