@@ -24,7 +24,7 @@
 body,
 html {
   margin: 0;
-  background-color: @darker-purple;
+  background-color: hsla(291, 60%, 20%, 1);
   background-image: url(img/58.png),url(img/74.png), url(img/106.png);
   background-repeat: repeat-x;
   font-family: @font-serif;
@@ -243,10 +243,8 @@ h6 {
   height: 100vh;
   min-height: 362px;
   border-bottom: 1px solid #e033ff;
-  background: -moz-linear-gradient(-45deg, @gradient-start, @gradient-end); /* FF3.6-15 */
-  background: -webkit-linear-gradient(-45deg, @gradient-start, @gradient-end);
-  background: linear-gradient(95deg, @gradient-start, @gradient-end);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#007db9e8',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  background: linear-gradient(95deg, rgba(40, 17, 44, 0.3) 30%, rgba(40, 17, 44, 0.1) 100%);
+  filter: saturate(150%);
 }
 
 .canvas {
@@ -254,12 +252,14 @@ h6 {
   top:  0;
   left: 0;
   overflow: hidden;
+  background: transparent;
 }
 
 .circle {
   position: absolute;
   border-radius: 50%;
-  will-change: left, top, width, height;
+  will-change: left, top, width, height, transform;
+  contain: size layout paint;
 }
 
 .circle-1 {
@@ -269,7 +269,12 @@ h6 {
 
 .circle-2 {
   animation: rotate-cw 75s linear infinite;
-  will-change: left, top;
+  will-change: left, top, transform;
+}
+
+.circle-3 {
+  animation: rotate-ccw 75s linear infinite;
+  will-change: left, top, transform;
 }
 
 @keyframes moveL {
@@ -340,6 +345,7 @@ h6 {
   -moz-transform:    rotate(30deg);
   -ms-transform:     rotate(30deg);
   -o-transform:      rotate(30deg);
+  filter: saturate(200%);
 }
 
 .content {

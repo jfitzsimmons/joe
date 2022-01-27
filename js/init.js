@@ -1,3 +1,4 @@
+/**
 function responsiveNav(x) {
   var n = document.getElementById("nav");
   x.classList.toggle("change");
@@ -47,3 +48,4 @@ $(document).ready(function() {
     }
   });
 });
+**/

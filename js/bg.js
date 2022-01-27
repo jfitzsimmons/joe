@@ -2,164 +2,186 @@ const CIRCLES = (function() {
   let circles = [];
   let count = 0;
   let circAmount = 1;
-  const canvas2 = document.getElementById('bg2');
-  const ctx2 = canvas2.getContext('2d');
-  const movement = ['rotate', 'move', 'move2', 'rotate'];
+  const canvas0 = document.getElementById('canvas0');
+  const canvas1 = document.getElementById('canvas1');
+  const canvas2 = document.getElementById('canvas2');
+  const canvas3 = document.getElementById('canvas3');
+  const canvas4 = document.getElementById('canvas4');
+
+  /**COMPARE TO ALL CSSS!!!!!!! TESTJPF */
+
+  const w = window.innerWidth;
+  const h = window.innerHeight;
+  canvas0.width = w;
+  canvas0.height = h;
+  canvas1.width = w;
+  canvas1.height = h;
+  canvas2.width = w;
+  canvas2.height = h;
+  canvas3.width = w;
+  canvas3.height = h;
+  canvas4.width = w;
+  canvas4.height = h;
+
+  const canvasesAPI = [
+    canvas1.getContext('2d'),
+    canvas3.getContext('2d'),
+  ];
+  const canvasesCSS = [
+    canvas0.getContext('2d'),
+    canvas2.getContext('2d'),
+    canvas4.getContext('2d'),
+  ];
+  const movement = ['rotate', 'bounce','rotate'];
   const colors = [209, 291, 263];
   const strokeColors = ['#506EE5', '#68B2F8', '#7037CD'];
   const cvs = {
     element: document.getElementById('bg'),
     initialize: function() {
-      this.width = window.innerWidth;
-      this.height = window.innerHeight;
-      this.hw = this.width / 2;
-      this.hh = this.height / 2;
-      this.element.style.width = `${this.width}px`;
-      this.element.style.height = `${this.height}px`;
-      ctx2.canvas.width = this.width;
-      ctx2.canvas.height = this.height;
+      this.width = w;
+      this.height = h;
+      this.hw = w / 2;
+      this.hh = h / 2;
+      this.element.style.width = `${w}px`;
+      this.element.style.height = `${h}px`;
       document.body.appendChild(this.element);
-      circAmount = Math.round((this.width * this.height) / 40000);
+      circAmount = Math.round((w * h) / 60000);
     },
+  };
+
+  const rndmRng = (h, l) => Math.random() * (h - l) + l;
+  const rndmArrI = (a) => a[Math.floor(Math.random() * a.length)];
+  const distanceToC = (px,py) => Math.sqrt((Math.pow(px-w/2,2))+(Math.pow(py-h/2,2)));
+
+ const draw = (c) => {
+    if (c.radius < c.innerCrcmf && typeof c.radius !== 'undefined') {
+      c.radius += Math.round(c.innerCrcmf / c.grooves);
+      c.ctx.arc(c.outerRadius+8,c.outerRadius+8,c.radius/2,0,2*Math.PI);
+      c.ctx.fillStyle=`hsl(${(c.color += .3)},${100-rndmRng(50,0)}%,${(c.light += .1)}%)`;
+      c.ctx.fill();
+      requestAnimationFrame(() => draw(c));
+    } else {
+      addStroke(c);
+    }
+  };
+
+  const addStroke = (c, drawTo) => {
+    c.ctx.beginPath();
+    c.ctx.arc(
+      c.outerRadius+8, 
+      c.outerRadius+8,
+      Math.round(c.outerRadius), 
+      c.start, 
+      drawTo, 
+      false
+    );
+    c.ctx.stroke();
+    c.curr += 1.7;
+    if (c.curr < 101) {
+      requestAnimationFrame(function() {
+        addStroke(c, (Math.PI * 2) * c.curr / 100 + c.start);
+      });
+    } else {
+      (c.ani === 'rotate' && requestAnimationFrame(() => rotate(c)));
+      (c.ani === 'bounce' && requestAnimationFrame(() => bounce(c)));
+      (circles.length > 0 && newCircle());
+    }
+  };
+
+  const rotate = (c) => {
+    c.layer.drawImage(c.element, Math.round(c.x)+8, Math.round(c.y)+8);
+    (c.direction==="ccw") ? c.element.classList.add('circle-3') : c.element.classList.add('circle-2');
+    c.element.style.transformOrigin = `${c.orbit}%`;
+  };
+
+  const bounce = (c) => {
+    c.layer.clearRect(Math.round(c.clear.x),Math.round(c.clear.y),Math.round(c.clear.w),Math.round(c.clear.h))
+    if (c.x + c.outerRadius*2 + 16 > w  || c.x +8 < 0) {
+      c.dx = -c.dx;
+    }
+    if (c.y + c.outerRadius*2 + 16 > h|| c.y +8 < 0) {
+      c.dy = -c.dy;
+    }
+    c.x -= c.dx;
+    c.y -= c.dy;
+    c.layer.drawImage(c.element, c.x+8, c.y+8) 
+    c.clear={
+      x: Math.round(c.x + 8),
+      y:Math.round(c.y + 8),
+      w:c.ctx.canvas.width,
+      h:c.ctx.canvas.height
+    }
+    requestAnimationFrame(() => bounce(c));
   };
 
   const Circle = {
     create: function() {
       const newCirc = Object.create(this);
-      newCirc.ani = rndmArrI(movement);
-      newCirc.radius = 0;
-      newCirc.randomRad = rndmRng(25, 8);
-      newCirc.radiusStroke = newCirc.randomRad + 3;
-      newCirc.x = rndmRng((cvs.width - 30), 30);
-      newCirc.y = rndmRng((cvs.height - 30), 30);
-      newCirc.curr = 0;
+
+      let speed = rndmRng(5, 1);
+
+      newCirc.radius = 0,newCirc.curr = 0;
+      newCirc.clear = { x: 0, y: 0, w: 0, h: 0 };
+      
+      newCirc.innerCrcmf = rndmRng(210, 40);
+      newCirc.outerRadius = Math.round(newCirc.innerCrcmf*rndmRng(.8,.6));
+      
       newCirc.color = rndmArrI(colors);
-      newCirc.strokeStyle = rndmArrI(strokeColors);
       newCirc.light = rndmRng(60, 10);
       newCirc.hue = rndmRng(60, 10);
       newCirc.start = Math.random() * Math.PI * 2;
-      newCirc.speed = rndmRng(8, 1);
-      newCirc.dx = (Math.cos(newCirc.start) / newCirc.speed);
-      newCirc.dy = (Math.sin(newCirc.start) / newCirc.speed);
-      newCirc.element = document.createElement('div');
+      newCirc.element =  document.createElement('canvas');
+      
+      newCirc.ani = rndmArrI(movement);
 
-      jQuery(newCirc.element).css({
-        width: `${newCirc.radius}px`,
-        height: `${newCirc.radius}px`,
-        backgroundColor: `hsl(${newCirc.color},100%, ${newCirc.light}%)`,
-        left: `${newCirc.x}px`,
-        top: `${newCirc.y}px`,
-      });
-
-      newCirc.element.classList.add('circle');
-      cvs.element.appendChild(newCirc.element);
-      return newCirc;
-    },
-    draw: function(c) {
-      if (this.radius < this.randomRad && typeof this.radius !== 'undefined') {
-        this.radius += (this.randomRad / 80);
-        jQuery(this.element).css({
-          width: `${this.radius}px`,
-          height: `${this.radius}px`,
-          backgroundColor: `hsl(${(this.color += .3)},100%,${(this.light += .3)}%)`,
-        });
-        requestAnimationFrame(() => this.draw(c));
+      if (newCirc.ani === "bounce") {
+        newCirc.layer = rndmArrI(canvasesAPI);
+        newCirc.dx = Math.cos(newCirc.start) / speed;
+        newCirc.dy = Math.sin(newCirc.start) / speed;  
+        newCirc.x = Math.round(rndmRng(w-newCirc.outerRadius*2-60, 0));
+        newCirc.y = Math.round(rndmRng(h-newCirc.outerRadius*2-60, 0));
       } else {
-        ctx2.lineWidth = 2;
-        ctx2.strokeStyle = this.strokeStyle;
-        this.setStart(c);
-      }
-    },
-    setStart: function(c) {
-      if (this.ani === 'rotate') {
-        this.x > cvs.hw ? this.start = 4.7 : this.start = 1.6;
-      } else if (this.ani === 'move2') {
-        if (this.x > cvs.hw && this.y > cvs.hw) {
-          this.start = 0.9;
-        } else if (this.x < cvs.hw && this.y > cvs.hw) {
-          this.start = 2.5;
-        } else if (this.x < cvs.hw && this.y < cvs.hw) {
-          this.start = 3.8;
+        newCirc.layer = rndmArrI(canvasesCSS);
+        newCirc.x = Math.round(rndmRng(w-newCirc.outerRadius*2, 0));
+        newCirc.y = Math.round(rndmRng(h-newCirc.outerRadius*2, 0));
+        newCirc.orbit = 250 -(distanceToC(newCirc.x+newCirc.outerRadius+8,newCirc.y+newCirc.outerRadius+8)/10)-newCirc.outerRadius*.53;
+        console.log(`orbit: ${newCirc.orbit}`)
+        newCirc.direction = (Math.random()>.5) ? "ccw" : "cw";
+        if (Math.random()>.5) newCirc.orbit *=-.25;
+
+        if(newCirc.orbit > 0 && newCirc.direction === "cw"){
+          newCirc.start = 3.4
+        } else if(newCirc.orbit <=0  && newCirc.direction === "cw") {
+          newCirc.start = 0.6;
+        } else if(newCirc.orbit >0  && newCirc.direction === "ccw") {
+          newCirc.start = 6.2
         } else {
-          this.start = 5.6;
+          newCirc.start = 2.9
         }
       }
-      requestAnimationFrame(() => this.addStroke(c));
-    },
-    addStroke: function(c, drawTo) {
-      ctx2.beginPath();
-      ctx2.arc(this.x + (this.radius / 2), this.y + (this.radius / 2),
-        (this.radius / 2) + 4, this.start, drawTo, false);
-      ctx2.stroke();
-      this.curr += 1.7;
-      if (this.curr < 101) {
-        requestAnimationFrame(function() {
-          c.addStroke(c, (Math.PI * 2) * c.curr / 100 + c.start);
-        });
-      } else {
-        const circBlock = this.radiusStroke * 3.3;
-        ctx2.clearRect((this.x - (circBlock / 2)), (this.y - (circBlock / 2)),
-          circBlock, circBlock);
-        jQuery(this.element).css({
-          boxShadow: `0 0 0 3px ${this.strokeStyle}`,
-          border: '3px solid #1D0C20',
-          left: `${this.x -= 3}px`,
-          top: `${this.y -= 3}px`,
-        });
-        (this.ani === 'rotate' && requestAnimationFrame(() => this.rotate(c)));
-        (this.ani === 'move' && requestAnimationFrame(() => this.move(c)));
-        (this.ani === 'move2' && requestAnimationFrame(() => this.move2(c)));
-        (circles.length > 0 && newCircle());
-      }
-    },
-    move2: function(c) {
-      const animateCSS = 's linear 0s infinite alternate';
-      if (this.x > cvs.hw && this.y > cvs.hh) {
-        this.element.style.animation = `moveL ${rndmRng(350, 30)}${animateCSS},
-         moveU ${rndmRng(350, 30)}${animateCSS}`;
-      } else if (this.x < cvs.hw && this.y > cvs.hh) {
-        this.element.style.animation = `moveR ${rndmRng(350, 30)}${animateCSS},
-         moveU ${rndmRng(350, 30)}${animateCSS}`;
-      } else if (this.x < cvs.hw && this.y < cvs.hh) {
-        this.element.style.animation = `moveR ${rndmRng(350, 30)}${animateCSS},
-         moveD ${rndmRng(350, 30)}${animateCSS}`;
-      } else {
-        this.element.style.animation = `moveL ${rndmRng(350, 30)}${animateCSS},
-         moveD ${rndmRng(350, 30)}${animateCSS}`;
-      }
-      this.element.classList.add('circle-2');
-    },
-    move: function(c) {
-      if (this.x > (cvs.width - (this.randomRad + 10)) || this.x < 0) {
-        this.dx = -this.dx;
-      }
-      if (this.y > (cvs.height - (this.randomRad + 10)) || this.y < 0) {
-        this.dy = -this.dy;
-      }
-      this.x -= this.dx;
-      this.y -= this.dy;
-      jQuery(this.element).css({
-        top: `${this.y}px`,
-        left: `${this.x}px`,
-      });
+      
+      newCirc.ctx =  newCirc.element.getContext('2d');
+      newCirc.ctx.canvas.width = newCirc.outerRadius*2+16
+      newCirc.ctx.canvas.height = newCirc.outerRadius*2+16
+      newCirc.ctx.strokeStyle = rndmArrI(strokeColors);
+      newCirc.ctx.lineWidth = rndmRng(6,3);
+      newCirc.ctx.globalCompositeOperation = 'xor';
+      newCirc.element.style.left= `${newCirc.x+8}px`,
+      newCirc.element.style.top= `${newCirc.y+8}px`,
+      newCirc.element.classList.add('circle');
+      newCirc.grooves = rndmRng(90,60)
 
-      requestAnimationFrame(() => this.move(c));
-    },
-    rotate: function(c) {
-      const orbit = (1000 / (Math.abs(this.y - cvs.hw) + 100) * 150);
-      if (this.x > cvs.hw) {
-        this.element.style.transformOrigin = `-${orbit}% center`;
-      } else {
-        this.element.style.transformOrigin = `${orbit}% center`;
-      }
-      this.element.classList.add('circle-2');
-    },
+      cvs.element.appendChild(newCirc.element);
+      newCirc.ctx.beginPath();
+      return newCirc;
+    }
   };
-  const circleInit = (c) => requestAnimationFrame(() => c.draw(c));
-  const rndmRng = (h, l) => Math.random() * (h - l) + l;
-  const rndmArrI = (a) => a[Math.floor(Math.random() * a.length)];
+  const circleInit = (c) => requestAnimationFrame(() => {
+    c.element.style.width= `${c.outerRadius*2+16}px`;
+    c.element.style.heigth= `${c.outerRadius*2+16}px`;
+    draw(c);
+  });
 
-  /**   */
   function newCircle() {
     if (circles.length < circAmount) {
       circles.push(Circle.create());
@@ -173,7 +195,7 @@ const CIRCLES = (function() {
     clearTimeout(timeout);
     timeout = setTimeout(doneResizing, 800);
   });
-  /**   */
+
   function doneResizing() {
     circles = [];
     count = 0;
