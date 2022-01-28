@@ -1,9 +1,11 @@
 @light-blue:     #68B2F8;
 @dark-blue:      #6200FF;
+@dark-blueA:      #6200FF88;
 @darker-purple:  #28112c;
 @lighter-purple: #dbb1e2;
 @neon-purple:    #9623AF;
 @dark-purple:    #5a3960;
+@dark-purpleA:    #5a396088;
 @light-purple:   #a273ab;
 @light-gray:     #cbc;
 @dark-grey:      #616161;
@@ -11,9 +13,9 @@
 @dark-shadow: 0 0 6px hsla(291, 45%, 9%, 0.5);
 @gradient-start: rgba(40,17,44,.7) 30%;
 @gradient-end: rgba(40,17,44,.1) 100%;
-@font-serif: 'Lora', serif;
-@font-sans:  'Arimo', sans-serif;
-@font-mono:  'Inconsolata', monospace;
+@font-serif: Cambria, "Hoefler Text", Utopia, "Liberation Serif", "Nimbus Roman No9 L Regular", Times, "Times New Roman", serif;
+@font-sans: Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
+@font-mono: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
 @border-skill: 3px solid;
 
 .font-props {
@@ -24,13 +26,17 @@
 body,
 html {
   margin: 0;
-  background-color: hsla(291, 60%, 20%, 1);
+  background-color: hsla(291, 60%, 25%, 1);
   background-image: url(img/58.png),url(img/74.png), url(img/106.png);
   background-repeat: repeat-x;
   font-family: @font-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  animation: animatedBackground 222s linear infinite;
+}
+
+body {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 a:link, a:visited, a:hover, a:active {
@@ -41,45 +47,63 @@ a:link, a:visited, a:hover, a:active {
 a:hover {text-decoration: underline;}
 
 nav {
-  width: 100%;
-  background: fade(@darker-purple, 60%);
-  border-bottom: 1px solid @light-blue;
-  z-index: 3;
-  position: fixed;
+  
+  box-shadow: 2vmin 2vmin 5vmin 0 #68b2f866;
   text-transform: uppercase;
-  transition: 0.9s all;
+
+
   .icon {display: none;}
+}
+.top-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 1vmin;
+}
+
+.footer {
+  border-top: .8vmin solid #6200FF88;
+  box-shadow: 2vmin -2vmin 5vmin 0 #6200ff66;
+  border-right: 2vmin solid hsla(291, 45%, 9%, 0.3);
 }
 
 .change-color {background: fade(@darker-purple, 100%);}
 
 .page-link {
-  -webkit-background-clip: text;
-  background-image: linear-gradient(to right, #e033ff, #e033ff 50%, @white 50%);
-  background-size: 200% 100%;
-  background-position:  100%;
+
   float: left;
-  padding: 14px 16px;
+  padding: .0 1vmin;
+  font-size: calc(0.9vmin + 12px);
+  font-weight: bold;
   &:hover {
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.000, 0.000, 0.230, 1);
     background-position: 0;
     text-decoration: none;
   }
+  &::before {
+    margin-bottom: .8vmin;
+  }
   &::after,
   &::before {
-    margin: 4px 0;
     content: '';
     display: block;
     width: 0;
-    height: 1px;
-    background: @dark-blue;
+    height: .5vmin;
+    margin-top: .5vmin;
+    background: @dark-blueA;
     transition: width 0.3s;
   }
   &:hover::after,
   &:hover::before {
     width: 100%;
   }
+}
+
+.page-link-home {
+  font-size: calc(3.5vmin + 12px);
+  margin-right: 6vmin;
+  margin-left: 1vmin;
 }
 
 .right {
@@ -132,19 +156,31 @@ section {
   flex-direction: column;
   position: relative;
   z-index: 1;
+  height: 100vh;
+  box-sizing: border-box;
+  width: 75vw;
 }
 
-h1 {font-weight: 700;}
+
 
 h1,
 h2 {
-  font-size:      16pt;
-  line-height:    24px;
+  line-height:    3vmin;
   letter-spacing: 1px;
   margin: 0;
 }
 
-h2 {font-weight: 400;}
+h1 {font-weight: 700;
+  font-size: calc(1.5vmin + 12px);
+
+margin-left: -1vmin}
+
+h2 {
+  font-size: calc(1vmin + 12px);
+  font-weight: 400;
+  margin-left: 10vmin;
+  color: rgba(255,255,255,0.8);
+}
 
 h5 {
   font-family: @font-sans;
@@ -157,7 +193,7 @@ h5 {
 h6 {
   font-family: @font-mono;
   .font-props();
-  color: @dark-purple;
+  color: @dark-purpleA;
   margin: 0;
 }
 
@@ -170,6 +206,7 @@ h6 {
 .flex.row {
   flex-direction: row;
   flex: 1 0 auto;
+  justify-content: space-between;
 }
 
 .flex.wrap {flex-wrap: wrap;}
@@ -177,6 +214,7 @@ h6 {
 .flex.grow{
   flex-grow: 1;
   overflow:  hidden;
+  max-width: 75vmin;
 }
 
 .info {
@@ -240,11 +278,12 @@ h6 {
 }
 
 .home {
-  height: 100vh;
+  position: sticky;
+  top: 0;
   min-height: 362px;
-  border-bottom: 1px solid #e033ff;
-  background: linear-gradient(95deg, rgba(40, 17, 44, 0.3) 30%, rgba(40, 17, 44, 0.1) 100%);
-  filter: saturate(150%);
+  border-bottom: 0.5vmin solid #e033ff;
+  border-top: 0.5vmin solid #e033ff;
+  box-shadow: inset 1vmin 0vmin 4vmin 0 #e033ff44;
 }
 
 .canvas {
@@ -252,7 +291,30 @@ h6 {
   top:  0;
   left: 0;
   overflow: hidden;
-  background: transparent;
+  background: linear-gradient(95deg, rgba(40, 17, 44, 0.1) 30%, rgba(40, 17, 44, 0) 100%);
+}
+@keyframes sats {
+  0%  {filter: saturate(100%)}
+  25%  {filter: saturate(200%)}
+  50%  {filter: saturate(100%)}
+  75%  {filter: saturate(0%)}
+  100%  {filter: saturate(100%)}
+}
+
+.canvas1 {
+  animation: 20s linear 0s infinite alternate sats;
+}
+.canvas2 {
+  animation: 25s ease-in-out 4s infinite alternate sats;
+}
+.canvas3 {
+  animation: 30s ease-out 3s infinite alternate sats;
+}
+.canvas4 {
+  animation: 35 linear 2s infinite alternate sats;
+}
+.canvas5 {
+  animation: 40s ease 1s infinite alternate sats;
 }
 
 .circle {
@@ -298,36 +360,97 @@ h6 {
 }
 
 @keyframes rotate-ccw {
-  100% {
+  0%  {filter: saturate(100%)}
+  25%  {filter: saturate(200%)}
+  50%  {filter: saturate(100%)}
+  75%  {filter: saturate(0%)}
+  100%  {
     transform: rotate(-360deg);
+    filter: saturate(100%)
   }
 }
 @keyframes rotate-cw {
-  100% {
+  0%  {filter: saturate(100%)}
+  25%  {filter: saturate(200%)}
+  50%  {filter: saturate(100%)}
+  75%  {filter: saturate(0%)}
+  100%  {
     transform: rotate(360deg);
+    filter: saturate(100%)
   }
 }
 
 .lede {
-  padding: 0 20px;
+  justify-content: space-between;
   z-index: 1;
 }
 
 .overlay {
-  background: fade(@darker-purple, 50%);
-  color:       @white;
-  text-shadow: @dark-shadow;
-  text-align:  right;
+  background: rgba(40, 17, 44, 0.4);
+  color: #fff;
+  text-shadow: 0 0 6px hsla(291, 45%, 18%, 0.5);
+  text-align: right;
+  animation: 25s linear 0s infinite alternate backSats;
+  box-shadow: 1vmin 0 4vmin 0 #dbb1e244, inset -9vmin 0 2vmin 0 #943da422;
+  width: 25vw;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  height: 100vh;
 }
 
-.text-left {text-align: left;}
+@keyframes backSats {
+  0%  {backdrop-filter: blur(4px) saturate(100%)}
+  25%  {backdrop-filter: blur(8px) saturate(200%)}
+  50%  {backdrop-filter: blur(5px) saturate(100%)}
+  75%  {backdrop-filter: blur(2px) saturate(0%)}
+  100%  {backdrop-filter: blur(4px) saturate(100%)}
+}
+.left-rail {
+  position: sticky;
+  top: 0;
+  justify-content: space-around;
+  height: 100vh;
+  align-items: center;
+  width: 25vw;
+  font-family: "Palatino Linotype", Palatino, Palladio, "URW Palladio L", "Book Antiqua", Baskerville, "Bookman Old Style", "Bitstream Charter", "Nimbus Roman No9 L", Garamond, "Apple Garamond", "ITC Garamond Narrow", "New Century Schoolbook", "Century Schoolbook", "Century Schoolbook L", Georgia, serif;
+}
+.about {
+  border-bottom: 0.5vmin solid #6200FF;
+  border-top: 0.5vmin solid #e033ff;
+  box-shadow: inset 1vmin 0vmin 3vmin 0 #6200FF88;
+}
+.joke {
+  border-right: 3vmin solid hsla(291, 45%, 9%, 0.2);
+  padding: 3vmin;
+  flex: 1;
+}
+.text-left {
+  text-align: left;
+  border-right: 3vmin solid hsla(291, 45%, 9%, 0.2);
+border-top: .8vmin solid #68B2F866;
+}
+
+.text-bottom {
+  border-right: 3vmin solid hsla(291, 45%, 9%, 0.2);
+}
+
+.business {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-right: 3vmin solid hsla(291, 45%, 9%, 0.2);
+  flex: 1;
+  justify-content: center;
+}
 
 .brace {
-  margin:     26px;
-  padding:  0 60px;
-  font-size: 100px;
+  font-size: 17vmin;
+  line-height: 6vmin;
   color: @lighter-purple;
   opacity: .7;
+  text-shadow: 0 0 4vmin #dbb1e2;
+  height: 8vmin;
   -webkit-transform: rotate(-90deg);
   -moz-transform:    rotate(-90deg);
   -ms-transform:     rotate(-90deg);
@@ -335,11 +458,12 @@ h6 {
 }
 
 .large-j {
-  font-size: 110px;
+  font-size: 30vmin;
   text-align: center;
   opacity: .1;
   cursor: default;
   margin: 0;
+  align-self: center;
   color: @neon-purple;
   -webkit-transform: rotate(30deg);
   -moz-transform:    rotate(30deg);
@@ -351,16 +475,19 @@ h6 {
 .content {
   font-family: @font-sans;
   .font-props();
-  border-bottom: 1px solid @dark-blue;
+  border-bottom: 1vmin solid @dark-blue;
   h5 {
     margin: 5px 0;
     text-align: center;
   }
 }
 
-.about {
-  padding: 16px 16px 25vh;
-  background: rgba(5, 0, 30, 0.8);
+.book {
+  background: rgba(5, 0, 30, 0.2);
+  backdrop-filter: blur(5px) brightness(90%);
+  border-radius: 2vmin;
+  margin: 2vmin;
+  padding: 2vmin;
 }
 
 .bio {

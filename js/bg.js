@@ -1,15 +1,15 @@
 const CIRCLES = (function() {
   const w = window.innerWidth;
   const h = window.innerHeight;
-  let circles = [];
-  let count = 0;
-  const circAmount = Math.round((w * h) / 60000);
+  const circAmount = Math.round((w * h) / 80000);
   const cvs0 = document.getElementById('cvs0'); cvs0.width = w; cvs0.height = h;
   const cvs1 = document.getElementById('cvs1'); cvs1.width = w; cvs1.height = h;
   const cvs2 = document.getElementById('cvs2'); cvs2.width = w; cvs2.height = h;
   const cvs3 = document.getElementById('cvs3'); cvs3.width = w; cvs3.height = h;
   const cvs4 = document.getElementById('cvs4'); cvs4.width = w; cvs4.height = h;
-
+  const cvs = document.getElementById('bg'); cvs.width = w; cvs.height = h;
+  cvs.style.width = `${w}px`;
+  cvs.style.height = `${h}px`;
   const cvsesAPI = [
     cvs1.getContext('2d'),
     cvs3.getContext('2d'),
@@ -22,18 +22,9 @@ const CIRCLES = (function() {
   const movement = ['rotate', 'bounce','rotate'];
   const colors = [209, 291, 263];
   const strokeColors = ['#506EE5', '#68B2F8', '#7037CD'];
-  const cvs = {
-    element: document.getElementById('bg'),
-    initialize: function() {
-      this.width = w;
-      this.height = h;
-      this.hw = w / 2;
-      this.hh = h / 2;
-      this.element.style.width = `${w}px`;
-      this.element.style.height = `${h}px`;
-    },
-  };
 
+
+  const satClasses = [`canvas1`,`canvas2`,`canvas3`,`canvas4`,`canvas5`]
   const rndmRng = (h, l) => Math.random() * (h - l) + l;
   const rndmArrI = (a) => a[Math.floor(Math.random() * a.length)];
   const distanceToC = (px,py) => Math.sqrt((Math.pow(px-w/2,2))+(Math.pow(py-h/2,2)));
@@ -104,7 +95,7 @@ const CIRCLES = (function() {
       let speed = rndmRng(5, 1);
       newCirc.radius = 0,newCirc.curr = 0;
       newCirc.clear = { x: 0, y: 0, w: 0, h: 0 };
-      newCirc.innerCrcmf = rndmRng(210, 40);
+      newCirc.innerCrcmf = rndmRng(230, 50);
       newCirc.outerRadius = Math.round(newCirc.innerCrcmf*rndmRng(.8,.6));
       newCirc.color = rndmArrI(colors);
       newCirc.light = rndmRng(60, 10);
@@ -119,6 +110,7 @@ const CIRCLES = (function() {
         newCirc.x = Math.round(rndmRng(w-newCirc.outerRadius*2-60, 0));
         newCirc.y = Math.round(rndmRng(h-newCirc.outerRadius*2-60, 0));
       } else {
+        newCirc.element.classList.add(rndmArrI(satClasses));
         newCirc.layer = rndmArrI(cvsesCSS);
         newCirc.x = Math.round(rndmRng(w-newCirc.outerRadius*2, 0));
         newCirc.y = Math.round(rndmRng(h-newCirc.outerRadius*2, 0));
@@ -148,7 +140,7 @@ const CIRCLES = (function() {
       newCirc.element.classList.add('circle');
       newCirc.grooves = rndmRng(90,60)
 
-      cvs.element.appendChild(newCirc.element);
+      cvs.appendChild(newCirc.element);
 
       return newCirc;
     }
@@ -172,7 +164,7 @@ const CIRCLES = (function() {
     newCircle();
   }
 */
-  cvs.initialize();
+  draw(Circle.create());
  for (i=circAmount; i--;) 
-    setTimeout(() => {draw(Circle.create())}, i*rndmRng(1500,700));
+    setTimeout(() => {draw(Circle.create())}, i*rndmRng(2000,900));
 })();
