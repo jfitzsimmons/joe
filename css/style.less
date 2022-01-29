@@ -19,8 +19,7 @@
 @border-skill: 3px solid;
 
 .font-props {
-  line-height: 12pt;
-  font-size:   10pt;
+  font-size:   7pt;
 }
 
 body,
@@ -46,40 +45,65 @@ a:link, a:visited, a:hover, a:active {
 
 a:hover {text-decoration: underline;}
 
-nav {
-  
-  box-shadow: 2vmin 2vmin 5vmin 0 #68b2f866;
+nav {  
+  box-shadow: 3vmin 3vmin 4vmin 0 #68b2f877;
   text-transform: uppercase;
-
-
+  background: rgba(23, 0, 27, 0.4);
   .icon {display: none;}
 }
+
+.sunk {
+  flex: 1;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  box-shadow: inset 0vmin 0 3vmin 0 rgba(23, 0, 27, 0.6);
+  border-right: 3vmin solid rgba(23, 0, 27, 0.4);
+  border-top: 0.8vmin solid #68B2F866;
+}
+
 .top-nav {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  padding: 1vmin;
+  padding: 1vmin 2vmin;
 }
 
 .footer {
   border-top: .8vmin solid #6200FF88;
-  box-shadow: 2vmin -2vmin 5vmin 0 #6200ff66;
-  border-right: 2vmin solid hsla(291, 45%, 9%, 0.3);
+  box-shadow: 3vmin -3vmin 4vmin 0 #6200ff77;
+  border-right: 2vmin solid hsla(291, 45%, 9%, 0.4);
+  background: rgba(23, 0, 27, 0.4);
 }
 
 .change-color {background: fade(@darker-purple, 100%);}
 
-.page-link {
+.nav-grid {
+  display: grid; 
+  grid-template-columns: 1fr 1fr; 
+  grid-template-rows: 1fr 1fr; 
+  gap: 0px 0px; 
+  grid-template-areas: 
+    "logo about"
+    "logo skills"; 
+}
+.logo-link { grid-area: logo; }
+.about-link { grid-area: about; }
+.skills-link { grid-area: skills; }
 
+.page-link {
   float: left;
   padding: .0 1vmin;
-  font-size: calc(0.9vmin + 12px);
-  font-weight: bold;
+  font-size: calc(0.5vmin + 12px);
+  transition: all 0.3s cubic-bezier(0.000, 0.000, 0.230, 1);
+  text-shadow: 0 0 .05vmin #111,-.2vmin 0.1vmin .4vmin #dbb1e2;
+  font-family: Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
+
   &:hover {
     cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.000, 0.000, 0.230, 1);
     background-position: 0;
     text-decoration: none;
+    text-shadow: 0 0 .1vmin #111,-.4vmin 0.2vmin .2vmin #dbb1e2;
   }
   &::before {
     margin-bottom: .8vmin;
@@ -101,10 +125,13 @@ nav {
 }
 
 .page-link-home {
-  font-size: calc(3.5vmin + 12px);
-  margin-right: 6vmin;
-  margin-left: 1vmin;
+  font-size: calc(2.8vmin + 12px);
+  flex: 1;
+  text-align: left;
+  align-self: center;
 }
+
+
 
 .right {
   float: right;
@@ -158,10 +185,8 @@ section {
   z-index: 1;
   height: 100vh;
   box-sizing: border-box;
-  width: 75vw;
+  width: 85vw;
 }
-
-
 
 h1,
 h2 {
@@ -170,15 +195,16 @@ h2 {
   margin: 0;
 }
 
-h1 {font-weight: 700;
-  font-size: calc(1.5vmin + 12px);
-
-margin-left: -1vmin}
+h1 {
+  font-weight: 700;
+  font-size: calc(.7vmin + 12px);
+  margin-left: -1vmin
+}
 
 h2 {
-  font-size: calc(1vmin + 12px);
+  font-size: calc(.6vmin + 12px);
   font-weight: 400;
-  margin-left: 10vmin;
+  margin-left: 4vmin;
   color: rgba(255,255,255,0.8);
 }
 
@@ -214,7 +240,6 @@ h6 {
 .flex.grow{
   flex-grow: 1;
   overflow:  hidden;
-  max-width: 75vmin;
 }
 
 .info {
@@ -284,6 +309,7 @@ h6 {
   border-bottom: 0.5vmin solid #e033ff;
   border-top: 0.5vmin solid #e033ff;
   box-shadow: inset 1vmin 0vmin 4vmin 0 #e033ff44;
+  overflow: hidden;
 }
 
 .canvas {
@@ -291,6 +317,10 @@ h6 {
   top:  0;
   left: 0;
   overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+}
+.cvs2-container {
   background: linear-gradient(95deg, rgba(40, 17, 44, 0.1) 30%, rgba(40, 17, 44, 0) 100%);
 }
 @keyframes sats {
@@ -383,6 +413,7 @@ h6 {
 .lede {
   justify-content: space-between;
   z-index: 1;
+  min-width: 200px;
 }
 
 .overlay {
@@ -391,8 +422,8 @@ h6 {
   text-shadow: 0 0 6px hsla(291, 45%, 18%, 0.5);
   text-align: right;
   animation: 25s linear 0s infinite alternate backSats;
-  box-shadow: 1vmin 0 4vmin 0 #dbb1e244, inset -9vmin 0 2vmin 0 #943da422;
-  width: 25vw;
+  box-shadow: 1vmin 0 4vmin 0 #dbb1e244, inset -6vmin 0 3vmin 0 #943da422;
+  width: 15vw;
   position: sticky;
   top: 0;
   z-index: 2;
@@ -400,20 +431,34 @@ h6 {
 }
 
 @keyframes backSats {
-  0%  {backdrop-filter: blur(4px) saturate(100%)}
-  25%  {backdrop-filter: blur(8px) saturate(200%)}
-  50%  {backdrop-filter: blur(5px) saturate(100%)}
-  75%  {backdrop-filter: blur(2px) saturate(0%)}
-  100%  {backdrop-filter: blur(4px) saturate(100%)}
+  0%  {backdrop-filter: blur(3px) saturate(100%)}
+  25%  {backdrop-filter: blur(6px) saturate(190%)}
+  50%  {backdrop-filter: blur(3px) saturate(100%)}
+  75%  {backdrop-filter: blur(1px) saturate(10%)}
+  100%  {backdrop-filter: blur(3px) saturate(100%)}
 }
 .left-rail {
   position: sticky;
   top: 0;
-  justify-content: space-around;
+  justify-content: center;
   height: 100vh;
   align-items: center;
-  width: 25vw;
+  width: 15vw;
   font-family: "Palatino Linotype", Palatino, Palladio, "URW Palladio L", "Book Antiqua", Baskerville, "Bookman Old Style", "Bitstream Charter", "Nimbus Roman No9 L", Garamond, "Apple Garamond", "ITC Garamond Narrow", "New Century Schoolbook", "Century Schoolbook", "Century Schoolbook L", Georgia, serif;
+  .brace {
+    margin-left: -1.5vw;
+    font-size: 5vw;
+    line-height: 3.5vmin;
+  }
+}
+.lede .brace {
+  height: 4vw;
+}
+.brace.spacer {
+  height: 6vw;
+}
+.js.spacer {
+  height: 14vw;
 }
 .about {
   border-bottom: 0.5vmin solid #6200FF;
@@ -421,54 +466,51 @@ h6 {
   box-shadow: inset 1vmin 0vmin 3vmin 0 #6200FF88;
 }
 .joke {
-  border-right: 3vmin solid hsla(291, 45%, 9%, 0.2);
-  padding: 3vmin;
+  padding: 1vmin;
   flex: 1;
 }
 .text-left {
   text-align: left;
-  border-right: 3vmin solid hsla(291, 45%, 9%, 0.2);
-border-top: .8vmin solid #68B2F866;
 }
 
-.text-bottom {
-  border-right: 3vmin solid hsla(291, 45%, 9%, 0.2);
-}
+
 
 .business {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-right: 3vmin solid hsla(291, 45%, 9%, 0.2);
   flex: 1;
   justify-content: center;
 }
 
 .brace {
-  font-size: 17vmin;
-  line-height: 6vmin;
+  font-size: 16vmin;
+  margin-left: 4vmin;
+  line-height: 2vw;
   color: @lighter-purple;
   opacity: .7;
   text-shadow: 0 0 4vmin #dbb1e2;
-  height: 8vmin;
-  -webkit-transform: rotate(-90deg);
-  -moz-transform:    rotate(-90deg);
-  -ms-transform:     rotate(-90deg);
-  -o-transform:      rotate(-90deg);
+  transform: rotate(-90deg);
+}
+.js {
+  font-size: 4.2vmin;
+  color: #68B2F888;
+  font-weight: bold;
+  text-shadow: 0 0 4vmin #68B2F8;
+  transform: rotate(0);
+  margin: 0.3vmin 0 0.3vmin -1.5vw;
 }
 
 .large-j {
-  font-size: 30vmin;
+  letter-spacing: 8vmin;
+  font-size: 75vmin;
   text-align: center;
   opacity: .1;
   cursor: default;
   margin: 0;
   align-self: center;
   color: @neon-purple;
-  -webkit-transform: rotate(30deg);
-  -moz-transform:    rotate(30deg);
-  -ms-transform:     rotate(30deg);
-  -o-transform:      rotate(30deg);
+  transform: rotate(30deg);
   filter: saturate(200%);
 }
 
@@ -483,17 +525,30 @@ border-top: .8vmin solid #68B2F866;
 }
 
 .book {
-  background: rgba(5, 0, 30, 0.2);
+  background: rgba(23, 0, 27, 0.4);
   backdrop-filter: blur(5px) brightness(90%);
   border-radius: 2vmin;
-  margin: 2vmin;
-  padding: 2vmin;
+  margin: 3vmin;
+  padding: 4vmin;
+  max-width: 900px;
+  align-self: flex-end;
+}
+
+.book::before {
+  content: "\27A4";
+  position: absolute;
+  bottom: -3vmin;
+  transform: rotate(115deg);
+  right: 8vmin;
+  color: rgba(23, 0, 27, 0.4);
+  font-size: 9vmin;
 }
 
 .bio {
   align-self: flex-start;
   margin-top: 20px;
 }
+
 
 .emphasis {
   font-weight: bold;
@@ -514,20 +569,14 @@ border-top: .8vmin solid #68B2F866;
 }
 
 .pic {
-  background-image: url('img/joe.jpg');
-  min-width:  220px;
-  min-height: 220px;
+  background-image: url('http://localhost:8000/css/img/joe.jpg');
   background-size: cover;
-  width: 50%;
+  width: 50vmin;
+  height: 50vmin;
   border-radius: 50%;
-  margin: -26vh auto 0;
-  border: 1px solid @light-gray;
-  box-shadow: 0 0 40px 10px #402048;
-  &:after{
-    content: "";
-    display: block;
-    padding-bottom: 100%;
-  }
+  align-self: end;
+  margin: 4vmin;
+  max-width: 500px;
 }
 .row-container{
   flex: 1;
@@ -667,9 +716,6 @@ border-top: .8vmin solid #68B2F866;
 }
 
 @media screen and (min-width: 600px) {
-
-  .large-j{font-size: 400px;}
-
   .info-expand {font-size: 12pt;}
 
   .about {
@@ -695,10 +741,6 @@ border-top: .8vmin solid #68B2F866;
   .skill p {font-size: 10pt;}
 
   .label {position: absolute;}
-}
-
-@media screen and (min-width: 960px) {
-  .large-j{font-size: 600px;}
 }
 
 @media screen and (max-width: 600px) {

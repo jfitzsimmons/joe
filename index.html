@@ -20,7 +20,7 @@
     })();**/
   </script>
   <script src="js/less.min.js" type="text/javascript" async></script>
-  <title>TESTJPF Joe Fitzsimmons: Web Developer - Javascript, CSS, Front End, Full Stack</title>
+  <title>Joe Fitzsimmons: Web Developer - Javascript, CSS, Front End, Full Stack</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#28112c" />
@@ -38,10 +38,10 @@
 
   <div class="flex lede overlay">
     <nav class="flex">
-      <div class="top-nav" id="nav">
-        <a class="page-link-home" href="#home">&#10098;&#10098; &#8521; &#10099;&#10099;</a>
-        <a class="page-link" href="#aboutlink">about</a>
-        <a class="page-link" href="#skillslink">skills</a>
+      <div class="top-nav nav-grid" id="nav">
+        <a class="page-link-home logo-link" href="#home">&#10098;&#10098; &#8521; &#10099;&#10099;</a>
+        <a class="page-link about-link" href="#aboutlink">about</a>
+        <a class="page-link skills-link" href="#skillslink">skills</a>
         <!--<a class="page-link" target="_blank" href="https://drive.google.com/file/d/1Ihfj00wOddh7FZYsB4bcSIzS8SsIig5P/view?usp=sharing">Resum&Eacute;</a>-->
         <div class="bars icon" onclick="responsiveNav(this)">
           <div class="bar1"></div>
@@ -50,27 +50,29 @@
         </div>
       </div>
     </nav>
-    <div class="flex text-left joke">
-      <h6>h6 {</h6>
-      <h6>&nbsp;font-size: calc(1vmin + 12px);</h6>
-      <h6>&nbsp;color: #5a396088;</h6>
-      <h6>}</h6>
-    </div>
-    <div class="business">
-      <div class="flex brace">
-        }
+    <div class="sunk">
+      <div class="flex text-left joke">
+        <h6>h6 {</h6>
+        <h6>&nbsp;font-size: calc(1vmin + 12px);</h6>
+        <h6>&nbsp;color: #5a396088;</h6>
+        <h6>}</h6>
       </div>
-      <h1>Joe Fitzsimmons</h1>
-      <h2>Web Developer</h2>
-      <h6>let webDev = ['J','o','e'];</h6>
-      <div class="flex brace">
-        {
+      <div class="business">
+        <div class="flex brace">
+          }
+        </div>
+        <h1>Joe Fitzsimmons</h1>
+        <h2>Web Developer</h2>
+        <h6>let webDev = ['J','o','e'];</h6>
+        <div class="flex brace">
+          {
+        </div>
       </div>
-    </div>
-    <div class="flex text-bottom joke">
-      <h6>webDev = (joke</h6>
-      <h6>=== 'bad') ? 'Joe'</h6>
-      <h6>: 'Fitzsimmons';</h6>
+      <div class="flex text-bottom joke">
+        <h6>webDev = (joke</h6>
+        <h6>=== 'bad') ? 'Joe'</h6>
+        <h6>: 'Fitzsimmons';</h6>
+      </div>
     </div>
     <div class="flex footer">
       <div class="centered flex">
@@ -138,14 +140,13 @@
 </div>
 -->
 <div class="left-rail flex">
-  <div class="flex brace"><br /></div>
   <div class="flex brace">}<br />}</div>
   <div class="flex brace">}<br />&nbsp;<br />}</div>
   <div class="flex brace">}<br />&nbsp;<br />&nbsp;<br />}</div>
+  <div class="flex brace spacer"><br /></div>
   <div class="flex brace">{<br />&nbsp;<br />&nbsp;<br />{</div>
   <div class="flex brace">{<br />&nbsp;<br />{</div>
   <div class="flex brace">{<br />{</div>
-  <div class="flex brace"><br /></div>
 </div>
   <section id="about" class="about content">
 
@@ -166,6 +167,8 @@
             <a href="https://drive.google.com/file/d/1Ihfj00wOddh7FZYsB4bcSIzS8SsIig5P/view?usp=sharing"><span class="emphasis">resum&eacute;</span></a> and reach out to me.
           </p>
 
+        </div>
+        <div class="pic">
         </div>
       </div>
     </div>
@@ -188,11 +191,20 @@
   </div>
 </div>
 -->
-<!--
+<div class="left-rail flex">
+  <div class="flex js">&#10098;&#10098; &#8521; &#10099;&#10099; &#10098;&#10098; &#8521; &#10099;&#10099;</div>
+  <div class="flex js">&#10098; &#8521; &#10099;&#10099; &#10098;&#10098; &#8521; &#10099;</div>
+  <div class="flex js">&#8521; &#10099;&#10099; &#10098;&#10098; &#8521;</div>
+  <div class="flex js">&#10098;&#10098; &#8521; &#10099;&#10099;</div>
+  <div class="flex js spacer"><br /></div>
+  <div class="flex js">&#10098;&#10098; &#8521; &#10099;&#10099;</div>
+  <div class="flex js">&#8521; &#10099;&#10099; &#10098;&#10098; &#8521;</div>
+  <div class="flex js">&#10098; &#8521; &#10099;&#10099; &#10098;&#10098; &#8521; &#10099;</div>
+  <div class="flex js">&#10098;&#10098; &#8521; &#10099;&#10099; &#10098;&#10098; &#8521; &#10099;&#10099;</div>
+</div>
   <section id="skills" class="skills content">
     <div class="left-rail"></div>
-    <div class="pic">
-    </div>
+
     <div class="skill-container">
       <div class="row-container">
         <div class="flex row">
@@ -384,6 +396,7 @@
       </div>
     </div>
   </section>
+  <!--
   <div class="flex">
     <div class="info">
       <i class="fas fa-info-circle"></i>
@@ -403,33 +416,33 @@
       </div>
     </div>
   </div>
-  -->
+ 
   <section id="links" class="links">
 
   </section>
   <div class="flex">
-  <div class="info">
-    <i class="fas fa-info-circle"></i>
-    <i class="fas fa-times-circle"></i>
+    <div class="info">
+      <i class="fas fa-info-circle"></i>
+      <i class="fas fa-times-circle"></i>
 
-    <div class="info-text">
-      <p>
-        Right now it’s just a copyright. I added links to my online
-        accounts: Github, CodePen and Stack Overflow. I should probably add a
-        contact form but can’t think of a better reason to than just ‘everyone
-        has one’. That might be as good a reason as any. There’s plenty I
-        could add in this section, but it may just be content for content’s
-        sake.
-      </p>
+      <div class="info-text">
+        <p>
+          Right now it’s just a copyright. I added links to my online
+          accounts: Github, CodePen and Stack Overflow. I should probably add a
+          contact form but can’t think of a better reason to than just ‘everyone
+          has one’. That might be as good a reason as any. There’s plenty I
+          could add in this section, but it may just be content for content’s
+          sake.
+        </p>
+      </div>
     </div>
   </div>
-</div>
-  <canvas id="cvs0" class="canvas canvas1"></canvas>
-  <canvas id="cvs1" class="canvas canvas2"></canvas>
-  <canvas id="cvs2" class="canvas canvas3"></canvas>
-  <canvas id="cvs3" class="canvas canvas4"></canvas>
-  <canvas id="cvs4" class="canvas canvas5"></canvas>
-  <div id="bg" class="canvas"></div>
+-->
+  <div id="cvs0-container" class="canvas"><canvas id="cvs0" class="canvas1 canvas"></canvas></div>
+  <div id="cvs1-container" class="canvas"><canvas id="cvs1" class="canvas2 canvas"></canvas></div>
+  <div id="cvs2-container" class="canvas cvs2-container"><canvas id="cvs2" class="canvas3 canvas"></canvas></div>
+  <div id="cvs3-container" class="canvas"><canvas id="cvs3" class="canvas4 canvas"></canvas></div>
+  <div id="cvs4-container" class="canvas"><canvas id="cvs4" class="canvas5 canvas"></canvas></div>
   <script src="js/bg.js" type="text/javascript" defer></script>
   <script src="js/init.js" type="text/javascript" defer></script>
 

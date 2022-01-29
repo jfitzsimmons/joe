@@ -7,9 +7,11 @@ const CIRCLES = (function() {
   const cvs2 = document.getElementById('cvs2'); cvs2.width = w; cvs2.height = h;
   const cvs3 = document.getElementById('cvs3'); cvs3.width = w; cvs3.height = h;
   const cvs4 = document.getElementById('cvs4'); cvs4.width = w; cvs4.height = h;
-  const cvs = document.getElementById('bg'); cvs.width = w; cvs.height = h;
-  cvs.style.width = `${w}px`;
-  cvs.style.height = `${h}px`;
+  const cvsC0 = document.getElementById('cvs0-container'); cvsC0.width = w; cvsC0.height = h;
+  const cvsC1 = document.getElementById('cvs1-container'); cvsC1.width = w; cvsC1.height = h;
+  const cvsC2 = document.getElementById('cvs2-container'); cvsC2.width = w; cvsC2.height = h;
+  const cvsC3 = document.getElementById('cvs3-container'); cvsC3.width = w; cvsC3.height = h;
+  const cvsC4 = document.getElementById('cvs4-container'); cvsC4.width = w; cvsC4.height = h;
   const cvsesAPI = [
     cvs1.getContext('2d'),
     cvs3.getContext('2d'),
@@ -22,8 +24,7 @@ const CIRCLES = (function() {
   const movement = ['rotate', 'bounce','rotate'];
   const colors = [209, 291, 263];
   const strokeColors = ['#506EE5', '#68B2F8', '#7037CD'];
-
-
+  const appendCanvases = [cvsC0,cvsC1,cvsC2,cvsC3,cvsC4]
   const satClasses = [`canvas1`,`canvas2`,`canvas3`,`canvas4`,`canvas5`]
   const rndmRng = (h, l) => Math.random() * (h - l) + l;
   const rndmArrI = (a) => a[Math.floor(Math.random() * a.length)];
@@ -35,8 +36,9 @@ const CIRCLES = (function() {
         c.ctx.arc(c.outerRadius+8,c.outerRadius+8,c.radius/2,0,2*Math.PI);
         c.ctx.fillStyle=`hsl(${(c.color += .3)},${100-rndmRng(50,0)}%,${(c.light += .1)}%)`;
         c.ctx.fill();
-        requestAnimationFrame(() => draw(c));
+        c.request=requestAnimationFrame(() => draw(c));
       } else {
+        cancelAnimationFrame(c.request);
         addStroke(c);
       }
     };
@@ -54,12 +56,12 @@ const CIRCLES = (function() {
     c.ctx.stroke();
     c.curr += 1.7;
     if (c.curr < 101) {
-      requestAnimationFrame(function() {
+      c.request=requestAnimationFrame(function() {
         addStroke(c, (Math.PI * 2) * c.curr / 100 + c.start);
       });
     } else {
-      (c.ani === 'rotate' && requestAnimationFrame(() => rotate(c)));
-      (c.ani === 'bounce' && requestAnimationFrame(() => bounce(c)));
+      
+      (c.ani === 'rotate') ? rotate(c) : c.request = requestAnimationFrame(() => bounce(c));
     }
   };
 
@@ -101,19 +103,28 @@ const CIRCLES = (function() {
       newCirc.light = rndmRng(60, 10);
       newCirc.hue = rndmRng(60, 10);
       newCirc.start = Math.random() * Math.PI * 2;
-      newCirc.element =  document.createElement('canvas');   
+      newCirc.element =  document.createElement('canvas'); 
+      newCirc.element.classList.add('circle');
+      newCirc.ctx =  newCirc.element.getContext('2d');
+      newCirc.ctx.canvas.width = newCirc.outerRadius*2+16
+      newCirc.ctx.canvas.height = newCirc.outerRadius*2+16
+      newCirc.ctx.strokeStyle = rndmArrI(strokeColors);
+      newCirc.ctx.lineWidth = rndmRng(6,3);
+      newCirc.ctx.globalCompositeOperation = 'xor';
+      newCirc.x = Math.round(rndmRng(w-newCirc.outerRadius*2-60, 0));
+      newCirc.y = Math.round(rndmRng(h-newCirc.outerRadius*2-60, 0));
+      newCirc.grooves = rndmRng(90,60)  
       newCirc.ani = rndmArrI(movement);
+      newCirc.request;
       if (newCirc.ani === "bounce") {
+        newCirc.element.classList.add(rndmArrI(satClasses));
+        newCirc.cvsAppend = rndmArrI(appendCanvases);
         newCirc.layer = rndmArrI(cvsesAPI);
         newCirc.dx = Math.cos(newCirc.start) / speed;
         newCirc.dy = Math.sin(newCirc.start) / speed;  
-        newCirc.x = Math.round(rndmRng(w-newCirc.outerRadius*2-60, 0));
-        newCirc.y = Math.round(rndmRng(h-newCirc.outerRadius*2-60, 0));
       } else {
-        newCirc.element.classList.add(rndmArrI(satClasses));
+        newCirc.cvsAppend = rndmArrI(appendCanvases);
         newCirc.layer = rndmArrI(cvsesCSS);
-        newCirc.x = Math.round(rndmRng(w-newCirc.outerRadius*2, 0));
-        newCirc.y = Math.round(rndmRng(h-newCirc.outerRadius*2, 0));
         newCirc.orbit = 250 -(distanceToC(newCirc.x+newCirc.outerRadius+8,newCirc.y+newCirc.outerRadius+8)/10)-newCirc.outerRadius*.53;
         newCirc.direction = (Math.random()>.5) ? "ccw" : "cw";
         if (Math.random()>.5) newCirc.orbit *=-.25;
@@ -127,20 +138,12 @@ const CIRCLES = (function() {
           newCirc.start = 1.2;
         }
       }
-      newCirc.ctx =  newCirc.element.getContext('2d');
-      newCirc.ctx.canvas.width = newCirc.outerRadius*2+16
-      newCirc.ctx.canvas.height = newCirc.outerRadius*2+16
-      newCirc.ctx.strokeStyle = rndmArrI(strokeColors);
-      newCirc.ctx.lineWidth = rndmRng(6,3);
-      newCirc.ctx.globalCompositeOperation = 'xor';
       newCirc.element.style.left= `${newCirc.x+8}px`,
       newCirc.element.style.top= `${newCirc.y+8}px`,
       newCirc.element.style.width= `${newCirc.outerRadius*2+16}px`;
       newCirc.element.style.heigth= `${newCirc.outerRadius*2+16}px`;
-      newCirc.element.classList.add('circle');
-      newCirc.grooves = rndmRng(90,60)
-
-      cvs.appendChild(newCirc.element);
+   
+      newCirc.cvsAppend.appendChild(newCirc.element);
 
       return newCirc;
     }
