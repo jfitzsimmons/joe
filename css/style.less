@@ -16,27 +16,26 @@
 @font-serif: Cambria, "Hoefler Text", Utopia, "Liberation Serif", "Nimbus Roman No9 L Regular", Times, "Times New Roman", serif;
 @font-sans: Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
 @font-mono: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
-@border-skill: 3px solid;
+@border-skill: .5vmin solid;
 
 .font-props {
-  font-size:   7pt;
+  font-size: calc(0.1vmin + 12px);
 }
 
 body,
 html {
   margin: 0;
-  background-color: hsla(291, 60%, 25%, 1);
-  background-image: url(img/58.png),url(img/74.png), url(img/106.png);
-  background-repeat: repeat-x;
-  font-family: @font-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-size: calc(0.5vmin + 12px);
 }
 
 body {
   display: flex;
   flex-wrap: wrap;
+  color: #fff;
+  background-color: hsla(291, 60%, 25%, 1);
+  background-image: url(img/58.png),url(img/74.png), url(img/106.png);
+  background-repeat: repeat-x;
+  font-family: @font-serif;
+  font-size: calc(0.5vmin + 12px);
 }
 
 a:link, a:visited, a:hover, a:active {
@@ -46,21 +45,27 @@ a:link, a:visited, a:hover, a:active {
 
 a:hover {text-decoration: underline;}
 
+svg {
+  max-width: 30px;
+}
+
 nav {  
   box-shadow: 3vmin 3vmin 4vmin 0 #68b2f877;
   text-transform: uppercase;
   background: rgba(23, 0, 27, 0.4);
+  width: 100%;
   .icon {display: none;}
 }
 
 .sunk {
   flex: 1;
-  justify-content: center;
   display: flex;
   flex-direction: column;
   box-shadow: inset 0vmin 0 3vmin 0 rgba(23, 0, 27, 0.6);
   border-right: 3vmin solid rgba(23, 0, 27, 0.4);
   border-top: 0.8vmin solid #68B2F866;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .top-nav {
@@ -75,6 +80,8 @@ nav {
   box-shadow: 3vmin -3vmin 4vmin 0 #6200ff77;
   border-right: 2vmin solid hsla(291, 45%, 9%, 0.4);
   background: rgba(23, 0, 27, 0.4);
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .change-color {background: fade(@darker-purple, 100%);}
@@ -179,10 +186,7 @@ nav {
 }
 
 section {
-  color: @light-gray;
-  line-height: 11pt;
-  flex-direction: column;
-  position: relative;
+  color: #cbc;
   z-index: 1;
   min-height: 100vh;
   box-sizing: border-box;
@@ -216,6 +220,7 @@ h5 {
   color: @light-purple;
   margin: 0;
   font-weight: normal;
+  clear: both;
 }
 
 h6 {
@@ -231,18 +236,12 @@ h6 {
   justify-content: center;
 }
 
-.flex.row {
-  flex-direction: row;
-  flex: 1 0 auto;
-  justify-content: space-between;
+.wrap {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .flex.wrap {flex-wrap: wrap;}
-
-.flex.grow{
-  flex-grow: 1;
-  overflow:  hidden;
-}
 
 .info {
   border: 1px solid @light-gray;
@@ -412,23 +411,12 @@ h6 {
 }
 
 .lede {
-  justify-content: space-between;
-  z-index: 1;
-  flex: 15vw;
-}
-
-.overlay {
   background: rgba(40, 17, 44, 0.4);
-  color: #fff;
   text-shadow: 0 0 6px hsla(291, 45%, 18%, 0.5);
   text-align: right;
   animation: 25s linear 0s infinite alternate backSats;
   box-shadow: 1vmin 0 4vmin 0 #dbb1e244, inset -6vmin 0 3vmin 0 #943da422;
-  width: 15vw;
-  position: sticky;
-  top: 0;
-  z-index: 2;
-  height: 100vh;
+  z-index: 1;
 }
 
 @keyframes backSats {
@@ -441,16 +429,10 @@ h6 {
 .left-rail {
   position: sticky;
   top: 0;
-  justify-content: center;
   height: 100vh;
   align-items: center;
   flex: 15vw;
   font-family: "Palatino Linotype", Palatino, Palladio, "URW Palladio L", "Book Antiqua", Baskerville, "Bookman Old Style", "Bitstream Charter", "Nimbus Roman No9 L", Garamond, "Apple Garamond", "ITC Garamond Narrow", "New Century Schoolbook", "Century Schoolbook", "Century Schoolbook L", Georgia, serif;
-  .brace {
-    margin-left: -1.5vw;
-    font-size: 12vmin;
-    line-height: 3vmin;
-  }
 }
 .lede .brace {
   height: 4vw;
@@ -462,7 +444,6 @@ h6 {
   height: 22vmin;
 }
 .about {
-  border-bottom: 0.5vmin solid #6200FF;
   border-top: 0.5vmin solid #e033ff;
   box-shadow: inset 1vmin 0vmin 3vmin 0 #6200FF88;
 }
@@ -474,22 +455,16 @@ h6 {
   text-align: left;
 }
 
-
-
 .business {
   display: flex;
   flex-direction: column;
   align-items: center;
-  flex: 1;
-  justify-content: center;
 }
 
 .brace {
-  font-size: 16vmin;
-  margin-left: 4vmin;
-  line-height: 2vw;
+  font-size: 12vmin;
+  line-height: 3vmin;
   color: @lighter-purple;
-  opacity: .7;
   text-shadow: 0 0 4vmin #dbb1e2;
   transform: rotate(-90deg);
 }
@@ -498,7 +473,6 @@ h6 {
   color: #68B2F888;
   font-weight: bold;
   text-shadow: 0 0 4vmin #68B2F8;
-  transform: rotate(0);
   margin: 0.3vmin 0 0.3vmin -1.5vw;
 }
 
@@ -531,27 +505,19 @@ h6 {
   margin: 3vmin;
   padding: 4vmin;
   width: 45vw;
-
   max-width: 900px;
   align-self: flex-end;
-
 }
 
 .book::before {
   content: "\27A4";
   position: absolute;
-  bottom: -3vmin;
+  bottom: -7vmin;
   transform: rotate(115deg);
   right: 8vmin;
   color: rgba(23, 0, 27, 0.4);
   font-size: 9vmin;
 }
-
-.bio {
-  align-self: flex-start;
-  margin-top: 20px;
-}
-
 
 .emphasis {
   font-weight: bold;
@@ -586,8 +552,6 @@ h6 {
   flex: 2;
 }
 .skills {
-  display: flex;
-  padding: 16px;
   background: rgba(16, 8, 18, .4);
   h1 {margin: 16px 0;}
   h5,
@@ -599,31 +563,22 @@ h6 {
   }
 }
 
-.skill-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
 .skill {
-  min-width: 100%;
-  display: flex;
+  overflow: hidden;
   div {
-    background: rgba(255,255,255,0.1);
+    background: rgba(140,140,140, 0.1);
     padding-top: 6px;
     display: flex;
     justify-content: flex-end;
-    border-radius: 6px 0 0 0;
-    position: relative;
+    border-radius: 2vmin 0 0 0;
   }
   p {
     margin: 0;
     padding: 0 6px 6px;
-    font-size:   8pt;
+    font-size: calc(.1vmin + 12px);
     line-height: 8pt;
   }
   .label {
-    left: 0;
     word-break: break-all;
   }
   .score {text-align: center;}
@@ -658,7 +613,7 @@ h6 {
   flex-wrap: wrap;
   display: flex;
   background: rgba(255, 255, 255, 0.1);
-  border-radius: 6px;
+  border-radius: 2vmin;
   align-self: flex-start;
   justify-content: center;
   margin: 3vmin;
@@ -666,7 +621,7 @@ h6 {
 }
 
 .other-skill {
-  border-radius: 6px;
+  border-radius: 2vmin;
   border: @border-skill @light-purple;
   padding: 16px;
   margin:   8px;
