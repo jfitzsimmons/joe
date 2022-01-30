@@ -100,45 +100,7 @@
     </div>
 
   </section>
-  <!--
-<div class="flex">
-  <div class="info">
-    <i class="fas fa-info-circle"></i>
-    <i class="fas fa-times-circle"></i>
-    <div class="info-text">
-      <p>
-        I aimed for a relaxing, eye catching animation that would be like staring at a fish tank. I started experimenting with HTML5 Canvas, JS and CSS animations. My first and coolest iteration was pure javascript. A circle would grow from a
-        random point on the screen, change hue, and lightness, create a border at a random point around the circle, and then move away from that point at a random speed. It would then bounce around the screen in perpetuity.
-      </p>
-      <p>
-        I loved the way this animation looked but it was too resource intensive. I then experimented with similar functionality, but using CSS. I couldn’t make the circle move at an angle quite as precisely as pure JS. To mimic the functionality,
-        I split the screen into four quadrants. If the circle was generated in a specific quad, it would move across the screen diagonally towards the furthest quad. The circle would move at a random speed on both the x and y axis creating random
-        angles, while moving away from the starting point, although not quite as precisely as the JS animation.
-      </p>
-      <p>
-        The problem with this animation style is that it’s not much more efficient than the JS animation. This is because animating the properties of top/left/width/height (properties that affect document flow) are more resource intensive than
-        transforms due to current web and browser standards.
-      </p>
-      <p>
-        So, I added another css animation that only uses transform. This animation wouldn't bounce off the sides of the window, but would instead, revolve 360 degrees. This time I split the screen in half. If the circle was generated in the right
-        half of the screen, the starting point would be at the top of the circle and the circle would move down. If it generated on the left side, the starting point would be at the bottom of the circle and move up. Also, if the circle is closer
-        to the center of the screen, it has a wider orbit than at the edge of the screen. This is to increase to amount of time the circle remains in view.
-      </p>
-      <p>
-        This animation is far less intensive than the prior two, though not as cool looking in my opinion. So now I decided to use all three animations. Each time a circle is created, it randomly uses one of the three types of animation. I
-        weighted the css transform animation to show up twice as much as the other two in order to save resources.
-      </p>
-      <p>
-        One other resource consideration was to change the number of circles generated based on screen size. This might help with performance on mobile devices.
-      </p>
-      <p>
-        Some other highlights. I heavily leaned on randomization. The circles grow to different sizes. The hue and lightness of the circles change as the circle grows. This makes each circle a unique color, but still fit with the style
-        of the site. There are three different border colors that are chosen at random. I mentioned the different starting points of the border, and the different animations, speeds and angles each circle has.
-      </p>
-    </div>
-  </div>
-</div>
--->
+ 
 <div class="left-rail flex">
   <div class="flex brace">}<br />}</div>
   <div class="flex brace">}<br />&nbsp;<br />}</div>
@@ -173,24 +135,7 @@
       </div>
     </div>
   </section>
-  <!--
-  <div class="flex">
-  <div class="info">
-    <i class="fas fa-info-circle"></i>
-    <i class="fas fa-times-circle"></i>
-    <div class="info-text">
-      <p>
-        I spent most of my time working on the Home section so this section is
-        lacking. I’m not a fan of talking about myself, and had to come up with
-        a way to fill this section with enough material. I updated the photo from
-        an outdated, smug one, to a newer, grainy, laptop photo. I'm getting closer
-        to a quality photo of myself. This section needs a third pass. It's a
-        more minimal aesthetic, which is an improvement on my last attempt.
-      </p>
-    </div>
-  </div>
-</div>
--->
+
 <div class="left-rail flex">
   <div class="flex js">&#10098;&#10098; &#8521; &#10099;&#10099; &#10098;&#10098; &#8521; &#10099;&#10099;</div>
   <div class="flex js">&#10098; &#8521; &#10099;&#10099; &#10098;&#10098; &#8521; &#10099;</div>
@@ -203,8 +148,6 @@
   <div class="flex js">&#10098;&#10098; &#8521; &#10099;&#10099; &#10098;&#10098; &#8521; &#10099;&#10099;</div>
 </div>
   <section id="skills" class="skills content">
-    <div class="left-rail"></div>
-
     <div class="skill-container">
       <div class="row-container">
         <div class="flex row">
@@ -396,6 +339,63 @@
       </div>
     </div>
   </section>
+   <!--
+<div class="flex">
+  <div class="info">
+    <i class="fas fa-info-circle"></i>
+    <i class="fas fa-times-circle"></i>
+    <div class="info-text">
+      <p>
+        I aimed for a relaxing, eye catching animation that would be like staring at a fish tank. I started experimenting with HTML5 Canvas, JS and CSS animations. My first and coolest iteration was pure javascript. A circle would grow from a
+        random point on the screen, change hue, and lightness, create a border at a random point around the circle, and then move away from that point at a random speed. It would then bounce around the screen in perpetuity.
+      </p>
+      <p>
+        I loved the way this animation looked but it was too resource intensive. I then experimented with similar functionality, but using CSS. I couldn’t make the circle move at an angle quite as precisely as pure JS. To mimic the functionality,
+        I split the screen into four quadrants. If the circle was generated in a specific quad, it would move across the screen diagonally towards the furthest quad. The circle would move at a random speed on both the x and y axis creating random
+        angles, while moving away from the starting point, although not quite as precisely as the JS animation.
+      </p>
+      <p>
+        The problem with this animation style is that it’s not much more efficient than the JS animation. This is because animating the properties of top/left/width/height (properties that affect document flow) are more resource intensive than
+        transforms due to current web and browser standards.
+      </p>
+      <p>
+        So, I added another css animation that only uses transform. This animation wouldn't bounce off the sides of the window, but would instead, revolve 360 degrees. This time I split the screen in half. If the circle was generated in the right
+        half of the screen, the starting point would be at the top of the circle and the circle would move down. If it generated on the left side, the starting point would be at the bottom of the circle and move up. Also, if the circle is closer
+        to the center of the screen, it has a wider orbit than at the edge of the screen. This is to increase to amount of time the circle remains in view.
+      </p>
+      <p>
+        This animation is far less intensive than the prior two, though not as cool looking in my opinion. So now I decided to use all three animations. Each time a circle is created, it randomly uses one of the three types of animation. I
+        weighted the css transform animation to show up twice as much as the other two in order to save resources.
+      </p>
+      <p>
+        One other resource consideration was to change the number of circles generated based on screen size. This might help with performance on mobile devices.
+      </p>
+      <p>
+        Some other highlights. I heavily leaned on randomization. The circles grow to different sizes. The hue and lightness of the circles change as the circle grows. This makes each circle a unique color, but still fit with the style
+        of the site. There are three different border colors that are chosen at random. I mentioned the different starting points of the border, and the different animations, speeds and angles each circle has.
+      </p>
+    </div>
+  </div>
+</div>
+-->
+    <!--
+  <div class="flex">
+  <div class="info">
+    <i class="fas fa-info-circle"></i>
+    <i class="fas fa-times-circle"></i>
+    <div class="info-text">
+      <p>
+        I spent most of my time working on the Home section so this section is
+        lacking. I’m not a fan of talking about myself, and had to come up with
+        a way to fill this section with enough material. I updated the photo from
+        an outdated, smug one, to a newer, grainy, laptop photo. I'm getting closer
+        to a quality photo of myself. This section needs a third pass. It's a
+        more minimal aesthetic, which is an improvement on my last attempt.
+      </p>
+    </div>
+  </div>
+</div>
+-->
   <!--
   <div class="flex">
     <div class="info">
