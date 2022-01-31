@@ -52,7 +52,7 @@ svg {
 nav {  
   box-shadow: 3vmin 3vmin 4vmin 0 #68b2f877;
   text-transform: uppercase;
-  background: rgba(23, 0, 27, 0.4);
+  background: rgba(23, 0, 27, 0.2);
   width: 100%;
   .icon {display: none;}
 }
@@ -78,10 +78,11 @@ nav {
 .footer {
   border-top: .8vmin solid #6200FF88;
   box-shadow: 3vmin -3vmin 4vmin 0 #6200ff77;
-  border-right: 2vmin solid hsla(291, 45%, 9%, 0.4);
+  border-right: 2vmin solid hsla(291, 45%, 9%, 0.2);
   background: rgba(23, 0, 27, 0.4);
   width: 100%;
   box-sizing: border-box;
+  padding: 1vmin 2vmin;
 }
 
 .change-color {background: fade(@darker-purple, 100%);}
@@ -100,7 +101,6 @@ nav {
 .skills-link { grid-area: skills; }
 
 .page-link {
-  float: left;
   padding: .0 1vmin;
   font-size: calc(0.5vmin + 12px);
   transition: all 0.3s cubic-bezier(0.000, 0.000, 0.230, 1);
@@ -137,6 +137,9 @@ nav {
   flex: 1;
   text-align: left;
   align-self: center;
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 
@@ -148,7 +151,7 @@ nav {
 
 .logo-icon {
   width: 20px;
-  display: block;
+  display: inline-block;
 }
 
 .fill {
@@ -192,6 +195,7 @@ section {
   box-sizing: border-box;
   flex: 85%;
   min-width: 200px;
+  padding: 4vmin 0vmin 0vmin 4vmin;
 }
 
 h1,
@@ -204,7 +208,8 @@ h2 {
 h1 {
   font-weight: 700;
   font-size: calc(.7vmin + 12px);
-  margin-left: -1vmin
+  margin-left: -1vmin;
+  font-family: "Palatino Linotype", Palatino, Palladio, "URW Palladio L", "Book Antiqua", Baskerville, "Bookman Old Style", "Bitstream Charter", "Nimbus Roman No9 L", Garamond, "Apple Garamond", "ITC Garamond Narrow", "New Century Schoolbook", "Century Schoolbook", "Century Schoolbook L", Georgia, serif;
 }
 
 h2 {
@@ -221,6 +226,7 @@ h5 {
   margin: 0;
   font-weight: normal;
   clear: both;
+  padding: 0 1vmin;
 }
 
 h6 {
@@ -244,42 +250,12 @@ h6 {
 .flex.wrap {flex-wrap: wrap;}
 
 .info {
-  border: 1px solid @light-gray;
-  border-radius: 6px;
-  padding: 8px;
-  margin:  -50px 16px 16px;
-  width: 16px;
-  height: 16px;
-  align-self: flex-end;
-  box-shadow: 0 1px 6px 1px hsla(0, 0, 100%, 0.5);
-  z-index: 2;
-  &:hover {
-    box-shadow: 0 2px 6px 0 hsla(0, 0, 50%, 0.5);
-    bottom: 0px;
-  }
-  i {
-    color: @light-gray;
-    font-size: 12pt;
-  }
-  .fa-times-circle {
-    display: none;
-  }
-}
-
-.info-expand {
+  padding: 2vmin 2vmin 2vmin 30vmin;
+  width: 70vw;
+  background: #000a;
+  color: #fff;
   font-family: @font-sans;
-  font-size: 10pt;
-  width: 0;
-  height: 0;
-  overflow-y: scroll;
-
-  -webkit-animation: growInfo 1s ease-in 1; /* Safari, Chrome and Opera > 12.1 */
-     -moz-animation: growInfo 1s ease-in 1; /* Firefox < 16 */
-      -ms-animation: growInfo 1s ease-in 1; /* Internet Explorer */
-       -o-animation: growInfo 1s ease-in 1; /* Opera < 12.1 */
-          animation: growInfo 1s ease-in 1;
-  -webkit-animation-fill-mode: forwards; /* Safari 4.0 - 8.0 */
-          animation-fill-mode: forwards;
+  z-index: 1;
 }
 
 @keyframes growInfo {
@@ -304,11 +280,10 @@ h6 {
 }
 
 .home {
-  position: sticky;
-  top: 0;
-  border-bottom: 0.5vmin solid #e033ff;
-  border-top: 0.5vmin solid #e033ff;
+  border-bottom: 0.5vh solid #e033ff;
+  border-top: 0.5vh solid #e033ff;
   box-shadow: inset 1vmin 0vmin 4vmin 0 #e033ff44;
+  max-height: 100vh;
   overflow: hidden;
 }
 
@@ -411,12 +386,12 @@ h6 {
 }
 
 .lede {
-  background: rgba(40, 17, 44, 0.4);
+  background: rgba(40, 17, 44, 0.3);
   text-shadow: 0 0 6px hsla(291, 45%, 18%, 0.5);
   text-align: right;
   animation: 25s linear 0s infinite alternate backSats;
   box-shadow: 1vmin 0 4vmin 0 #dbb1e244, inset -6vmin 0 3vmin 0 #943da422;
-  z-index: 1;
+  z-index: 2;
 }
 
 @keyframes backSats {
@@ -436,6 +411,9 @@ h6 {
 }
 .lede .brace {
   height: 4vw;
+  color: @lighter-purple;
+  margin: 0;
+  font-size: 16vmin;
 }
 .brace.spacer {
   height: 16vh;
@@ -444,7 +422,6 @@ h6 {
   height: 22vmin;
 }
 .about {
-  border-top: 0.5vmin solid #e033ff;
   box-shadow: inset 1vmin 0vmin 3vmin 0 #6200FF88;
 }
 .joke {
@@ -462,10 +439,12 @@ h6 {
 }
 
 .brace {
-  font-size: 12vmin;
+  font-size: 10vmin;
+  margin-left: -1.5vmin;
   line-height: 3vmin;
   color: @lighter-purple;
   text-shadow: 0 0 4vmin #dbb1e2;
+  color: #dbb1e2AA;
   transform: rotate(-90deg);
 }
 .js {
@@ -489,12 +468,36 @@ h6 {
   filter: saturate(200%);
 }
 
+.about {
+
+  h1 {
+    margin: -4vmin 0vmin 4vmin -6vmin;
+  }
+}
+
+.other-skills {
+
+  h1 {
+    margin: -2vmin 0vmin 4vmin -50px
+  }
+}
+
+.skills__h1 {
+    margin: -1vmin 0vmin 6vmin -5vmin
+}
+
 .content {
   font-family: @font-sans;
-  border-bottom: 1vmin solid @dark-blue;
+  border-bottom: 1vh solid @dark-blue;
+  h1 {
+    font-size: calc(7vmin + 12px);
+  }
   h5 {
     margin: 5px 0;
     text-align: center;
+    color: #cbc;
+    font-size: calc(0.5vmin + 12px);
+    margin: .5vmin 0px 2vmin;
   }
 }
 
@@ -540,12 +543,13 @@ h6 {
 .pic {
   background-image: url('http://localhost:8000/css/img/joe.jpg');
   background-size: cover;
-  width: 50vmin;
-  height: 50vmin;
+  width: 40vmin;
+  height: 40vmin;
   border-radius: 50%;
   align-self: end;
   margin: 4vmin;
   max-width: 500px;
+  filter: hue-rotate(280deg) saturate(60%);
 }
 .row-container{
   margin: 3vmin;
@@ -553,7 +557,6 @@ h6 {
 }
 .skills {
   background: rgba(16, 8, 18, .4);
-  h1 {margin: 16px 0;}
   h5,
   h1 {width: 100%;}
   .row {margin: 8px 0;}
@@ -566,16 +569,17 @@ h6 {
 .skill {
   overflow: hidden;
   div {
-    background: rgba(140,140,140, 0.1);
-    padding-top: 6px;
+    background: rgba(140,140,140, 0.2);
+    padding-top: 1vmin;
     display: flex;
     justify-content: flex-end;
     border-radius: 2vmin 0 0 0;
+    min-height: 5vw;
   }
   p {
     margin: 0;
-    padding: 0 6px 6px;
-    font-size: calc(.1vmin + 12px);
+    padding: 0 1vmin 1.4vmin;
+    font-size: calc(.3vmin + 12px);
     line-height: 8pt;
   }
   .label {
@@ -617,19 +621,20 @@ h6 {
   align-self: flex-start;
   justify-content: center;
   margin: 3vmin;
-  padding: 4vmin;
+  padding: 1vmin;
 }
 
 .other-skill {
   border-radius: 2vmin;
   border: @border-skill @light-purple;
-  padding: 16px;
-  margin:   8px;
+  padding: 2vmin;
+  margin:   1vmin;
   position: relative;
   width: 30%;
   min-height: 65px;
   max-width:  80px;
   color: #fff;
+  background: rgba(0, 0, 0, 0.2);
   .score {
     position: absolute;
     bottom: 0;
@@ -643,7 +648,7 @@ h6 {
 }
 
 .score3{
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.6);
   color: @light-gray;
   border: @border-skill @lighter-purple;
   svg {
@@ -652,7 +657,7 @@ h6 {
 }
 
 .score4{
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.4);
   color: @lighter-purple;
   border: @border-skill @neon-purple;
   svg {

@@ -8,7 +8,35 @@ function responsiveNav(x) {
     n.className = "top-nav";
   }
 }
+**/
 
+//document.querySelector('[data-link="1"]');
+
+
+
+
+
+
+
+
+
+
+function smoothScroll(e) {
+  e.preventDefault();
+  let target = document.getElementById(this.getAttribute('data-href'));
+  let offset = target.offsetTop - window.innerHeight*.005;
+  window.scrollTo({
+    top: offset,
+    behavior: "smooth"
+  });
+}
+
+let links = document.querySelectorAll('[data-href]');
+
+links.forEach((l) => 
+  l.addEventListener("click", smoothScroll)
+)
+/** 
 $('a[href^="#"]').on('click', function(event) {
   let target = $(this.getAttribute('href'));
   if (target.length) {
@@ -18,6 +46,11 @@ $('a[href^="#"]').on('click', function(event) {
     }, 1000);
   }
 });
+
+document
+	.getElementById("orangeable")
+	.scrollIntoView({behavior: "smooth"});
+
 
 $('.info').on('click', function(e) {
   $(this).addClass('info-expand');
