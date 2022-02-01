@@ -1,7 +1,7 @@
 const CIRCLES = (function() {
   const w = window.innerWidth;
   const h = window.innerHeight;
-  const circAmount = Math.round((w * h) / 80000);
+  const circAmount = Math.round((w * h) / 40000);
   const cvs0 = document.getElementById('cvs0'); cvs0.width = w; cvs0.height = h;
   const cvs1 = document.getElementById('cvs1'); cvs1.width = w; cvs1.height = h;
   const cvs2 = document.getElementById('cvs2'); cvs2.width = w; cvs2.height = h;
@@ -31,17 +31,17 @@ const CIRCLES = (function() {
   const distanceToC = (px,py) => Math.sqrt((Math.pow(px-w/2,2))+(Math.pow(py-h/2,2)));
 
   const draw = (c) => {
-      if (c.radius < c.innerCrcmf && typeof c.radius !== 'undefined') {
-        c.radius += Math.round(c.innerCrcmf / c.grooves);
-        c.ctx.arc(c.outerRadius+8,c.outerRadius+8,c.radius/2,0,2*Math.PI);
-        c.ctx.fillStyle=`hsl(${(c.color += .3)},${100-rndmRng(50,0)}%,${(c.light += .1)}%)`;
-        c.ctx.fill();
-        c.request=requestAnimationFrame(() => draw(c));
-      } else {
-        cancelAnimationFrame(c.request);
-        addStroke(c);
-      }
-    };
+    if (c.radius < c.innerCrcmf && typeof c.radius !== 'undefined') {
+      c.radius += Math.round(c.innerCrcmf / c.grooves);
+      c.ctx.arc(c.outerRadius+8,c.outerRadius+8,c.radius/2,0,2*Math.PI);
+      c.ctx.fillStyle=`hsl(${(c.color += .3)},${100-rndmRng(50,0)}%,${(c.light += .1)}%)`;
+      c.ctx.fill();
+      c.request=requestAnimationFrame(() => draw(c));
+    } else {
+      cancelAnimationFrame(c.request);
+      addStroke(c);
+    }
+  };
 
   const addStroke = (c, drawTo) => {
     c.ctx.beginPath();
@@ -91,83 +91,65 @@ const CIRCLES = (function() {
     requestAnimationFrame(() => bounce(c));
   };
 
-  const Circle = {
-    create: function() {
-      const newCirc = Object.create(this);
+  const circle = () => {
+      let _c = {};
       let speed = rndmRng(5, 1);
-      newCirc.radius = 0,newCirc.curr = 0;
-      newCirc.clear = { x: 0, y: 0, w: 0, h: 0 };
-      newCirc.innerCrcmf = rndmRng(230, 50);
-      newCirc.outerRadius = Math.round(newCirc.innerCrcmf*rndmRng(.8,.6));
-      newCirc.color = rndmArrI(colors);
-      newCirc.light = rndmRng(60, 10);
-      newCirc.hue = rndmRng(60, 10);
-      newCirc.start = Math.random() * Math.PI * 2;
-      newCirc.element =  document.createElement('canvas'); 
-      newCirc.element.classList.add('circle');
-      newCirc.ctx =  newCirc.element.getContext('2d');
-      newCirc.ctx.canvas.width = newCirc.outerRadius*2+16
-      newCirc.ctx.canvas.height = newCirc.outerRadius*2+16
-      newCirc.ctx.strokeStyle = rndmArrI(strokeColors);
-      newCirc.ctx.lineWidth = rndmRng(6,3);
-      newCirc.ctx.globalCompositeOperation = 'xor';
-      newCirc.x = Math.round(rndmRng(w-newCirc.outerRadius*2-60, 0));
-      newCirc.y = Math.round(rndmRng(h-newCirc.outerRadius*2-60, 0));
-      newCirc.grooves = rndmRng(90,60)  
-      newCirc.ani = rndmArrI(movement);
-      newCirc.request;
-      if (newCirc.ani === "bounce") {
-        newCirc.element.classList.add(rndmArrI(satClasses));
-        newCirc.cvsAppend = rndmArrI(appendCanvases);
-        newCirc.layer = rndmArrI(cvsesAPI);
-        newCirc.dx = Math.cos(newCirc.start) / speed;
-        newCirc.dy = Math.sin(newCirc.start) / speed;  
+      _c.radius = 0,_c.curr = 0;
+      _c.clear = { x: 0, y: 0, w: 0, h: 0 };
+      _c.innerCrcmf = rndmRng(230, 50);
+      _c.outerRadius = Math.round(_c.innerCrcmf*rndmRng(.8,.6));
+      _c.color = rndmArrI(colors);
+      _c.light = rndmRng(60, 10);
+      _c.hue = rndmRng(60, 10);
+      _c.start = Math.random() * Math.PI * 2;
+      _c.element =  document.createElement('canvas'); 
+      _c.element.classList.add('circle');
+      _c.ctx =  _c.element.getContext('2d');
+      _c.ctx.canvas.width = _c.outerRadius*2+16
+      _c.ctx.canvas.height = _c.outerRadius*2+16
+      _c.ctx.strokeStyle = rndmArrI(strokeColors);
+      _c.ctx.lineWidth = rndmRng(6,3);
+      _c.ctx.globalCompositeOperation = 'xor';
+      _c.x = Math.round(rndmRng(w-_c.outerRadius*2-60, 0));
+      _c.y = Math.round(rndmRng(h-_c.outerRadius*2-60, 0));
+      _c.grooves = rndmRng(90,60)  
+      _c.ani = rndmArrI(movement);
+      _c.request;
+      if (_c.ani === "bounce") {
+        _c.element.classList.add(rndmArrI(satClasses));
+        _c.cvsAppend = rndmArrI(appendCanvases);
+        _c.layer = rndmArrI(cvsesAPI);
+        _c.dx = Math.cos(_c.start) / speed;
+        _c.dy = Math.sin(_c.start) / speed;  
       } else {
-        newCirc.cvsAppend = rndmArrI(appendCanvases);
-        newCirc.layer = rndmArrI(cvsesCSS);
-        newCirc.orbit = 250 -(distanceToC(newCirc.x+newCirc.outerRadius+8,newCirc.y+newCirc.outerRadius+8)/10)-newCirc.outerRadius*.53;
-        newCirc.direction = (Math.random()>.5) ? "ccw" : "cw";
-        if (Math.random()>.5) newCirc.orbit *=-.25;
-        if(newCirc.orbit > 0 && newCirc.direction === "cw"){
-          newCirc.start = 1.9;
-        } else if(newCirc.orbit <=0  && newCirc.direction === "cw") {
-          newCirc.start = 5;
-        } else if(newCirc.orbit >0  && newCirc.direction === "ccw") {
-          newCirc.start = 4;
+        _c.cvsAppend = rndmArrI(appendCanvases);
+        _c.layer = rndmArrI(cvsesCSS);
+        _c.orbit = 250 -(distanceToC(_c.x+_c.outerRadius+8,_c.y+_c.outerRadius+8)/10)-_c.outerRadius*.53;
+        _c.direction = (Math.random()>.5) ? "ccw" : "cw";
+        if (Math.random()>.5) _c.orbit *=-.25;
+        if(_c.orbit > 0 && _c.direction === "cw"){
+          _c.start = 1.9;
+        } else if(_c.orbit <=0  && _c.direction === "cw") {
+          _c.start = 5;
+        } else if(_c.orbit >0  && _c.direction === "ccw") {
+          _c.start = 4;
         } else {
-          newCirc.start = 1.2;
+          _c.start = 1.2;
         }
       }
-      newCirc.element.style.left= `${newCirc.x+8}px`,
-      newCirc.element.style.top= `${newCirc.y+8}px`,
-      newCirc.element.style.width= `${newCirc.outerRadius*2+16}px`;
-      newCirc.element.style.heigth= `${newCirc.outerRadius*2+16}px`;
+      _c.element.style.left= `${_c.x+8}px`,
+      _c.element.style.top= `${_c.y+8}px`,
+      _c.element.style.width= `${_c.outerRadius*2+16}px`;
+      _c.element.style.heigth= `${_c.outerRadius*2+16}px`;
    
-      newCirc.cvsAppend.appendChild(newCirc.element);
+      _c.cvsAppend.appendChild(_c.element);
 
-      return newCirc;
-    }
+      return _c;
   };
 
-/** 
-  let timeout = false;
-  window.addEventListener('resize', function() {
-    clearTimeout(timeout);
-    timeout = setTimeout(doneResizing, 800);
-  });
-*/ /** 
-  function doneResizing() {
-    circles = [];
-    count = 0;
-    const selectTag = document.getElementsByClassName('circle');
-    while (selectTag[0]) {
-      selectTag[0].parentNode.removeChild(selectTag[0]);
-    }
-    cvs.initialize();
-    newCircle();
-  }
-*/
-  draw(Circle.create());
- for (i=circAmount; i--;) 
-    setTimeout(() => {draw(Circle.create())}, i*rndmRng(2000,900));
+  draw(circle());
+
+  for (i=circAmount; i--;) 
+    setTimeout(() => {draw(circle())}, i*rndmRng(2000,900));
+
 })();

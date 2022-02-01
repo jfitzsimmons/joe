@@ -9,18 +9,14 @@
 @light-purple:   #a273ab;
 @light-gray:     #cbc;
 @dark-grey:      #616161;
-@white:          #fff;
+@white:          #fffd;
 @dark-shadow: 0 0 6px hsla(291, 45%, 9%, 0.5);
 @gradient-start: rgba(40,17,44,.7) 30%;
 @gradient-end: rgba(40,17,44,.1) 100%;
 @font-serif: Cambria, "Hoefler Text", Utopia, "Liberation Serif", "Nimbus Roman No9 L Regular", Times, "Times New Roman", serif;
-@font-sans: Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
+@font-sans: "Segoe UI", Candara, "Bitstream Vera Sans", "DejaVu Sans", "Bitstream Vera Sans", "Trebuchet MS", Verdana, "Verdana Ref", sans-serif;
 @font-mono: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
 @border-skill: .5vmin solid;
-
-.font-props {
-  font-size: calc(0.1vmin + 12px);
-}
 
 body,
 html {
@@ -30,8 +26,8 @@ html {
 body {
   display: flex;
   flex-wrap: wrap;
-  color: #fff;
-  background-color: hsla(291, 60%, 25%, 1);
+  color: #fffd;
+  background-color: hsla(291, 60%, 5%, 1);
   background-image: url(img/58.png),url(img/74.png), url(img/106.png);
   background-repeat: repeat-x;
   font-family: @font-serif;
@@ -39,7 +35,7 @@ body {
 }
 
 a:link, a:visited, a:hover, a:active {
-  color:#fff;
+  color: @lighter-purple;
   text-decoration: none;
 }
 
@@ -102,10 +98,10 @@ nav {
 
 .page-link {
   padding: .0 1vmin;
-  font-size: calc(0.5vmin + 12px);
+  font-size: calc(0.6vmin + 12px);
   transition: all 0.3s cubic-bezier(0.000, 0.000, 0.230, 1);
   text-shadow: 0 0 .05vmin #111,-.2vmin 0.1vmin .4vmin #dbb1e2;
-  font-family: Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: @font-sans;
 
   &:hover {
     cursor: pointer;
@@ -142,50 +138,18 @@ nav {
   }
 }
 
-
-
-.right {
-  float: right;
-  padding: 14px 16px 14px 0;
-}
-
 .logo-icon {
   width: 20px;
+  height: 20px;
   display: inline-block;
 }
 
 .fill {
-  fill: #fff;
+  fill: #fffd;
 }
 
 .stroke {
-  stroke: #fff;
-}
-
-.bars {
-  display: inline-block;
-  cursor: pointer;
-  padding: 20px 16px 0;
-}
-
-.bar1, .bar2, .bar3 {
-  width: 30px;
-  height: 2px;
-  background-color: @white;
-  margin: 6px 0;
-  transition: 0.4s;
-}
-
-.change .bar1 {
-  -webkit-transform: rotate(-45deg) translate(-9px, 6px);
-  transform:         rotate(-45deg) translate(-9px, 6px);
-}
-
-.change .bar2 {opacity: 0;}
-
-.change .bar3 {
-  -webkit-transform: rotate(45deg) translate(-4px, -3px);
-  transform:         rotate(45deg) translate(-4px, -3px);
+  stroke: #fffd;
 }
 
 section {
@@ -221,7 +185,7 @@ h2 {
 
 h5 {
   font-family: @font-sans;
-  .font-props();
+  font-size: calc(0.1vmin + 12px);
   color: @light-purple;
   margin: 0;
   font-weight: normal;
@@ -231,7 +195,7 @@ h5 {
 
 h6 {
   font-family: @font-mono;
-  .font-props();
+  font-size: calc(0.1vmin + 12px);
   color: @dark-purpleA;
   margin: 0;
 }
@@ -247,36 +211,15 @@ h6 {
   flex-wrap: wrap;
 }
 
-.flex.wrap {flex-wrap: wrap;}
-
 .info {
-  padding: 2vmin 2vmin 2vmin 30vmin;
+  padding: 2vmin 2vmin 0 32vmin;
   width: 70vw;
+  max-width: 1200px;
   background: #000a;
-  color: #fff;
+  color: #fffd;
   font-family: @font-sans;
   z-index: 1;
-}
-
-@keyframes growInfo {
-    0% {
-      background: none;
-      min-width: 0;
-      min-height: 0;
-    }
-    100% {
-      background: #fff;
-      width: 80%;
-      height: 300px;
-      max-width: 80%;
-      min-height: 300px;
-      max-height: 300px;
-     }
-}
-
-.info-text {
-  color: @darker-purple;
-  display: none;
+  font-size: calc(1vmin + 12px);
 }
 
 .home {
@@ -295,9 +238,11 @@ h6 {
   height: 100vh;
   width: 100vw;
 }
+
 .cvs2-container {
   background: linear-gradient(95deg, rgba(40, 17, 44, 0.1) 30%, rgba(40, 17, 44, 0) 100%);
 }
+
 @keyframes sats {
   0%  {filter: saturate(100%)}
   25%  {filter: saturate(200%)}
@@ -329,11 +274,6 @@ h6 {
   contain: size layout paint;
 }
 
-.circle-1 {
-  transition: transform 3s;
-  transition-timing-function: linear;
-}
-
 .circle-2 {
   animation: rotate-cw 75s linear infinite;
   will-change: left, top, transform;
@@ -342,26 +282,6 @@ h6 {
 .circle-3 {
   animation: rotate-ccw 75s linear infinite;
   will-change: left, top, transform;
-}
-
-@keyframes moveL {
-  50%  {left: -0%}
-  100%  {left: 95%}
-}
-
-@keyframes moveR {
-  50%  {left: 95%}
-  100%  {left: -0%}
-}
-
-@keyframes moveU {
-  50%  {top: -0%}
-  100%  {top: 100%}
-}
-
-@keyframes moveD {
-  50%  {top: 100%}
-  100%  {top: -0%}
 }
 
 @keyframes rotate-ccw {
@@ -401,6 +321,7 @@ h6 {
   75%  {backdrop-filter: blur(1px) saturate(10%)}
   100%  {backdrop-filter: blur(3px) saturate(100%)}
 }
+
 .left-rail {
   position: sticky;
   top: 0;
@@ -408,34 +329,6 @@ h6 {
   align-items: center;
   flex: 15vw;
   font-family: "Palatino Linotype", Palatino, Palladio, "URW Palladio L", "Book Antiqua", Baskerville, "Bookman Old Style", "Bitstream Charter", "Nimbus Roman No9 L", Garamond, "Apple Garamond", "ITC Garamond Narrow", "New Century Schoolbook", "Century Schoolbook", "Century Schoolbook L", Georgia, serif;
-}
-.lede .brace {
-  height: 4vw;
-  color: @lighter-purple;
-  margin: 0;
-  font-size: 16vmin;
-}
-.brace.spacer {
-  height: 16vh;
-}
-.js.spacer {
-  height: 22vmin;
-}
-.about {
-  box-shadow: inset 1vmin 0vmin 3vmin 0 #6200FF88;
-}
-.joke {
-  padding: 1vmin;
-  flex: 1;
-}
-.text-left {
-  text-align: left;
-}
-
-.business {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .brace {
@@ -447,12 +340,47 @@ h6 {
   color: #dbb1e2AA;
   transform: rotate(-90deg);
 }
+
+.lede .brace {
+  height: 4vw;
+  color: @lighter-purple;
+  margin: 0;
+  font-size: 16vmin;
+}
+
+.brace.spacer {
+  height: 16vh;
+}
+
 .js {
   font-size: 4vmin;
   color: #68B2F888;
   font-weight: bold;
   text-shadow: 0 0 4vmin #68B2F8;
   margin: 0.3vmin 0 0.3vmin -1.5vw;
+}
+
+.js.spacer {
+  height: 22vmin;
+}
+
+.about {
+  box-shadow: inset 1vmin 0vmin 3vmin 0 #6200FF88;
+}
+
+.joke {
+  padding: 1vmin;
+  flex: 1;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.business {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .large-j {
@@ -527,19 +455,6 @@ h6 {
   color: #fef;
 }
 
-.symbols {align-self: flex-start;}
-
-.symbol {
-  border-radius: 50%;
-  background: @dark-grey;
-  padding:   20px;
-  font-size: 25pt;
-  color: @white;
-  text-align: center;
-  margin:    10px 0;
-  min-width: 40px;
-}
-
 .pic {
   background-image: url('http://localhost:8000/css/img/joe.jpg');
   background-size: cover;
@@ -609,7 +524,7 @@ h6 {
   border-left: @border-skill @lighter-purple;
   border-top:  @border-skill @lighter-purple;
   height: 50px;
-  color: #fff;
+  color: #fffd;
 }
 
 .other-skills {
@@ -633,7 +548,7 @@ h6 {
   width: 30%;
   min-height: 65px;
   max-width:  80px;
-  color: #fff;
+  color: #fffd;
   background: rgba(0, 0, 0, 0.2);
   .score {
     position: absolute;
@@ -665,24 +580,20 @@ h6 {
   }
 }
 
-.links {
-  background: none;
-  min-height: 150px;
-  h5{margin:20px}
-}
-
-.centered {
-  flex-direction: row;
-  align-items: center;
+.flourish {
+  font-size: 7vmin;
+  display: block;
+  float: left;
+  margin: 0vmin 1.5vmin -3vmin;
+  font-family: @font-serif;
 }
 
 @media screen  and (max-width: 350px) {
    .lede  {
-    max-height: 16vmin;
     width: 100%;
     position: relative;
   }
-  .left-rail {
+  .left-rail:not(.lede) {
     display: none;
   }
 }

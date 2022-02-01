@@ -1,39 +1,17 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
-  
-  <script type="text/javascript">
-    /**
-    WebFontConfig = {
-      google: {
-        families: ['Inconsolata:400,700', 'Lora:400,700', 'Arimo:400,700']
-      }
-    };
-    (function() {
-      var wf = document.createElement('script');
-      wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
-        '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-      wf.type = 'text/javascript';
-      wf.async = 'true';
-      var s = document.getElementsByTagName('script')[0];
-      s.parentNode.insertBefore(wf, s);
-    })();**/
-  </script>
   <script src="js/less.min.js" type="text/javascript" async></script>
   <title>Joe Fitzsimmons: Web Developer - Javascript, CSS, Front End, Full Stack</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#28112c" />
   <link rel="stylesheet/less" href="css/style.less" type="text/css" />
-  <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">-->
   <link rel="apple-touch-icon" sizes="120x120" href="apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="shortcut icon" href="favicon.ico">
-  <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>-->
 </head>
-<!--
-<body style="visibility: hidden;">-->
 <body id="pageTop">
   <div class="flex lede left-rail">
     <nav class="flex">
@@ -41,12 +19,6 @@
         <a class="page-link-home logo-link" data-href="pageTop">&#10098;&#10098; &#8521; &#10099;&#10099;</a>
         <a class="page-link about-link" data-href="about">about</a>
         <a class="page-link skills-link" data-href="skills">skills</a>
-        <!--<a class="page-link" target="_blank" href="https://drive.google.com/file/d/1Ihfj00wOddh7FZYsB4bcSIzS8SsIig5P/view?usp=sharing">Resum&Eacute;</a>-->
-        <div class="bars icon" onclick="responsiveNav(this)">
-          <div class="bar1"></div>
-          <div class="bar2"></div>
-          <div class="bar3"></div>
-        </div>
       </div>
     </nav>
     <div class="sunk">
@@ -74,14 +46,18 @@
       </div>
     </div>
     <div class="footer">
-        <a class="page-link logo-icon fill" href="https://github.com/jfitzsimmons"><svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <title>GitHub icon</title>
-          <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path>
-        </svg></a>
-        <a class="page-link logo-icon stroke" href="https://codepen.io/jfitzsimmons"><svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <a class="page-link logo-icon fill" href="https://github.com/jfitzsimmons">
+          <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <title>GitHub icon</title>
+            <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path>
+          </svg>
+        </a>
+        <a class="page-link logo-icon stroke" href="https://codepen.io/jfitzsimmons">
+          <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <title>CodePen icon</title>
             <path d="M 11.00,1.01 C 11.00,1.01 11.00,7.50 11.00,7.50M 1.01,14.50 C 1.01,14.50 11.00,7.50 11.00,7.50 11.00,7.50 20.99,14.50 20.99,14.50M 20.99,7.50 C 20.99,7.50 11.00,14.50 11.00,14.50 11.00,14.50 1.01,7.50 1.01,7.50M 11.00,20.99 C 11.00,20.99 11.00,14.50 11.00,14.50M 20.99,14.50 C 20.99,14.50 11.00,20.99 11.00,20.99 11.00,20.99 1.01,14.50 1.01,14.50 1.01,14.50 1.01,7.50 1.01,7.50 1.01,7.50 11.00,1.01 11.00,1.01 11.00,1.01 20.99,7.50 20.99,7.50 20.99,7.50 20.99,14.50 20.99,14.50 Z"></path>
-              </svg> </a>
+          </svg> 
+        </a>
         <h5>Joe Fitzsimmons &#9400;2021</h5>
     </div>
   </div>
@@ -90,45 +66,43 @@
           {{&#8521;}}
     </div>
   </section>
-<div class="left-rail flex">
-  <div class="flex brace">}<br />}</div>
-  <div class="flex brace">}<br />&nbsp;<br />}</div>
-  <div class="flex brace">}<br />&nbsp;<br />&nbsp;<br />}</div>
-  <div class="flex brace spacer"><br /></div>
-  <div class="flex brace">{<br />&nbsp;<br />&nbsp;<br />{</div>
-  <div class="flex brace">{<br />&nbsp;<br />{</div>
-  <div class="flex brace">{<br />{</div>
-</div>
+  <div class="left-rail flex">
+    <div class="flex brace">}<br />}</div>
+    <div class="flex brace">}<br />&nbsp;<br />}</div>
+    <div class="flex brace">}<br />&nbsp;<br />&nbsp;<br />}</div>
+    <div class="flex brace spacer"><br /></div>
+    <div class="flex brace">{<br />&nbsp;<br />&nbsp;<br />{</div>
+    <div class="flex brace">{<br />&nbsp;<br />{</div>
+    <div class="flex brace">{<br />{</div>
+  </div>
   <section id="about" class="about content flex">
-      <div class="book">
-        <h1 id="aboutlink">about</h1>
-        <p>
-          I have spent my career in IT, Marketing and Communications, working on the web the entire time. My approach to the job is to contribute, take on an <span class="emphasis">impactful</span> amount of work, be a resource for my colleagues and help maintain a <span class="emphasis">positive
-          environment</span>.
-        </p>
-        <p>
-          I enjoy the reward of <span class="emphasis">solving problems</span> like tracking down a stubborn bug or coming up with big picture ideas, breaking them down into manageable tasks and seeing them through to launch, while continually <span class="emphasis">improving the product</span>.
-        </p>
-        <p>
-          I'm a programmer who <span class="emphasis">adapts</span> to different technologies, who also has a deep appreciation of art, design and aesthetics. I make the most of my opportunities. If you think I'd be a good fit and would like to work together, check out my
-          <a href="https://drive.google.com/file/d/1Ihfj00wOddh7FZYsB4bcSIzS8SsIig5P/view?usp=sharing"><span class="emphasis">resum&eacute;</span></a> and reach out to me.
-        </p>
-      </div>
-      <div class="pic">
-      </div>
+    <div class="book">
+      <h1>about</h1>
+      <p>
+        I have spent my career in IT, Marketing and Communications, working on the web the entire time. My approach to the job is to contribute, take on an <span class="emphasis">impactful</span> amount of work, be a resource for my colleagues and help maintain a <span class="emphasis">positive
+        environment</span>.
+      </p>
+      <p>
+        I enjoy the reward of <span class="emphasis">solving problems</span> like tracking down a stubborn bug or coming up with big picture ideas, breaking them down into manageable tasks and seeing them through to launch, while continually <span class="emphasis">improving the product</span>.
+      </p>
+      <p>
+        I'm a programmer who <span class="emphasis">adapts</span> to different technologies, who also has a deep appreciation of art, design and aesthetics. I make the most of my opportunities. If you think I'd be a good fit and would like to work together, check out my
+        <a href="https://drive.google.com/file/d/1Ihfj00wOddh7FZYsB4bcSIzS8SsIig5P/view?usp=sharing"><span class="emphasis">resum&eacute;</span></a> and reach out to me.
+      </p>
+    </div>
+    <div class="pic"></div>
   </section>
-
-<div class="left-rail flex">
-  <div class="flex js">&#10098;&#10098; &#8521; &#10099;&#10099; &#10098;&#10098; &#8521; &#10099;&#10099;</div>
-  <div class="flex js">&#10098; &#8521; &#10099;&#10099; &#10098;&#10098; &#8521; &#10099;</div>
-  <div class="flex js">&#8521; &#10099;&#10099; &#10098;&#10098; &#8521;</div>
-  <div class="flex js">&#10098;&#10098; &#8521; &#10099;&#10099;</div>
-  <div class="flex js spacer"><br /></div>
-  <div class="flex js">&#10098;&#10098; &#8521; &#10099;&#10099;</div>
-  <div class="flex js">&#8521; &#10099;&#10099; &#10098;&#10098; &#8521;</div>
-  <div class="flex js">&#10098; &#8521; &#10099;&#10099; &#10098;&#10098; &#8521; &#10099;</div>
-  <div class="flex js">&#10098;&#10098; &#8521; &#10099;&#10099; &#10098;&#10098; &#8521; &#10099;&#10099;</div>
-</div>
+  <div class="left-rail flex">
+    <div class="flex js">&#10098;&#10098; &#8521; &#10099;&#10099; &#10098;&#10098; &#8521; &#10099;&#10099;</div>
+    <div class="flex js">&#10098; &#8521; &#10099;&#10099; &#10098;&#10098; &#8521; &#10099;</div>
+    <div class="flex js">&#8521; &#10099;&#10099; &#10098;&#10098; &#8521;</div>
+    <div class="flex js">&#10098;&#10098; &#8521; &#10099;&#10099;</div>
+    <div class="flex js spacer"><br /></div>
+    <div class="flex js">&#10098;&#10098; &#8521; &#10099;&#10099;</div>
+    <div class="flex js">&#8521; &#10099;&#10099; &#10098;&#10098; &#8521;</div>
+    <div class="flex js">&#10098; &#8521; &#10099;&#10099; &#10098;&#10098; &#8521; &#10099;</div>
+    <div class="flex js">&#10098;&#10098; &#8521; &#10099;&#10099; &#10098;&#10098; &#8521; &#10099;&#10099;</div>
+  </div>
   <section id="skills" class="skills content">
     <div class="wrap">
       <div class="row-container">
@@ -330,74 +304,36 @@
       </div>
     </div>
   </section>
-
-<section  class="flex info">
-      <p>
-        I aimed for a relaxing, eye catching animation that would be like staring at a fish tank. I started experimenting with HTML5 Canvas, JS and CSS animations. My first and coolest iteration was pure javascript. A circle would grow from a
-        random point on the screen, change hue, and lightness, create a border at a random point around the circle, and then move away from that point at a random speed. It would then bounce around the screen in perpetuity.
-      </p>
-      <p>
-        I loved the way this animation looked but it was too resource intensive. I then experimented with similar functionality, but using CSS. I couldn’t make the circle move at an angle quite as precisely as pure JS. To mimic the functionality,
-        I split the screen into four quadrants. If the circle was generated in a specific quad, it would move across the screen diagonally towards the furthest quad. The circle would move at a random speed on both the x and y axis creating random
-        angles, while moving away from the starting point, although not quite as precisely as the JS animation.
-      </p>
-      <p>
-        The problem with this animation style is that it’s not much more efficient than the JS animation. This is because animating the properties of top/left/width/height (properties that affect document flow) are more resource intensive than
-        transforms due to current web and browser standards.
-      </p>
-      <p>
-        So, I added another css animation that only uses transform. This animation wouldn't bounce off the sides of the window, but would instead, revolve 360 degrees. This time I split the screen in half. If the circle was generated in the right
-        half of the screen, the starting point would be at the top of the circle and the circle would move down. If it generated on the left side, the starting point would be at the bottom of the circle and move up. Also, if the circle is closer
-        to the center of the screen, it has a wider orbit than at the edge of the screen. This is to increase to amount of time the circle remains in view.
-      </p>
-      <p>
-        This animation is far less intensive than the prior two, though not as cool looking in my opinion. So now I decided to use all three animations. Each time a circle is created, it randomly uses one of the three types of animation. I
-        weighted the css transform animation to show up twice as much as the other two in order to save resources.
-      </p>
-      <p>
-        One other resource consideration was to change the number of circles generated based on screen size. This might help with performance on mobile devices.
-      </p>
-      <p>
-        Some other highlights. I heavily leaned on randomization. The circles grow to different sizes. The hue and lightness of the circles change as the circle grows. This makes each circle a unique color, but still fit with the style
-        of the site. There are three different border colors that are chosen at random. I mentioned the different starting points of the border, and the different animations, speeds and angles each circle has.
-      </p>
-      <p>
-        I spent most of my time working on the Home section so this section is
-        lacking. I’m not a fan of talking about myself, and had to come up with
-        a way to fill this section with enough material. I updated the photo from
-        an outdated, smug one, to a newer, grainy, laptop photo. I'm getting closer
-        to a quality photo of myself. This section needs a third pass. It's a
-        more minimal aesthetic, which is an improvement on my last attempt.
-      </p>
-        <p>
-          I came up with an idea on how to visualize data that I thought was
-          original and neat looking. It might not be the best way to present Web
-          Development skills, and I took some liberties in the grouping and
-          display. It’s not the most intuitive way to group this data and the
-          grouping is a little arbitrary, and the scores aren’t precise. Overall,
-          it’s still accurate. I might spend time communicating my skills more
-          efficiently, but I’m proud of the concept. I think the layout could be
-          cleaned up and more readable. Theres a margin-right issue that is nagging
-          at my pixel perfection. I probably shouldn't point that out.
-        </p>
-        <p>
-          Right now it’s just a copyright. I added links to my online
-          accounts: Github, CodePen and Stack Overflow. I should probably add a
-          contact form but can’t think of a better reason to than just ‘everyone
-          has one’. That might be as good a reason as any. There’s plenty I
-          could add in this section, but it may just be content for content’s
-          sake.
-        </p>
+  <section  class="flex info">
+    <p>
+      <span class="flourish">A</span>few years passed since last, I went through this code.  I thought with browser improvements and a little more wisdom, I would spend some time making updates and hopefully get this impractical site to perform a little better.  I had a new idea to utilize canvas more.
+    </p>
+    <p>
+      I removed the three animation methods used prior in <a href="./v1/index.html">v1</a> and replaced them with two new functions: rotate, and bounce. Bounce mimics prior behavior of a circle bouncing off the sides of the screen.  It now appends a canvas element instead of a div.  This allows me to use the element as an image.  The browser redraws the image to create an animation effect.  The element no longer needs to constantly have its location properties updated.  This technique also allows me to keep a static version of the circle as a fixture on the screen.    
+    </p>
+    <p>
+      Rotate resembles its prior version.  In contrast to the Bounce function, instead of redrawing the element as it moves across the screen, it draw the canvas element as a static image, and uses css to rotate the element 360 degrees.  I created new logic to randomize the direction of the animation and try to keep each element on screen for most of its animation cycle.
+    </p>
+    <p>
+      I increased the number of full screen canvases from two to five.  This keeps elements from interfering with each other and gives a more layered effect.  To take advantage of the layering I added a clipping effect that varies the circle's transparency creating an optical illusion when circles overlap.  Four new css classes change each circle's saturation at different rates because I couldn’t stop myself.
+    </p>
+    <p>
+      After this quick cleanup, I noticed a 10+% performance increase. Not because of what  I've rambled about, but because I made the circles larger and used less of them.  And so it goes... 
+    </p>
+    <p>
+      <span class="flourish">T</span>he About section I kept minimal. I used the "card" background I've used on everything like it's salt. I like the big headers and rounder corners.  Made a little speech bubble and added a newer photo.  Everything aligned to the right, I think it gives it an MMS look.  
+    </p>
+    <p>
+      <span class="flourish">S</span>kills looks similar to <a href="./v1/index.html">v1</a>.  I thought this section used to look kind of cool, but didn't make a lot of sense.  I think I made it a little cleaner and relevant.  I changed some skills, deleted and added.  It's a work in progress.
+    </p>
+    
   </section >
   <div id="cvs0-container" class="canvas"><canvas id="cvs0" class="canvas1 canvas"></canvas></div>
   <div id="cvs1-container" class="canvas"><canvas id="cvs1" class="canvas2 canvas"></canvas></div>
   <div id="cvs2-container" class="canvas cvs2-container"><canvas id="cvs2" class="canvas3 canvas"></canvas></div>
   <div id="cvs3-container" class="canvas"><canvas id="cvs3" class="canvas4 canvas"></canvas></div>
   <div id="cvs4-container" class="canvas"><canvas id="cvs4" class="canvas5 canvas"></canvas></div>
-  <script src="js/bg.js" type="text/javascript" defer></script>
+  <script src="js/bg.min.js" type="text/javascript" defer></script>
   <script src="js/init.js" type="text/javascript" defer></script>
-
-
 </body>
-
 </html>
