@@ -1,7 +1,7 @@
 const CIRCLES = (function() {
   const w = window.innerWidth;
   const h = window.innerHeight;
-  const circAmount = Math.round((w * h) / 40000);
+  const circAmount = Math.round((w * h) / 80000);
   const cvs0 = document.getElementById('cvs0'); cvs0.width = w; cvs0.height = h;
   const cvs1 = document.getElementById('cvs1'); cvs1.width = w; cvs1.height = h;
   const cvs2 = document.getElementById('cvs2'); cvs2.width = w; cvs2.height = h;
