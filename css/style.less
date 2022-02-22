@@ -213,14 +213,14 @@ h6 {
 }
 
 .info {
-  padding: 2vmin 2vmin 0 42vmin;
+  padding: 2vmin 2vmin 0 calc(200px + 10vw);
   width: 70vw;
   max-width: 1200px;
   background: #000a;
   color: #fffd;
   font-family: @font-sans;
   z-index: 1;
-  font-size: calc(1vmin + 12px);
+  font-size: calc(0.9vmin + 12px);
   backdrop-filter: blur(5px) brightness(90%);
 }
 
@@ -607,6 +607,9 @@ h6 {
   }
   .left-rail:not(.lede) {
     display: none;
+  }
+  .info {
+    padding: 4vmin;
   }
 }
 
