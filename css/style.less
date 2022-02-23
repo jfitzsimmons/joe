@@ -159,7 +159,7 @@ section {
   box-sizing: border-box;
   flex: 85%;
   min-width: 200px;
-  padding: 4vmin 0vmin 0vmin 4vmin;
+  padding: 3vmin 0vmin 0vmin 3vmin;
 }
 
 h1,
@@ -172,7 +172,6 @@ h2 {
 h1 {
   font-weight: 700;
   font-size: calc(.7vmin + 12px);
-  margin-left: -1vmin;
   font-family: "Palatino Linotype", Palatino, Palladio, "URW Palladio L", "Book Antiqua", Baskerville, "Bookman Old Style", "Bitstream Charter", "Nimbus Roman No9 L", Garamond, "Apple Garamond", "ITC Garamond Narrow", "New Century Schoolbook", "Century Schoolbook", "Century Schoolbook L", Georgia, serif;
   text-shadow: 1vmin 1vmin 1vmin rgba(23, 0, 27, 0.5);
 }
@@ -180,7 +179,7 @@ h1 {
 h2 {
   font-size: calc(.6vmin + 12px);
   font-weight: 400;
-  margin-left: 4vmin;
+  margin-left: 3vmin;
   color: rgba(255,255,255,0.8);
 }
 
@@ -213,7 +212,7 @@ h6 {
 }
 
 .info {
-  padding: 2vmin 2vmin 0 calc(200px + 10vw);
+  padding: 2vmin 2vmin 0 calc(140px + 11vw);
   width: 70vw;
   max-width: 1200px;
   background: #000a;
@@ -403,15 +402,8 @@ h6 {
   }
 }
 
-.other-skills {
-
-  h1 {
-    margin: -2vmin 0vmin 4vmin -50px
-  }
-}
-
 .skills__h1 {
-    margin: -1vmin 0vmin 6vmin -5vmin
+    margin:  2vmin 0vmin 6vmin -2vmin;
 }
 
 .content {
@@ -435,7 +427,7 @@ h6 {
   border-radius: 2vmin;
   margin: 3vmin;
   padding: 4vmin;
-  width: 45vw;
+  width: 55vw;
   max-width: 900px;
   align-self: flex-end;
   box-shadow: 1vmin 1vmin 1vmin 0 rgba(23, 0, 27, 0.5);
@@ -468,9 +460,9 @@ h6 {
   filter: hue-rotate(280deg) saturate(60%);
 }
 .row-container{
-  margin: 3vmin;
+  margin: 1vmin;
   flex: 2;
-  min-width: 260px;
+  min-width: 228px;
 }
 .skills {
   background: rgba(16, 8, 18, .4);
@@ -544,21 +536,24 @@ h6 {
   border-radius: 2vmin;
   align-self: flex-start;
   justify-content: center;
-  margin: 3vmin;
+  margin: 1vmin;
   padding: 1vmin;
   backdrop-filter: blur(5px) brightness(90%);
-  min-width: 138px;
+  min-width: 220px;
+  h1 {
+    margin: 1vmin 0vmin 4vmin -5vmin;
+  }
 }
 
 .other-skill {
   border-radius: 2vmin;
   border: @border-skill #fffd;
-  padding: 2vmin;
-  margin:   1vmin;
+  padding: 1vmin;
+  margin:   0.5vmin;
   position: relative;
-  width: 30%;
+  width: 25%;
   min-height: 65px;
-  max-width:  80px;
+  min-width:  80px;
   color: #fffd;
   background: rgba(0, 0, 0, 0.2);
 
@@ -600,7 +595,7 @@ h6 {
   font-family: @font-serif;
 }
 
-@media screen  and (max-width: 350px) {
+@media screen and (max-width: 375px) {
    .lede  {
     width: 100%;
     position: relative;
@@ -613,29 +608,38 @@ h6 {
   }
 }
 
-@media screen  and (min-width: 351px) and (max-width: 500px) {
+@media screen and (min-width: 376px) and (max-width: 630px) {
   .left-rail, .lede  {
-    flex: 40vw;
+    flex: 32vw;
   }
   section {
-    flex: 60vw;
+    flex: 68vw;
   }
 }
 
-@media screen and (min-width: 501px) and (max-width: 950px) {
+@media screen and (min-width: 631px) and (max-width: 950px) {
   .left-rail, .lede  {
-    flex: 30vw;
+    flex: 25vw;
   }
   section {
-    flex: 70vw;
+    flex: 75vw;
   }
 }
 
-@media screen and (min-width: 951px) and (max-width: 1300px) {
+@media screen and (min-width: 951px) and (max-width: 1340px) {
   .left-rail, .lede  {
     flex: 20vw;
   }
   section {
     flex: 80vw;
+  }
+}
+
+@media screen and (min-width: 1341px) {
+  .left-rail, .lede  {
+    flex: 15vw;
+  }
+  section {
+    flex: 85vw;
   }
 }
