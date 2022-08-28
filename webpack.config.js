@@ -11,6 +11,7 @@ module.exports = {
     maxEntrypointSize: 912000,
     maxAssetSize: 912000
   },
+  devtool: 'source-map',
   devServer: {
     allowedHosts: 'auto',
     client: {
