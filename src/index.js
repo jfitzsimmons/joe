@@ -84,6 +84,7 @@ Circle.prototype.update = function () {
       )
       .lineStyle(rndmRng(20, 6), `0x${this.strokeColor}`)
     this.curr += 1.7
+    if (this.curr == 100) this.graphics.cacheAsBitmap = true
   } else {
     /**
     console.log('else for movement')
@@ -227,6 +228,7 @@ CircleStage.prototype.ready = function () {
   }
 
   this.stage = new PIXI.Container()
+  this.stage.interactiveChildren = false
 
   // Handle window resizes
   /** 
@@ -237,17 +239,26 @@ CircleStage.prototype.ready = function () {
   this.resize()
   */
   this.startUpdate()
-
-  for (let i = 10; i--; )
+  /**
+   * testjpf
+   *
+   * with hardoced delay, se which circle appear, which don't and why they are different
+   */
+  for (let i = 5; i--; ) {
     setTimeout(() => {
       this.addCircles()
-    }, i * rndmRng(2000, 900))
+      // }, i * rndmRng(2000, 900))
+    }, i * 2000)
+  }
 }
 
 CircleStage.prototype.addCircles = function () {
+  console.log(`addCircles!!!`)
   var circle = new Circle(this.bounds)
 
   this.circles.push(circle)
+  console.log(`circles amt: ${this.circles.length}`)
+  console.dir(this.circles)
 }
 
 // Window ready
@@ -297,7 +308,8 @@ CircleStage.prototype.reset = function () {
  */
 CircleStage.prototype.update = function () {
   if (this.circles.length > 0) {
-    for (var i = 0; i < this.circles.length; i++) {
+    console.log(`this.circles.length: ${this.circles.length}`)
+    for (let i = this.circles.length - 1; i--; ) {
       let fart = this.circles[i].update()
       if (fart) this.stage.addChild(fart)
     }
