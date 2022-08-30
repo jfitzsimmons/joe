@@ -1,22 +1,26 @@
-@light-blue:     #68B2F8;
-@dark-blue:      #6200FF;
-@dark-blueA:      #6200FF88;
-@darker-purple:  #28112c;
+@light-blue: #68b2f8;
+@dark-blue: #6200ff;
+@dark-blueA: #6200ff88;
+@darker-purple: #28112c;
 @lighter-purple: #dbb1e2;
-@neon-purple:    #9623AF;
-@dark-purple:    #5a3960;
-@dark-purpleA:    #5a396088;
-@light-purple:   #a273ab;
-@light-gray:     #cbc;
-@dark-grey:      #616161;
-@white:          #fffd;
+@neon-purple: #9623af;
+@dark-purple: #5a3960;
+@dark-purpleA: #5a396088;
+@light-purple: #a273ab;
+@light-gray: #cbc;
+@dark-grey: #616161;
+@white: #fffd;
 @dark-shadow: 0 0 6px hsla(291, 45%, 9%, 0.5);
-@gradient-start: rgba(40,17,44,.7) 30%;
-@gradient-end: rgba(40,17,44,.1) 100%;
-@font-serif: Cambria, "Hoefler Text", Utopia, "Liberation Serif", "Nimbus Roman No9 L Regular", Times, "Times New Roman", serif;
-@font-sans: "Segoe UI", Candara, "Bitstream Vera Sans", "DejaVu Sans", "Bitstream Vera Sans", "Trebuchet MS", Verdana, "Verdana Ref", sans-serif;
-@font-mono: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
-@border-skill: .5vmin solid;
+@gradient-start: rgba(40, 17, 44, 0.7) 30%;
+@gradient-end: rgba(40, 17, 44, 0.1) 100%;
+@font-serif: Cambria, 'Hoefler Text', Utopia, 'Liberation Serif',
+  'Nimbus Roman No9 L Regular', Times, 'Times New Roman', serif;
+@font-sans: 'Segoe UI', Candara, 'Bitstream Vera Sans', 'DejaVu Sans',
+  'Bitstream Vera Sans', 'Trebuchet MS', Verdana, 'Verdana Ref', sans-serif;
+@font-mono: Consolas, 'Andale Mono WT', 'Andale Mono', 'Lucida Console',
+  'Lucida Sans Typewriter', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono',
+  'Liberation Mono', 'Nimbus Mono L', Monaco, 'Courier New', Courier, monospace;
+@border-skill: 0.5vmin solid;
 
 body,
 html {
@@ -27,30 +31,37 @@ body {
   display: flex;
   flex-wrap: wrap;
   color: #fffd;
-  background-color: hsla(291, 60%, 5%, 1);
-  background-image: url(img/58.png),url(img/74.png), url(img/106.png);
+  background-color: hsla(291, 60%, 2%, 1);
+  background-image: url(img/58.png), url(img/74.png), url(img/106.png);
   background-repeat: repeat-x;
   font-family: @font-serif;
   font-size: calc(0.5vmin + 12px);
 }
 
-a:link, a:visited, a:hover, a:active {
+a:link,
+a:visited,
+a:hover,
+a:active {
   color: @lighter-purple;
   text-decoration: none;
 }
 
-a:hover {text-decoration: underline;}
+a:hover {
+  text-decoration: underline;
+}
 
 svg {
   max-width: 30px;
 }
 
-nav {  
+nav {
   box-shadow: 3vmin 3vmin 4vmin 0 #68b2f877;
   text-transform: uppercase;
   background: rgba(23, 0, 27, 0.2);
   width: 100%;
-  .icon {display: none;}
+  .icon {
+    display: none;
+  }
 }
 
 .sunk {
@@ -59,7 +70,7 @@ nav {
   flex-direction: column;
   box-shadow: inset 0vmin 0 3vmin 0 rgba(23, 0, 27, 0.6);
   border-right: 3vmin solid rgba(23, 0, 27, 0.4);
-  border-top: 0.8vmin solid #68B2F866;
+  border-top: 0.8vmin solid #68b2f866;
   width: 100%;
   box-sizing: border-box;
 }
@@ -72,7 +83,7 @@ nav {
 }
 
 .footer {
-  border-top: .8vmin solid #6200FF88;
+  border-top: 0.8vmin solid #6200ff88;
   box-shadow: 3vmin -3vmin 4vmin 0 #6200ff77;
   border-right: 2vmin solid hsla(291, 45%, 9%, 0.2);
   background: rgba(23, 0, 27, 0.4);
@@ -81,44 +92,52 @@ nav {
   padding: 1vmin 2vmin;
 }
 
-.change-color {background: fade(@darker-purple, 100%);}
+.change-color {
+  background: fade(@darker-purple, 100%);
+}
 
 .nav-grid {
-  display: grid; 
-  grid-template-columns: 1fr 1fr; 
-  grid-template-rows: 1fr 1fr; 
-  gap: 0px 0px; 
-  grid-template-areas: 
-    "logo about"
-    "logo skills"; 
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    'logo about'
+    'logo skills';
 }
-.logo-link { grid-area: logo; }
-.about-link { grid-area: about; }
-.skills-link { grid-area: skills; }
+.logo-link {
+  grid-area: logo;
+}
+.about-link {
+  grid-area: about;
+}
+.skills-link {
+  grid-area: skills;
+}
 
 .page-link {
-  padding: .0 1vmin;
+  padding: 0 1vmin;
   font-size: calc(0.6vmin + 12px);
-  transition: all 0.3s cubic-bezier(0.000, 0.000, 0.230, 1);
-  text-shadow: 0 0 .05vmin #111,-.2vmin 0.1vmin .4vmin #dbb1e2;
+  transition: all 0.3s cubic-bezier(0, 0, 0.23, 1);
+  text-shadow: 0 0 0.05vmin #111, -0.2vmin 0.1vmin 0.4vmin #dbb1e2;
   font-family: @font-sans;
 
   &:hover {
     cursor: pointer;
     background-position: 0;
     text-decoration: none;
-    text-shadow: 0 0 .1vmin #111,-.4vmin 0.2vmin .2vmin #dbb1e2;
+    text-shadow: 0 0 0.1vmin #111, -0.4vmin 0.2vmin 0.2vmin #dbb1e2;
   }
   &::before {
-    margin-bottom: .3vmin;
+    margin-bottom: 0.3vmin;
   }
   &::after,
   &::before {
     content: '';
     display: block;
     width: 0;
-    height: .5vmin;
-    margin-top: .5vmin;
+    height: 0.5vmin;
+    margin-top: 0.5vmin;
     background: @dark-blueA;
     transition: width 0.3s;
   }
@@ -164,7 +183,7 @@ section {
 
 h1,
 h2 {
-  line-height:    2.5vmax;
+  line-height: 2.5vmax;
   letter-spacing: 1px;
   margin: 0;
 }
@@ -172,15 +191,19 @@ h2 {
 h1 {
   font-weight: 700;
   font-size: calc(1.4vmin + 12px);
-  font-family: "Palatino Linotype", Palatino, Palladio, "URW Palladio L", "Book Antiqua", Baskerville, "Bookman Old Style", "Bitstream Charter", "Nimbus Roman No9 L", Garamond, "Apple Garamond", "ITC Garamond Narrow", "New Century Schoolbook", "Century Schoolbook", "Century Schoolbook L", Georgia, serif;
+  font-family: 'Palatino Linotype', Palatino, Palladio, 'URW Palladio L',
+    'Book Antiqua', Baskerville, 'Bookman Old Style', 'Bitstream Charter',
+    'Nimbus Roman No9 L', Garamond, 'Apple Garamond', 'ITC Garamond Narrow',
+    'New Century Schoolbook', 'Century Schoolbook', 'Century Schoolbook L',
+    Georgia, serif;
   text-shadow: 1vmin 1vmin 1vmin rgba(23, 0, 27, 0.5);
 }
 
 h2 {
-  font-size: calc(.8vmin + 12px);
+  font-size: calc(0.8vmin + 12px);
   font-weight: 400;
   margin-left: 3vmin;
-  color: rgba(255,255,255,0.8);
+  color: rgba(255, 255, 255, 0.8);
 }
 
 h5 {
@@ -201,8 +224,8 @@ h6 {
 }
 
 .flex {
-  display:         flex;
-  flex-direction:  column;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
 }
 
@@ -233,7 +256,7 @@ h6 {
 
 .canvas {
   position: fixed;
-  top:  0;
+  top: 0;
   left: 0;
   overflow: hidden;
   height: 100vh;
@@ -241,15 +264,29 @@ h6 {
 }
 
 .cvs2-container {
-  background: linear-gradient(95deg, rgba(40, 17, 44, 0.1) 30%, rgba(40, 17, 44, 0) 100%);
+  background: linear-gradient(
+    95deg,
+    rgba(40, 17, 44, 0.1) 30%,
+    rgba(40, 17, 44, 0) 100%
+  );
 }
 
 @keyframes sats {
-  0%  {filter: saturate(100%)}
-  25%  {filter: saturate(200%)}
-  50%  {filter: saturate(100%)}
-  75%  {filter: saturate(0%)}
-  100%  {filter: saturate(100%)}
+  0% {
+    filter: saturate(100%);
+  }
+  25% {
+    filter: saturate(200%);
+  }
+  50% {
+    filter: saturate(100%);
+  }
+  75% {
+    filter: saturate(0%);
+  }
+  100% {
+    filter: saturate(100%);
+  }
 }
 
 .canvas1 {
@@ -286,23 +323,39 @@ h6 {
 }
 
 @keyframes rotate-ccw {
-  0%  {filter: saturate(100%)}
-  25%  {filter: saturate(200%)}
-  50%  {filter: saturate(100%)}
-  75%  {filter: saturate(0%)}
-  100%  {
+  0% {
+    filter: saturate(100%);
+  }
+  25% {
+    filter: saturate(200%);
+  }
+  50% {
+    filter: saturate(100%);
+  }
+  75% {
+    filter: saturate(0%);
+  }
+  100% {
     transform: rotate(-360deg);
-    filter: saturate(100%)
+    filter: saturate(100%);
   }
 }
 @keyframes rotate-cw {
-  0%  {filter: saturate(100%)}
-  25%  {filter: saturate(200%)}
-  50%  {filter: saturate(100%)}
-  75%  {filter: saturate(0%)}
-  100%  {
+  0% {
+    filter: saturate(100%);
+  }
+  25% {
+    filter: saturate(200%);
+  }
+  50% {
+    filter: saturate(100%);
+  }
+  75% {
+    filter: saturate(0%);
+  }
+  100% {
     transform: rotate(360deg);
-    filter: saturate(100%)
+    filter: saturate(100%);
   }
 }
 
@@ -316,11 +369,21 @@ h6 {
 }
 
 @keyframes backSats {
-  0%  {backdrop-filter: blur(3px) saturate(100%)}
-  25%  {backdrop-filter: blur(6px) saturate(190%)}
-  50%  {backdrop-filter: blur(3px) saturate(100%)}
-  75%  {backdrop-filter: blur(1px) saturate(10%)}
-  100%  {backdrop-filter: blur(3px) saturate(100%)}
+  0% {
+    backdrop-filter: blur(3px) saturate(100%);
+  }
+  25% {
+    backdrop-filter: blur(6px) saturate(190%);
+  }
+  50% {
+    backdrop-filter: blur(3px) saturate(100%);
+  }
+  75% {
+    backdrop-filter: blur(1px) saturate(10%);
+  }
+  100% {
+    backdrop-filter: blur(3px) saturate(100%);
+  }
 }
 
 .left-rail {
@@ -329,7 +392,11 @@ h6 {
   height: 100vh;
   align-items: center;
   flex: 15vw;
-  font-family: "Palatino Linotype", Palatino, Palladio, "URW Palladio L", "Book Antiqua", Baskerville, "Bookman Old Style", "Bitstream Charter", "Nimbus Roman No9 L", Garamond, "Apple Garamond", "ITC Garamond Narrow", "New Century Schoolbook", "Century Schoolbook", "Century Schoolbook L", Georgia, serif;
+  font-family: 'Palatino Linotype', Palatino, Palladio, 'URW Palladio L',
+    'Book Antiqua', Baskerville, 'Bookman Old Style', 'Bitstream Charter',
+    'Nimbus Roman No9 L', Garamond, 'Apple Garamond', 'ITC Garamond Narrow',
+    'New Century Schoolbook', 'Century Schoolbook', 'Century Schoolbook L',
+    Georgia, serif;
 }
 
 .brace {
@@ -338,7 +405,7 @@ h6 {
   line-height: 3vmin;
   color: @lighter-purple;
   text-shadow: 0 0 4vmin #dbb1e2;
-  color: #dbb1e2AA;
+  color: #dbb1e2aa;
   transform: rotate(-90deg);
 }
 
@@ -355,9 +422,9 @@ h6 {
 
 .js {
   font-size: 4vmin;
-  color: #68B2F888;
+  color: #68b2f888;
   font-weight: bold;
-  text-shadow: 0 0 4vmin #68B2F8;
+  text-shadow: 0 0 4vmin #68b2f8;
   margin: 0.3vmin 0 0.3vmin -1.5vw;
 }
 
@@ -366,7 +433,7 @@ h6 {
 }
 
 .about {
-  box-shadow: inset 1vmin 0vmin 3vmin 0 #6200FF88;
+  box-shadow: inset 1vmin 0vmin 3vmin 0 #6200ff88;
 }
 
 .joke {
@@ -389,21 +456,47 @@ h6 {
   font-size: 75vmin;
   cursor: default;
   align-self: center;
-  color: #9623AF28;
+  color: #9623af28;
   transform: rotate(30deg);
   filter: saturate(650%);
   text-shadow: 1vmin 1vmin 1vmin #17001b88;
+  animation: pulse-animation 4s infinite;
+  opacity: 1;
+}
+
+@keyframes pulse-animation {
+  0% {
+    text-shadow: 1vmin 1vmin 1vmin #17001b88;
+    font-size: 73vmin;
+    opacity: 0.4;
+  }
+  50% {
+    font-size: 78vmin;
+    opacity: 1;
+  }
+  70% {
+    font-size: 65vmin;
+    opacity: 0.9;
+  }
+  80% {
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0);
+    opacity: 0.8;
+  }
+  100% {
+    text-shadow: 1vmin 1vmin 1vmin #17001b88;
+    font-size: 73vmin;
+    opacity: 0.4;
+  }
 }
 
 .about {
-
   h1 {
     margin: -4vmin 0vmin 4vmin -6vmin;
   }
 }
 
 .skills__h1 {
-    margin:  2vmin 0vmin 6vmin -2vmin;
+  margin: 2vmin 0vmin 6vmin -2vmin;
 }
 
 .content {
@@ -417,7 +510,7 @@ h6 {
     text-align: center;
     color: #cbc;
     font-size: calc(0.5vmin + 12px);
-    margin: .5vmin 0px 2vmin;
+    margin: 0.5vmin 0px 2vmin;
   }
 }
 
@@ -434,7 +527,7 @@ h6 {
 }
 
 .book::before {
-  content: "\27A4";
+  content: '\27A4';
   position: absolute;
   bottom: -7vmin;
   transform: rotate(115deg);
@@ -459,16 +552,20 @@ h6 {
   max-width: 500px;
   filter: hue-rotate(280deg) saturate(60%);
 }
-.row-container{
+.row-container {
   margin: 1vmin;
   flex: 3;
   min-width: 228px;
 }
 .skills {
-  background: rgba(16, 8, 18, .4);
+  background: rgba(16, 8, 18, 0.4);
   box-shadow: inset 1vmin 0vmin 10vmin 0 #fff4;
-  h1 {width: 100%;}
-  .row {margin: 8px 0;}
+  h1 {
+    width: 100%;
+  }
+  .row {
+    margin: 8px 0;
+  }
   svg {
     width: 24px;
     padding: 14%;
@@ -479,7 +576,7 @@ h6 {
   overflow: hidden;
   box-shadow: 1vmin 1vmin 1vmin 0 rgba(23, 0, 27, 0.5);
   div {
-    background: rgba(140,140,140, 0.2);
+    background: rgba(140, 140, 140, 0.2);
     padding-top: 1vmin;
     display: flex;
     justify-content: flex-end;
@@ -489,18 +586,20 @@ h6 {
   p {
     margin: 0;
     padding: 0 1vmin 1.4vmin;
-    font-size: calc(.3vmin + 12px);
+    font-size: calc(0.3vmin + 12px);
     line-height: 8pt;
   }
   .label {
     word-break: break-all;
   }
-  .score {text-align: center;}
+  .score {
+    text-align: center;
+  }
 }
 
 .skill1 {
   border-left: @border-skill @light-purple;
-  border-top:  @border-skill @light-purple;
+  border-top: @border-skill @light-purple;
   backdrop-filter: blur(5px) brightness(90%);
   svg {
     fill: #a9a;
@@ -509,7 +608,7 @@ h6 {
 
 .skill2 {
   border-left: @border-skill @neon-purple;
-  border-top:  @border-skill @neon-purple;
+  border-top: @border-skill @neon-purple;
   color: @lighter-purple;
   svg {
     fill: #b990c0;
@@ -518,7 +617,7 @@ h6 {
 
 .skill3 {
   border-left: @border-skill @lighter-purple;
-  border-top:  @border-skill @lighter-purple;
+  border-top: @border-skill @lighter-purple;
   height: 50px;
   color: #fffd;
   svg {
@@ -548,18 +647,18 @@ h6 {
   border-radius: 2vmin;
   border: @border-skill #fffd;
   padding: 1vmin;
-  margin:   0.5vmin;
+  margin: 0.5vmin;
   position: relative;
   width: 23%;
   min-height: 70px;
-  min-width:  70px;
+  min-width: 70px;
   color: #fffd;
   background: rgba(0, 0, 0, 0.2);
 
   .score {
     position: absolute;
     bottom: 0;
-    right:  0;
+    right: 0;
     margin: 2vmin;
   }
   svg {
@@ -568,7 +667,7 @@ h6 {
   }
 }
 
-.score3{
+.score3 {
   background: rgba(0, 0, 0, 0.6);
   color: @light-gray;
   border: @border-skill @lighter-purple;
@@ -577,7 +676,7 @@ h6 {
   }
 }
 
-.score4{
+.score4 {
   background: rgba(0, 0, 0, 0.4);
   color: @lighter-purple;
   border: @border-skill @neon-purple;
@@ -595,7 +694,7 @@ h6 {
 }
 
 @media screen and (max-width: 375px) {
-   .lede  {
+  .lede {
     width: 100%;
     position: relative;
   }
@@ -608,7 +707,8 @@ h6 {
 }
 
 @media screen and (min-width: 376px) and (max-width: 630px) {
-  .left-rail, .lede  {
+  .left-rail,
+  .lede {
     flex: 32.9vw;
   }
   section {
@@ -617,7 +717,8 @@ h6 {
 }
 
 @media screen and (min-width: 631px) and (max-width: 950px) {
-  .left-rail, .lede  {
+  .left-rail,
+  .lede {
     flex: 25vw;
   }
   section {
@@ -626,7 +727,8 @@ h6 {
 }
 
 @media screen and (min-width: 951px) and (max-width: 1340px) {
-  .left-rail, .lede  {
+  .left-rail,
+  .lede {
     flex: 20vw;
   }
   section {
@@ -635,7 +737,8 @@ h6 {
 }
 
 @media screen and (min-width: 1341px) {
-  .left-rail, .lede  {
+  .left-rail,
+  .lede {
     flex: 15vw;
   }
   section {
