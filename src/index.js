@@ -28,11 +28,11 @@ var Circle = function (bounds) {
   this.speedY = Math.sin(this.start) / rndmRng(5, 1)
   this.radius = 0
   this.curr = 0
-  this.innerCrcmf = rndmRng(90, 5)
-  this.outerRadius = Math.round(this.innerCrcmf * rndmRng(0.8, 0.6))
+  this.innerCrcmf = rndmRng(100, 25)
+  this.grooves = rndmRng(40, 10)
+  // this.outerRadius = Math.round(this.innerCrcmf * rndmRng(0.8, 0.6))
   this.color = rndmArrI(colors)
   this.light = rndmRng(60, 10)
-  this.grooves = rndmRng(90, 60)
   this.strokeColor = rndmArrI(strokeColors)
 
   this.graphics = new PIXI.Graphics()
@@ -41,9 +41,10 @@ var Circle = function (bounds) {
   //this.graphics.y = this.cy
 }
 
-Circle.prototype = Object.create(PIXI.Sprite.prototype)
-
 Circle.prototype.update = function () {
+  //testjpf
+  //this conditional doesn't work becuase of
+  //his.innerCrcmf / this.groove sizes!!!
   if (this.radius < this.innerCrcmf && typeof this.radius !== 'undefined') {
     this.radius += Math.round(this.innerCrcmf / this.grooves)
     /**  console.log(
@@ -54,6 +55,7 @@ Circle.prototype.update = function () {
       )}`
     )*/
     //this.graphics.blendMode.XOR
+
     this.graphics.beginFill(
       hslToHex(
         Math.round((this.color += 0.3)),
@@ -61,6 +63,7 @@ Circle.prototype.update = function () {
         Math.round((this.light += 0.1))
       )
     )
+    //this.graphics.beginFill(0x00ff00)
 
     /**  this.graphics.beginFill = `hsl(${(this.color += 0.3)},${
       100 - rndmRng(50, 0)
@@ -77,13 +80,13 @@ Circle.prototype.update = function () {
       .arc(
         this.cx,
         this.cy,
-        Math.round(this.innerCrcmf + rndmRng(40, 10)),
+        Math.round(this.innerCrcmf + rndmRng(35, 10)),
         this.start,
         (Math.PI * 2 * this.curr) / 100 + this.start,
         false
       )
-      .lineStyle(rndmRng(20, 6), `0x${this.strokeColor}`)
-    this.curr += 1.7
+      .lineStyle(Math.round(rndmRng(20, 5)), `0x${this.strokeColor}`)
+    this.curr += 6.8
     if (this.curr == 100) this.graphics.cacheAsBitmap = true
   } else {
     /**
@@ -199,6 +202,12 @@ var CircleStage = function (domElementSelector) {
   this.stage = null
 }
 
+CircleStage.prototype.addCircles = function () {
+  var circle = new Circle(this.bounds)
+
+  this.circles.push(circle)
+}
+
 CircleStage.prototype.ready = function () {
   if (typeof PIXI === 'undefined') {
     this.domElement.addClass('error')
@@ -244,21 +253,14 @@ CircleStage.prototype.ready = function () {
    *
    * with hardoced delay, se which circle appear, which don't and why they are different
    */
-  for (let i = 5; i--; ) {
+  const circleAmount = Math.round(
+    (this.bounds.right * this.bounds.bottom) / 44000
+  )
+  for (let i = circleAmount; i--; ) {
     setTimeout(() => {
       this.addCircles()
-      // }, i * rndmRng(2000, 900))
-    }, i * 2000)
+    }, i * rndmRng(2000, 900))
   }
-}
-
-CircleStage.prototype.addCircles = function () {
-  console.log(`addCircles!!!`)
-  var circle = new Circle(this.bounds)
-
-  this.circles.push(circle)
-  console.log(`circles amt: ${this.circles.length}`)
-  console.dir(this.circles)
 }
 
 // Window ready
@@ -308,8 +310,8 @@ CircleStage.prototype.reset = function () {
  */
 CircleStage.prototype.update = function () {
   if (this.circles.length > 0) {
-    console.log(`this.circles.length: ${this.circles.length}`)
-    for (let i = this.circles.length - 1; i--; ) {
+    //  console.log(`this.circles.length: ${this.circles.length}`)
+    for (let i = this.circles.length; i--; ) {
       let fart = this.circles[i].update()
       if (fart) this.stage.addChild(fart)
     }
