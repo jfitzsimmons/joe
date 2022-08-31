@@ -6,6 +6,7 @@ const rndmArrI = (a) => a[Math.floor(Math.random() * a.length)]
 const rndmRng = (h, l) => Math.random() * (h - l) + l
 const colors = [209, 291, 263]
 const strokeColors = ['506EE5', '68B2F8', '7037CD']
+const timeouts = new Array()
 
 function hslToHex(h, s, l) {
   l /= 100
@@ -19,17 +20,27 @@ function hslToHex(h, s, l) {
   }
   return `0x${f(0)}${f(8)}${f(4)}`
 }
+
+function debounce(func, timeout = 300) {
+  let timer
+  return (...args) => {
+    clearTimeout(timer)
+    timer = setTimeout(() => {
+      func.apply(this, args)
+    }, timeout)
+  }
+}
 const Circle = function (bounds) {
   this.bounds = bounds
-  this.cx = Math.round(rndmRng(this.bounds.right - 5, this.bounds.left + 5))
-  this.cy = Math.round(rndmRng(this.bounds.bottom - 5, this.bounds.top + 5))
+  this.cx = Math.round(rndmRng(this.bounds.right - 15, this.bounds.left + 15))
+  this.cy = Math.round(rndmRng(this.bounds.bottom - 15, this.bounds.top + 15))
   this.start = Math.random() * Math.PI * 2
   this.speedX = Math.cos(this.start) / rndmRng(5, 1)
   this.speedY = Math.sin(this.start) / rndmRng(5, 1)
   this.radius = 0
   this.curr = 0
   this.innerCrcmf = rndmRng(130, 25)
-  this.grooves = rndmRng(50, 10)
+  this.grooves = rndmRng(40, 10)
   this.color = rndmArrI(colors)
   this.light = rndmRng(60, 10)
   this.strokeColor = rndmArrI(strokeColors)
@@ -100,9 +111,17 @@ const CircleStage = function (domElementSelector) {
 }
 
 CircleStage.prototype.addCircles = function () {
-  const circle = new Circle(this.bounds)
-
-  this.circles.push(circle)
+  const circleAmount = Math.round(
+    (this.bounds.right * this.bounds.bottom) / 44000
+  )
+  for (let i = circleAmount; i--; ) {
+    timeouts.push(
+      setTimeout(() => {
+        const circle = new Circle(this.bounds)
+        this.circles.push(circle)
+      }, i * rndmRng(2000, 900))
+    )
+  }
 }
 
 CircleStage.prototype.ready = function () {
@@ -137,25 +156,10 @@ CircleStage.prototype.ready = function () {
   this.stage = new PIXI.Container()
   this.stage.interactiveChildren = false
 
-  // Handle window resizes
-  /**  window.onresize = () => {
-    this.resize.bind(this)
-  }*/
-
-  window.addEventListener('resize', this.resize.bind(this), true)
-
-  this.resize()
+  window.addEventListener('resize', debounce(this.resize.bind(this), 400))
 
   this.startUpdate()
-
-  const circleAmount = Math.round(
-    (this.bounds.right * this.bounds.bottom) / 44000
-  )
-  for (let i = circleAmount; i--; ) {
-    setTimeout(() => {
-      this.addCircles()
-    }, i * rndmRng(2000, 900))
-  }
+  this.addCircles()
 }
 
 document.addEventListener('DOMContentLoaded', (e) => {
@@ -178,13 +182,7 @@ Circle.prototype.destroy = function () {
 }
 */
 
-/**
- * testjpf
- *
- * debounce!!!
- */
 CircleStage.prototype.resize = function () {
-  console.log(`CircleStage.prototype.resize`)
   const width = this.domElement.offsetWidth
   const height = this.domElement.offsetHeight
   this.bounds.right = width
@@ -194,9 +192,12 @@ CircleStage.prototype.resize = function () {
 }
 
 CircleStage.prototype.reset = function () {
-  console.log(`CircleStage.prototype.reset`)
+  for (const to in timeouts) {
+    window.clearTimeout(to)
+  }
   this.stage.removeChildren()
   this.circles.length = 0
+  this.addCircles()
 }
 
 CircleStage.prototype.update = function () {
