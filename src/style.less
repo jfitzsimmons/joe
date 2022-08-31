@@ -367,6 +367,7 @@ h6 {
   animation: 25s linear 0s infinite alternate backSats;
   box-shadow: 1vmin 0 4vmin 0 #dbb1e244, inset -6vmin 0 3vmin 0 #943da422;
   z-index: 2;
+  backdrop-filter: blur(1px) saturate(90%);
 }
 
 @keyframes backSats {
@@ -457,36 +458,34 @@ h6 {
   font-size: 75vmin;
   cursor: default;
   align-self: center;
-  color: #9623af28;
-  transform: rotate(30deg);
-  filter: saturate(650%);
+  color: #9623af24;
+  transform: rotate(30deg) scale(1);
+  filter: saturate(550%);
   text-shadow: 1vmin 1vmin 1vmin #17001b88;
   animation: pulse-animation 8s infinite;
+  will-change: transform, opacity;
   opacity: 1;
 }
 
 @keyframes pulse-animation {
   0% {
-    text-shadow: 1vmin 1vmin 1vmin #17001b88;
-    font-size: 73vmin;
-    opacity: 0.4;
+    transform: rotate(30deg) scale(0.8);
+    opacity: 0.2;
   }
   50% {
-    font-size: 78vmin;
-    opacity: 1;
-  }
-  70% {
-    font-size: 65vmin;
+    transform: rotate(30deg) scale(1);
     opacity: 0.9;
   }
+  70% {
+    transform: rotate(30deg) scale(0.6);
+    opacity: 0.7;
+  }
   80% {
-    text-shadow: 0 0 20px rgba(255, 255, 255, 0);
-    opacity: 0.8;
+    opacity: 0.5;
   }
   100% {
-    text-shadow: 1vmin 1vmin 1vmin #17001b88;
-    font-size: 73vmin;
-    opacity: 0.4;
+    transform: rotate(30deg) scale(0.8);
+    opacity: 0.2;
   }
 }
 

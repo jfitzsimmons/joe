@@ -30,6 +30,7 @@ function debounce(func, timeout = 300) {
     }, timeout)
   }
 }
+
 const Circle = function (bounds) {
   this.bounds = bounds
   this.cx = Math.round(rndmRng(this.bounds.right - 15, this.bounds.left + 15))
@@ -40,7 +41,7 @@ const Circle = function (bounds) {
   this.radius = 0
   this.curr = 0
   this.innerCrcmf = rndmRng(130, 25)
-  this.grooves = rndmRng(40, 10)
+  this.grooves = rndmRng(35, 10)
   this.color = rndmArrI(colors)
   this.light = rndmRng(60, 10)
   this.strokeColor = rndmArrI(strokeColors)
@@ -74,7 +75,7 @@ Circle.prototype.update = function () {
         false
       )
       .lineStyle(Math.round(rndmRng(25, 5)), `0x${this.strokeColor}`)
-    this.curr += rndmRng(6.8, 3.4)
+    this.curr += rndmRng(8.8, 3.4)
     if (this.curr == 100) this.graphics.cacheAsBitmap = true
   } else {
     if (
@@ -93,6 +94,7 @@ Circle.prototype.update = function () {
     this.graphics.y -= this.speedY
   }
 }
+
 const CircleStage = function (domElementSelector) {
   this.circles = []
 
@@ -112,7 +114,7 @@ const CircleStage = function (domElementSelector) {
 
 CircleStage.prototype.addCircles = function () {
   const circleAmount = Math.round(
-    (this.bounds.right * this.bounds.bottom) / 44000
+    (this.bounds.right * this.bounds.bottom) / 47000
   )
   for (let i = circleAmount; i--; ) {
     timeouts.push(
@@ -175,13 +177,6 @@ CircleStage.prototype.startUpdate = function () {
   })
 }
 
-/** 
-Circle.prototype.destroy = function () {
-  this.bounds = null
-  PIXI.Sprite.prototype.destroy.call(this)
-}
-*/
-
 CircleStage.prototype.resize = function () {
   const width = this.domElement.offsetWidth
   const height = this.domElement.offsetHeight
@@ -203,8 +198,8 @@ CircleStage.prototype.reset = function () {
 CircleStage.prototype.update = function () {
   if (this.circles.length > 0) {
     for (let i = this.circles.length; i--; ) {
-      let fart = this.circles[i].update()
-      if (fart) this.stage.addChild(fart)
+      let child = this.circles[i].update()
+      if (child) this.stage.addChild(child)
     }
   }
 
