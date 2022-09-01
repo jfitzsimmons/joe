@@ -93,10 +93,6 @@ nav {
   padding: 1vmin 2vmin;
 }
 
-.change-color {
-  background: fade(@darker-purple, 100%);
-}
-
 .nav-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -106,12 +102,15 @@ nav {
     'logo about'
     'logo skills';
 }
+
 .logo-link {
   grid-area: logo;
 }
+
 .about-link {
   grid-area: about;
 }
+
 .skills-link {
   grid-area: skills;
 }
@@ -264,14 +263,6 @@ h6 {
   width: 100vw;
 }
 
-.cvs2-container {
-  background: linear-gradient(
-    95deg,
-    rgba(40, 17, 44, 0.1) 30%,
-    rgba(40, 17, 44, 0) 100%
-  );
-}
-
 @keyframes sats {
   0% {
     filter: saturate(100%);
@@ -292,72 +283,6 @@ h6 {
 
 .canvas1 {
   animation: 20s linear 0s infinite alternate sats;
-}
-.canvas2 {
-  animation: 25s ease-in-out 4s infinite alternate sats;
-}
-.canvas3 {
-  animation: 30s ease-out 3s infinite alternate sats;
-}
-.canvas4 {
-  animation: 35 linear 2s infinite alternate sats;
-}
-.canvas5 {
-  animation: 40s ease 1s infinite alternate sats;
-}
-
-.circle {
-  position: absolute;
-  border-radius: 50%;
-  will-change: left, top, width, height, transform;
-  contain: size layout paint;
-}
-
-.circle-2 {
-  animation: rotate-cw 75s linear infinite;
-  will-change: left, top, transform;
-}
-
-.circle-3 {
-  animation: rotate-ccw 75s linear infinite;
-  will-change: left, top, transform;
-}
-
-@keyframes rotate-ccw {
-  0% {
-    filter: saturate(100%);
-  }
-  25% {
-    filter: saturate(200%);
-  }
-  50% {
-    filter: saturate(100%);
-  }
-  75% {
-    filter: saturate(0%);
-  }
-  100% {
-    transform: rotate(-360deg);
-    filter: saturate(100%);
-  }
-}
-@keyframes rotate-cw {
-  0% {
-    filter: saturate(100%);
-  }
-  25% {
-    filter: saturate(200%);
-  }
-  50% {
-    filter: saturate(100%);
-  }
-  75% {
-    filter: saturate(0%);
-  }
-  100% {
-    transform: rotate(360deg);
-    filter: saturate(100%);
-  }
 }
 
 .lede {
@@ -455,7 +380,7 @@ h6 {
 
 .large-j {
   letter-spacing: 8vmin;
-  font-size: 75vmin;
+  font-size: 73vmin;
   cursor: default;
   align-self: center;
   color: #9623af24;
@@ -469,7 +394,7 @@ h6 {
 
 @keyframes pulse-animation {
   0% {
-    transform: rotate(30deg) scale(0.8);
+    transform: rotate(30deg) scale(0.9);
     opacity: 0.2;
   }
   50% {
@@ -477,14 +402,14 @@ h6 {
     opacity: 0.9;
   }
   70% {
-    transform: rotate(30deg) scale(0.6);
+    transform: rotate(30deg) scale(0.7);
     opacity: 0.7;
   }
   80% {
     opacity: 0.5;
   }
   100% {
-    transform: rotate(30deg) scale(0.8);
+    transform: rotate(30deg) scale(0.9);
     opacity: 0.2;
   }
 }
@@ -542,7 +467,7 @@ h6 {
 }
 
 .pic {
-  background-image: url('https://jfitzsimmons.github.io/joe/css/img/joe.jpg');
+  background-image: url('./img/joe.jpg');
   background-size: cover;
   width: 40vmin;
   height: 40vmin;
@@ -552,11 +477,13 @@ h6 {
   max-width: 500px;
   filter: hue-rotate(280deg) saturate(60%);
 }
+
 .row-container {
   margin: 1vmin;
   flex: 3;
   min-width: 228px;
 }
+
 .skills {
   background: rgba(16, 8, 18, 0.4);
   box-shadow: inset 1vmin 0vmin 10vmin 0 #fff4;
@@ -696,7 +623,10 @@ h6 {
 @media screen and (max-width: 375px) {
   .lede {
     width: 100%;
-    position: relative;
+    position: absolute;
+  }
+  .book {
+    width: auto;
   }
   .left-rail:not(.lede) {
     display: none;

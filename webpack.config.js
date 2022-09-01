@@ -13,6 +13,7 @@ module.exports = {
       hash: true,
       template: './src/index.html',
       filename: './index.html',
+      favicon: './src/favicon.ico',
     }),
   ],
   optimization: {
@@ -42,6 +43,10 @@ module.exports = {
       {
         test: /\.less$/i,
         use: ['style-loader', 'css-loader', 'less-loader'],
+      },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: 'asset/resource',
       },
     ],
   },
