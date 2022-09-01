@@ -2,7 +2,7 @@
 
 I use this project as an online CV and a general representation of some of my Web Development skills.
 
-[![Joe Fitzsimmons CV site](https://github.com/jfitzsimmons/joe/blob/main/preview.png)](https://jfitzsimmons.github.io/joe/ 'Joe Fitzsimmons CV site')
+[![Joe Fitzsimmons CV site](https://github.com/jfitzsimmons/joe/blob/master/preview.png)](https://jfitzsimmons.github.io/joe/ 'Joe Fitzsimmons CV site')
 
 ## Built With
 
