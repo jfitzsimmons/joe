@@ -178,12 +178,16 @@ CircleStage.prototype.startUpdate = function () {
 }
 
 CircleStage.prototype.resize = function () {
+  const prevWidth = this.bounds.right
+  const prevHeight = this.bounds.bottom
   const width = this.domElement.offsetWidth
   const height = this.domElement.offsetHeight
   this.bounds.right = width
   this.bounds.bottom = height
-  this.renderer.resize(width, height)
-  this.reset()
+  if (Math.abs(prevWidth - width) > 50 || Math.abs(prevHeight - height) > 50) {
+    this.renderer.resize(width, height)
+    this.reset()
+  }
 }
 
 CircleStage.prototype.reset = function () {

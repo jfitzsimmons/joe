@@ -121,6 +121,10 @@ nav {
   text-shadow: 0 0 0.05vmin #111, -0.2vmin 0.1vmin 0.4vmin #dbb1e2;
   font-family: @font-sans;
 
+  svg {
+    margin-top: 2px;
+  }
+
   &:hover {
     cursor: pointer;
     background-position: 0;
@@ -136,7 +140,6 @@ nav {
     display: block;
     width: 0;
     height: 0.5vmin;
-    margin-top: 0.5vmin;
     background: @dark-blueA;
     transition: width 0.3s;
   }
@@ -207,12 +210,12 @@ h2 {
 
 h5 {
   font-family: @font-sans;
-  font-size: calc(0.1vmin + 12px);
+  font-size: calc(0.1vmin + 10px);
   color: @light-purple;
   margin: 0;
   font-weight: normal;
   clear: both;
-  padding: 0 1vmin;
+  padding: 5px 1vmin 0 1vmin;
 }
 
 h6 {

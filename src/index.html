@@ -458,57 +458,24 @@
     </section>
     <section class="flex info">
       <p>
-        <span class="flourish">A</span>few years passed since last, I went
-        through this code. I thought with browser improvements and a little more
-        wisdom, I would spend some time making updates and hopefully get this
-        impractical site to perform a little better. I had a new idea to utilize
-        canvas more.
+        <span class="flourish">S</span>ix months have passed since I replaced
+        <a href="./v1/index.html">v1</a> with <a href="./v2/index.html">v2</a>
       </p>
       <p>
-        I removed the three animation methods used prior in
-        <a href="./v1/index.html">v1</a> and replaced them with two new
-        functions: rotate, and bounce. Bounce mimics prior behavior of a circle
-        bouncing off the sides of the screen. It now appends a canvas element
-        instead of a div. This allows me to use the element as an image. The
-        browser redraws the image to create an animation effect. The element no
-        longer needs to constantly have its location properties updated. This
-        technique also allows me to keep a static version of the circle as a
-        fixture on the screen.
+        <span class="flourish">I</span>nstead of Canvas animations I went with a
+        single bounce animation that utilizes Pixi.js. I also added a new
+        pulsing CSS animation to the large J on the home screen.
       </p>
       <p>
-        Rotate resembles its prior version. In contrast to the Bounce function,
-        instead of redrawing the element as it moves across the screen, it draw
-        the canvas element as a static image, and uses css to rotate the element
-        360 degrees. I created new logic to randomize the direction of the
-        animation and try to keep each element on screen for most of its
-        animation cycle.
+        <span class="flourish">W</span>ith this new version, I noticed a 30%
+        performance increase. We can attribute these result from using WebGL and
+        converting the circles to cached Bitmap images before they start
+        changing position.
       </p>
       <p>
-        I increased the number of full screen canvases from two to five. This
-        keeps elements from interfering with each other and gives a more layered
-        effect. To take advantage of the layering I added a clipping effect that
-        varies the circle's transparency creating an optical illusion when
-        circles overlap. Four new css classes change each circle's saturation at
-        different rates because I couldn’t stop myself.
-      </p>
-      <p>
-        After this quick cleanup, I noticed a 10+% performance increase. Not
-        because of what I've rambled about, but because I made the circles
-        larger and used less of them. And so it goes...
-      </p>
-      <p>
-        <span class="flourish">T</span>he About section I kept minimal. I used
-        the "card" background I've used on everything like it's salt. I like the
-        big headers and rounder corners. Made a little speech bubble and added a
-        newer photo. Everything aligned to the right, I think it gives it an MMS
-        look.
-      </p>
-      <p>
-        <span class="flourish">S</span>kills looks similar to
-        <a href="./v1/index.html">v1</a>. I thought this section used to look
-        kind of cool, but didn't make a lot of sense. I think I made it a little
-        cleaner and relevant. I changed some skills, deleted and added. It's a
-        work in progress.
+        <span class="flourish">M</span>y photo's file size was too large so I
+        compressed it a little. I made the background darker so it would
+        contrast more with the text.
       </p>
     </section>
     <div id="cvs0-container" class="canvas">
