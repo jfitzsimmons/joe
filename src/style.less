@@ -35,7 +35,6 @@ body {
   background-image: url(img/58.png), url(img/74.png), url(img/106.png);
   background-repeat: repeat-x;
   font-family: @font-serif;
-  font-size: calc(0.5vmin + 12px);
   text-shadow: 0 0 2px hsla(291, 60%, 2%, 1);
 }
 
@@ -293,6 +292,7 @@ h6 {
   box-shadow: 1vmin 0 4vmin 0 #dbb1e244, inset -6vmin 0 3vmin 0 #943da422;
   z-index: 2;
   backdrop-filter: blur(1px) saturate(90%);
+  font-size: calc(0.5vmin + 12px);
 }
 
 @keyframes backSats {
@@ -620,7 +620,7 @@ h6 {
   font-family: @font-serif;
 }
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 26em) {
   .lede {
     width: 100%;
     position: absolute;
@@ -636,7 +636,7 @@ h6 {
   }
 }
 
-@media screen and (min-width: 376px) and (max-width: 630px) {
+@media screen and (min-width: 26em) and (max-width: 39.4em) {
   .left-rail,
   .lede {
     flex: 32.9vw;
@@ -646,7 +646,7 @@ h6 {
   }
 }
 
-@media screen and (min-width: 631px) and (max-width: 950px) {
+@media screen and (min-width: 39.4em) and (max-width: 59.4em) {
   .left-rail,
   .lede {
     flex: 25vw;
@@ -656,7 +656,7 @@ h6 {
   }
 }
 
-@media screen and (min-width: 951px) and (max-width: 1340px) {
+@media screen and (min-width: 59.4em) and (max-width: 83.8em) {
   .left-rail,
   .lede {
     flex: 20vw;
@@ -666,7 +666,7 @@ h6 {
   }
 }
 
-@media screen and (min-width: 1341px) {
+@media screen and (min-width: 83.8em) {
   .left-rail,
   .lede {
     flex: 15vw;
