@@ -10,3 +10,11 @@ function smoothScroll(e) {
 
 let links = document.querySelectorAll('[data-href]')
 links.forEach((l) => l.addEventListener('click', smoothScroll))
+
+let liEls = document.getElementsByClassName('gallery__item')
+let index = 0
+window.show = function (increase) {
+  index = index + increase
+  index = Math.min(Math.max(index, 0), liEls.length - 1)
+  liEls[index].scrollIntoView({ behavior: 'smooth' })
+}

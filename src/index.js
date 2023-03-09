@@ -1,4 +1,4 @@
-import * as PIXI from 'pixi.js'
+//import * as PIXI from 'pixi.js'
 import './init.js'
 import './style.less'
 
@@ -114,7 +114,7 @@ const CircleStage = function (domElementSelector) {
 
 CircleStage.prototype.addCircles = function () {
   const circleAmount = Math.round(
-    (this.bounds.right * this.bounds.bottom) / 47000
+    (this.bounds.right * this.bounds.bottom) / 280000
   )
   for (let i = circleAmount; i--; ) {
     timeouts.push(
@@ -167,7 +167,7 @@ CircleStage.prototype.ready = function () {
 document.addEventListener('DOMContentLoaded', (e) => {
   const app = new CircleStage('cvs0-container')
 
-  app.ready()
+  //app.ready()
 })
 
 CircleStage.prototype.startUpdate = function () {
