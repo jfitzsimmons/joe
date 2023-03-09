@@ -9,7 +9,7 @@
     <meta name="theme-color" content="#28112c" />
     <link rel="stylesheet/less" href="css/style.less" type="text/css" />
   </head>
-  <body id="pageTop" style="background-color: hsla(291, 60%, 2%, 1)">
+  <body id="pageTop">
     <div class="flex lede left-rail">
       <nav class="flex">
         <div class="top-nav nav-grid" id="nav">
@@ -89,16 +89,16 @@
       <div class="flex brace">{<br />{</div>
     </div>
     <section id="gallery" class="gallery flex">
-      <h1>Gallery</h1>
+      <h1 class="gallery__heading">Gallery</h1>
       <div class="gallery__buttons">
         <button class="prev" onclick="show(-1)">&lt;</button>
         <button class="next" onclick="show(+1)">&gt;</button>
       </div>
-      <ul>
+      <ul class="gallery__ul">
         <li class="gallery__item">
-          
+          <img class="img1" src="./assets/gallery/2d_animations.png" />
           <article >
-            <img class="img2" src="./assets/gallery/2d_animations.png" /><h1>2D Generative Animation Gallery</h1>
+            <h1>2D Generative Animation Gallery</h1>
             <p>Generative animations coded with Pixi.js, utilizes WebGL and styled with Sass.</p>
             <p><strong>What goes into a piece of generative art?</strong><br>
             Often, generative art draws inspiration from modern art, especially pop art that makes heavy use of orderly geometric patterns.</p>
@@ -118,8 +118,8 @@
           </article>
         </li>
         <li class="gallery__item"> 
+          <img class="img2" src="./assets/gallery/harvard_art.png" />
           <article>
-            <img class="img1" src="./assets/gallery/harvard_art.png" />
             <h1 >
               Art-API-React
             </h1>
@@ -196,12 +196,6 @@
                 - Making the web more beautiful, fast, and open through great
                 typography
               </li>
-            </ul>
-            <h2 >
-              Current State
-            </h2>
-            <ul>
-              <li>Add TypeScript</li>
             </ul>
           </article>
         </li>

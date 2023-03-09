@@ -7,6 +7,7 @@
 @dark-purple: #5a3960;
 @dark-purpleA: #5a396088;
 @light-purple: #a273ab;
+@light-purpleA: #a273ab88;
 @light-gray: #cbc;
 @dark-grey: #616161;
 @white: #fffd;
@@ -425,21 +426,40 @@ h6 {
 
 .gallery {
   align-items: center;
-
-  ul {
+  background: @darker-purple;
+  box-shadow: inset 2vmin 0vmin 10vmin 10px hsla(291, 60%, 2%, 1);
+  border-bottom: 1vh solid @light-blue;
+  .gallery__heading {
+    font-size: 12vmin;
+    margin-bottom: -2vmin;
+    margin-top: 2vmin;
+  }
+  .gallery__ul {
     display: flex;
     max-width: 90%;
     overflow: hidden;
     padding: 0;
+    box-shadow: 0 0 5vmin 0 @light-purpleA;
   }
   li {
     display: block;
     list-style: none;
-    margin-left: -2vmin;
+    padding: 2vmin;
+    ul {
+      flex-wrap: wrap;
+    }
+    li {
+      flex: 1;
+      min-width: 120px;
+    }
+  }
+  article {
+    background: hsla(291, 60%, 2%, 1);
     padding: 2vmin;
   }
   img {
-    height: 40vmin;
+    max-width: 52vmin;
+    max-height: 40vmin;
   }
   button.prev,
   button.next {
@@ -464,6 +484,7 @@ h6 {
   justify-content: space-between;
   width: 86%;
   margin-bottom: -26vmin;
+  margin-left: 2vmin;
   margin-top: 26vmin;
   z-index: 1;
 }
@@ -687,6 +708,10 @@ h6 {
   }
   .info {
     padding: 4vmin;
+  }
+  .gallery img {
+    max-width: 82vmin;
+    max-height: 60vmin;
   }
 }
 
