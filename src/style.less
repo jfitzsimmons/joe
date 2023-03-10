@@ -353,7 +353,7 @@ h6 {
   top: 0;
   height: 100vh;
   align-items: center;
-  backdrop-filter: saturate(150%) blur(5px);
+  backdrop-filter: saturate(150%) blur(2px);
   flex: 15vw;
   font-family: 'Palatino Linotype', Palatino, Palladio, 'URW Palladio L',
     'Book Antiqua', Baskerville, 'Bookman Old Style', 'Bitstream Charter',
@@ -472,6 +472,7 @@ h6 {
   background: @darker-purpleA;
   box-shadow: inset 2vmin 0vmin 10vmin 10px hsla(291, 60%, 2%, 1);
   border-bottom: 1vh solid @light-blue;
+  padding-right: 3vmin;
   .gallery__heading {
     font-size: clamp(50px, 12vmin, 92px);
     margin-bottom: -2vh;
@@ -511,6 +512,10 @@ h6 {
     list-style: none;
     padding: 2vmin;
 
+    a {
+      pointer-events: auto;
+    }
+
     ul {
       flex-wrap: wrap;
     }
@@ -523,6 +528,21 @@ h6 {
   article {
     background: hsla(291, 60%, 2%, 1);
     padding: 2vmin;
+
+    .git_link {
+      float: right;
+      margin-top: -6vmin;
+      position: relative;
+      z-index: 2;
+      background: #28112c;
+      padding: 12px;
+      border-radius: 25%;
+      border: 0;
+
+      &:hover {
+        background: #000;
+      }
+    }
   }
   img {
     max-width: 52vmin;
@@ -531,29 +551,40 @@ h6 {
   button.prev,
   button.next {
     display: flex;
-    font-size: 32px;
+    font-size: 44px;
     align-items: center;
     justify-content: center;
-    color: #fff;
-    background-color: #333;
-    border-radius: 50%;
+    background-color: #68b2f8aa;
+    border: 1px solid #dbb1e288;
+    border-radius: 25%;
+    pointer-events: auto;
     width: 44px;
     height: 44px;
+    font-weight: 900;
+    transition: background-color 0.2s;
+    &:hover {
+      background-color: #68b2f8ff;
+      cursor: pointer;
+    }
   }
   button.prev {
+    box-shadow: 6px -3px 10px 0px #dbb1e288,
+      -6px 3px 10px 5px hsla(291, 60%, 2%, 0.5);
   }
   button.next {
+    box-shadow: -6px -3px 10px 0px #dbb1e288,
+      6px 3px 10px 5px hsla(291, 60%, 2%, 0.5);
   }
 }
 
 .gallery__buttons {
   display: flex;
   justify-content: space-between;
-  width: 86%;
-  margin-bottom: -26vmin;
-  margin-left: 2vmin;
-  margin-top: 26vmin;
+  width: 100%;
+  margin-bottom: -20vmin;
+  margin-top: 20vmin;
   z-index: 1;
+  pointer-events: none;
 }
 
 .shrink_move.left {
