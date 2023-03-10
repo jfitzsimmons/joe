@@ -91,12 +91,12 @@
     <section id="gallery" class="gallery flex">
       <h1 class="gallery__heading">Gallery</h1>
       <div class="gallery__buttons">
-        <button class="prev" onclick="show(-1)">&lt;</button>
-        <button class="next" onclick="show(+1)">&gt;</button>
+        <button class="prev paging" data-increase="-1">&lt;</button>
+        <button class="next paging" data-increase="1">&gt;</button>
       </div>
       <ul class="gallery__ul">
-        <li class="gallery__item">
-          <img class="img1" src="./assets/gallery/2d_animations.png" />
+        <li class="gallery__li ready active"><div class="gallery__item">
+          <img class="img1" src="./assets/gallery/2d_animations.jpg" />
           <article >
             <h1>2D Generative Animation Gallery</h1>
             <p>Generative animations coded with Pixi.js, utilizes WebGL and styled with Sass.</p>
@@ -116,9 +116,10 @@
             <li><a href="https://sass-lang.com/" rel="nofollow">Sass</a> - Sass is the most mature, stable, and powerful professional grade CSS extension language in the world.</li>
             </ul>
           </article>
+          </div>
         </li>
-        <li class="gallery__item"> 
-          <img class="img2" src="./assets/gallery/harvard_art.png" />
+        <li class="gallery__li"><div class="gallery__item"> 
+          <img class="img2" src="./assets/gallery/harvard_art.jpg" />
           <article>
             <h1 >
               Art-API-React
@@ -198,27 +199,34 @@
               </li>
             </ul>
           </article>
+          </div>
         </li>
-        <li class="gallery__item">
-          <img class="img3" src="//picsum.photos/300/200?3" />
+        <li class="gallery__li"><div class="gallery__item">
+          <img class="img1" src="./assets/gallery/css_art.jpg" />
+          <article ><h1>PureCssArt</h1>
+            <h2>Main Street at Dusk (CSS, HTML)</h2>
+            <p>Inspired by <a href="https://cyanharlow.github.io/purecss-lace/" rel="nofollow">cyanharlow.github.io/purecss-lace</a>.</p>
+            <p>Rules I have for myself:</p>
+            <ol>
+            <li><del>All</del> (Most) elements must be typed out by hand</li>
+            <li>Only VS Code text editor and Developer Tools allowed.</li>
+            </ol>
+            <p>Because of the artistic nature of this project I have not concerned myself with cross-browser-compatibility, so the live preview will look laughable in anything other than MOZILLA FIREFOX :-)</p>
+            <h2>Acknowledgments</h2>
+            <ul>
+            <li>Hills stolen from Judith Neuman's Cerros <a href="https://codepen.io/judag/full/aVapRv/" rel="nofollow">CSS Mountains</a></li>
+            <li><a href="https://projects.verou.me/css3patterns/" rel="nofollow">CSS3 Patterns Gallery</a></li>
+            <li>Gradients made easier by <a href="https://cssgradient.io/" rel="nofollow">cssgradient.io</a></li>
+            <li>Frame stolen from <a href="https://codepen.io/chris_tudor/pen/OJPeQgb" rel="nofollow">Tudor Sfătosu</a></li>
+            </ul>
+            </article>
+            </div>
         </li>
-        <li class="gallery__item">
-          <img class="img4" src="//picsum.photos/300/200?4" />
+        <li class="gallery__li"><div class="gallery__item">
+          <img class="img4" src="//picsum.photos/300/200?4" /></div>
         </li>
-        <li class="gallery__item">
-          <img class="img5" src="//picsum.photos/300/200?5" />
-        </li>
-        <li class="gallery__item">
-          <img class="img6" src="//picsum.photos/300/200?6" />
-        </li>
-        <li class="gallery__item">
-          <img class="img7" src="//picsum.photos/300/200?7" />
-        </li>
-        <li class="gallery__item">
-          <img class="img8" src="//picsum.photos/300/200?8" />
-        </li>
-        <li class="gallery__item">
-          <img class="img9" src="//picsum.photos/300/200?9" />
+        <li class="gallery__li"><div class="gallery__item">
+          <img class="img5" src="//picsum.photos/300/200?5" /></div>
         </li>
       </ul>
 
