@@ -2,6 +2,7 @@
 @dark-blue: #6200ff;
 @dark-blueA: #6200ff88;
 @darker-purple: #28112c;
+@darker-purpleA: #28112c88;
 @lighter-purple: #dbb1e2;
 @neon-purple: #9623af;
 @dark-purple: #5a3960;
@@ -96,7 +97,7 @@ nav {
   background: rgba(23, 0, 27, 0.4);
   width: 100%;
   box-sizing: border-box;
-  padding: 1vmin 2vmin;
+  padding: 2vmin;
 }
 
 .nav-grid {
@@ -105,6 +106,7 @@ nav {
   grid-template-rows: 1fr 1fr;
   gap: 0px 0px;
   grid-template-areas:
+    'logo gallery'
     'logo about'
     'logo skills';
 }
@@ -119,6 +121,10 @@ nav {
 
 .skills-link {
   grid-area: skills;
+}
+
+.gallery-link {
+  grid-area: gallery;
 }
 
 .page-link {
@@ -276,13 +282,25 @@ h6 {
   0% {
     filter: saturate(100%);
   }
+  12% {
+    filter: saturate(100%);
+  }
   25% {
+    filter: saturate(200%);
+  }
+  33% {
     filter: saturate(200%);
   }
   50% {
     filter: saturate(100%);
   }
+  66% {
+    filter: saturate(100%);
+  }
   75% {
+    filter: saturate(0%);
+  }
+  87% {
     filter: saturate(0%);
   }
   100% {
@@ -290,15 +308,10 @@ h6 {
   }
 }
 
-.canvas1 {
-  animation: 20s linear 0s infinite alternate sats;
-}
-
 .lede {
   background: rgba(40, 17, 44, 0.3);
   text-shadow: 0 0 6px hsla(291, 45%, 18%, 0.5);
   text-align: center;
-  animation: 25s linear 0s infinite alternate backSats;
   box-shadow: 1vmin 0 4vmin 0 #dbb1e244, inset -6vmin 0 3vmin 0 #943da422;
   z-index: 2;
   backdrop-filter: blur(1px) saturate(90%);
@@ -309,13 +322,25 @@ h6 {
   0% {
     backdrop-filter: blur(3px) saturate(100%);
   }
+  12% {
+    backdrop-filter: blur(3px) saturate(100%);
+  }
   25% {
+    backdrop-filter: blur(6px) saturate(190%);
+  }
+  33% {
     backdrop-filter: blur(6px) saturate(190%);
   }
   50% {
     backdrop-filter: blur(3px) saturate(100%);
   }
+  66% {
+    backdrop-filter: blur(3px) saturate(100%);
+  }
   75% {
+    backdrop-filter: blur(1px) saturate(10%);
+  }
+  87% {
     backdrop-filter: blur(1px) saturate(10%);
   }
   100% {
@@ -328,6 +353,7 @@ h6 {
   top: 0;
   height: 100vh;
   align-items: center;
+  backdrop-filter: saturate(150%) blur(5px);
   flex: 15vw;
   font-family: 'Palatino Linotype', Palatino, Palladio, 'URW Palladio L',
     'Book Antiqua', Baskerville, 'Bookman Old Style', 'Bitstream Charter',
@@ -336,12 +362,20 @@ h6 {
     Georgia, serif;
 }
 
+.dash {
+  font-size: 25vmin;
+  margin-left: -12.5vmin;
+  line-height: 1.6vmin;
+  text-shadow: 0 0 2vmin #6200aa;
+  color: #6200ff44;
+  transform: rotate(-90deg);
+}
+
 .brace {
   font-size: 10vmin;
   margin-left: -1.5vmin;
   line-height: 3vmin;
-  color: @lighter-purple;
-  text-shadow: 0 0 4vmin #dbb1e2;
+  text-shadow: 0 0 2vmin #dbb1e2;
   color: #dbb1e2aa;
   transform: rotate(-90deg);
 }
@@ -355,6 +389,11 @@ h6 {
 
 .brace.spacer {
   height: 16vh;
+}
+
+.dash_spacer {
+  height: 7vh;
+  margin-bottom: 2vh;
 }
 
 .js {
@@ -397,36 +436,40 @@ h6 {
   transform: rotate(30deg) scale(1);
   filter: saturate(550%);
   text-shadow: 1vmin 1vmin 1vmin #17001b88;
-  animation: pulse-animation 8s infinite;
+  animation: pulse-animation 24s infinite;
   will-change: transform, opacity;
-  opacity: 1;
+  opacity: 0.5;
 }
 
 @keyframes pulse-animation {
   0% {
     transform: rotate(30deg) scale(0.9);
-    opacity: 0.2;
+  }
+  25% {
+    transform: rotate(30deg) scale(0.9);
   }
   50% {
     transform: rotate(30deg) scale(1);
-    opacity: 0.9;
+  }
+  60% {
+    transform: rotate(30deg) scale(1);
   }
   70% {
     transform: rotate(30deg) scale(0.7);
-    opacity: 0.7;
   }
   80% {
-    opacity: 0.5;
+    transform: rotate(30deg) scale(0.7);
+  }
+  90% {
   }
   100% {
     transform: rotate(30deg) scale(0.9);
-    opacity: 0.2;
   }
 }
 
 .gallery {
   align-items: center;
-  background: @darker-purple;
+  background: @darker-purpleA;
   box-shadow: inset 2vmin 0vmin 10vmin 10px hsla(291, 60%, 2%, 1);
   border-bottom: 1vh solid @light-blue;
   .gallery__heading {
@@ -452,11 +495,11 @@ h6 {
   .gallery__li {
     transform: scale(0.9);
     transform-origin: 50% 0%;
-    transition: transform 0.2s ease-out;
+    transition: all 0.2s ease-out;
     filter: blur(3px) brightness(75%);
     &.active {
       transform: scale(1);
-      transition: transform 0.5s ease-out;
+      transition: all 0.5s ease-out;
       filter: blur(0px) brightness(100%);
       .gallery__item {
         box-shadow: 0 0 16px 4px hsl(291, 60%, 2%);
@@ -474,6 +517,7 @@ h6 {
     li {
       flex: 1;
       min-width: 120px;
+      padding: 3%;
     }
   }
   article {
