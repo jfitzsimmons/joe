@@ -1,0 +1,305 @@
+.nav {
+  box-shadow: 3vmin 3vmin 4vmin 0 #68b2f877;
+  text-transform: uppercase;
+  background: rgba(23, 0, 27, 0.2);
+
+  .icon {
+    display: none;
+  }
+}
+
+.nav-grid {
+  box-sizing: border-box;
+  padding: 1vmin 2vmin;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    'logo gallery'
+    'logo about'
+    'logo skills';
+  width: 100%;
+}
+
+.logo-link {
+  grid-area: logo;
+}
+
+.about-link {
+  grid-area: about;
+}
+
+.skills-link {
+  grid-area: skills;
+}
+
+.gallery-link {
+  grid-area: gallery;
+}
+
+.page-link {
+  padding: 0 1vmin;
+  font-size: calc(0.6vmin + 12px);
+  transition: all 0.3s cubic-bezier(0, 0, 0.23, 1);
+  text-shadow: 0 0 0.05vmin #111, -0.2vmin 0.1vmin 0.4vmin @lighter-purple;
+  font-family: @font-sans;
+
+  svg {
+    margin-top: 2px;
+  }
+
+  &:hover {
+    cursor: pointer;
+    background-position: 0;
+    text-decoration: none;
+    text-shadow: 0 0 0.1vmin #111, -0.4vmin 0.2vmin 0.2vmin @lighter-purple;
+  }
+  &::before {
+    margin-bottom: 0.3vmin;
+  }
+  &::after,
+  &::before {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0.5vmin;
+    background: @dark-blueA;
+    transition: width 0.3s;
+  }
+  &:hover::after,
+  &:hover::before {
+    width: 100%;
+  }
+}
+
+.page-link-home {
+  font-size: calc(2.8vmin + 12px);
+  flex: 1;
+  text-align: left;
+  align-self: center;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.lede {
+  text-shadow: 0 0 6px hsla(291, 45%, 18%, 0.5);
+  text-align: center;
+  box-shadow: 1vmin 0 4vmin 0 @lighter-purpleAA,
+    inset -6vmin 0 3vmin 0 #943da422;
+  z-index: 2;
+  font-size: calc(0.5vmin + 12px);
+}
+
+.left-rail {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  align-items: center;
+  backdrop-filter: saturate(150%) blur(2px) brightness(50%);
+  font-family: 'Palatino Linotype', Palatino, Palladio, 'URW Palladio L',
+    'Book Antiqua', Baskerville, 'Bookman Old Style', 'Bitstream Charter',
+    'Nimbus Roman No9 L', Garamond, 'Apple Garamond', 'ITC Garamond Narrow',
+    'New Century Schoolbook', 'Century Schoolbook', 'Century Schoolbook L',
+    Georgia, serif;
+}
+
+.dash {
+  font-size: 25vmin;
+  margin-left: -12.5vmin;
+  line-height: 1.6vmin;
+  text-shadow: 0 0 2vmin #6200aa;
+  color: #6200ff44;
+  transform: rotate(-90deg);
+}
+
+.brace {
+  font-size: 10vmin;
+  margin-left: -1.5vmin;
+  line-height: 3vmin;
+  text-shadow: 0 0 2vmin @lighter-purple;
+  color: @lighter-purpleAA;
+  transform: rotate(-90deg);
+}
+
+.lede .brace {
+  height: 4vw;
+  color: @lighter-purple;
+  margin: 0;
+  font-size: 16vmin;
+}
+
+.brace.spacer {
+  height: 16vh;
+}
+
+.dash_spacer {
+  height: 7vh;
+  margin-bottom: 2vh;
+}
+
+.js {
+  font-size: 4vmin;
+  color: #68b2f888;
+  font-weight: bold;
+  text-shadow: 0 0 4vmin #68b2f8;
+  margin: 0.3vmin 0 0.3vmin -1.5vw;
+}
+
+.js.spacer {
+  height: 22vmin;
+}
+
+.joke {
+  padding: 1vmin;
+  flex: 1;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.business {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sunk {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  box-shadow: inset 0vmin 0 3vmin 0 rgba(23, 0, 27, 0.6);
+  border-right: 3vmin solid rgba(23, 0, 27, 0.4);
+  border-top: 0.8vmin solid #68b2f866;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.footer {
+  border-top: 0.8vmin solid @dark-blueA;
+  box-shadow: 3vmin -3vmin 4vmin 0 #6200ff77;
+  border-right: 2vmin solid hsla(291, 45%, 9%, 0.2);
+  background: rgba(23, 0, 27, 0.4);
+  width: 100%;
+  box-sizing: border-box;
+  padding: 2vmin;
+}
+
+.home {
+  border-bottom: 0.5vh solid #e033ff;
+  border-top: 0.5vh solid #e033ff;
+  box-shadow: inset 1vmin 0vmin 4vmin 0 #e033ff44;
+  max-height: 100vh;
+  overflow: hidden;
+}
+
+.canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+}
+
+.large-j {
+  letter-spacing: 8vmin;
+  font-size: 73vmin;
+  cursor: default;
+  align-self: center;
+  color: #9623af24;
+  transform: rotate(30deg) scale(1);
+  filter: saturate(550%);
+  text-shadow: 1vmin 1vmin 1vmin #17001b88;
+  animation: pulse-animation 24s infinite;
+  will-change: transform, opacity;
+  opacity: 0.5;
+}
+
+@keyframes sats {
+  0% {
+    filter: saturate(100%);
+  }
+  12% {
+    filter: saturate(100%);
+  }
+  25% {
+    filter: saturate(200%);
+  }
+  33% {
+    filter: saturate(200%);
+  }
+  50% {
+    filter: saturate(100%);
+  }
+  66% {
+    filter: saturate(100%);
+  }
+  75% {
+    filter: saturate(0%);
+  }
+  87% {
+    filter: saturate(0%);
+  }
+  100% {
+    filter: saturate(100%);
+  }
+}
+
+@keyframes backSats {
+  0% {
+    backdrop-filter: blur(3px) saturate(100%);
+  }
+  12% {
+    backdrop-filter: blur(3px) saturate(100%);
+  }
+  25% {
+    backdrop-filter: blur(6px) saturate(190%);
+  }
+  33% {
+    backdrop-filter: blur(6px) saturate(190%);
+  }
+  50% {
+    backdrop-filter: blur(3px) saturate(100%);
+  }
+  66% {
+    backdrop-filter: blur(3px) saturate(100%);
+  }
+  75% {
+    backdrop-filter: blur(1px) saturate(10%);
+  }
+  87% {
+    backdrop-filter: blur(1px) saturate(10%);
+  }
+  100% {
+    backdrop-filter: blur(3px) saturate(100%);
+  }
+}
+
+@keyframes pulse-animation {
+  0% {
+    transform: rotate(30deg) scale(0.9);
+  }
+  25% {
+    transform: rotate(30deg) scale(0.9);
+  }
+  50% {
+    transform: rotate(30deg) scale(1);
+  }
+  60% {
+    transform: rotate(30deg) scale(1);
+  }
+  70% {
+    transform: rotate(30deg) scale(0.7);
+  }
+  80% {
+    transform: rotate(30deg) scale(0.7);
+  }
+  90% {
+  }
+  100% {
+    transform: rotate(30deg) scale(0.9);
+  }
+}
