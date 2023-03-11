@@ -1,7 +1,7 @@
-function smoothScroll(e) {
+function smoothScroll(e: MouseEvent) {
   e.preventDefault()
-  let target = document.getElementById(this.getAttribute('data-href'))
-  let offset = target.offsetTop - window.innerHeight * 0.005
+  const target = document.getElementById(this.getAttribute('data-href'))
+  const offset = target.offsetTop - window.innerHeight * 0.005
   window.scrollTo({
     top: offset,
     behavior: 'smooth',
@@ -11,7 +11,7 @@ function smoothScroll(e) {
 const links = document.querySelectorAll('[data-href]')
 links.forEach((l) => l.addEventListener('click', smoothScroll))
 
-var handler = function () {
+const handler = function () {
   gallery_items.forEach((b) => {
     b.classList.remove('shrink_move', 'left', 'right')
   })
@@ -20,8 +20,9 @@ var handler = function () {
 const gallery_items = document.querySelectorAll('.gallery__item')
 gallery_items.forEach((b) => b.addEventListener('animationend', handler, false))
 
-function show(e) {
-  increase = parseInt(e.target.getAttribute('data-increase'))
+function show(e: MouseEvent) {
+  const btn = e.target as HTMLButtonElement
+  const increase = parseInt(btn.getAttribute('data-increase'))
   index = index + increase
   index = Math.min(Math.max(index, 0), gallery_items.length - 1)
 
