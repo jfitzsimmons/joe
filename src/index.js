@@ -114,7 +114,7 @@ const CircleStage = function (domElementSelector) {
 
 CircleStage.prototype.addCircles = function () {
   const circleAmount = Math.round(
-    (this.bounds.right * this.bounds.bottom) / 47000
+    (this.bounds.right * this.bounds.bottom) / 140000
   )
   for (let i = circleAmount; i--; ) {
     timeouts.push(

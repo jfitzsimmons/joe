@@ -13,7 +13,7 @@ module.exports = {
       hash: true,
       template: './src/index.html',
       filename: './index.html',
-      favicon: './src/favicon.ico',
+      favicon: './src/assets/favicon.ico',
     }),
   ],
   optimization: {
@@ -25,13 +25,13 @@ module.exports = {
     maxEntrypointSize: 912000,
     maxAssetSize: 912000,
   },
+  watch: true,
   devtool: 'source-map',
   devServer: {
     allowedHosts: 'auto',
     client: {
       overlay: true,
     },
-    open: true,
     port: 8000,
     static: {
       directory: path.join(__dirname, 'dist'),
@@ -40,6 +40,10 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /\.html$/i,
+        loader: 'html-loader',
+      },
       {
         test: /\.less$/i,
         use: ['style-loader', 'css-loader', 'less-loader'],
