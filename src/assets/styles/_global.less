@@ -1,0 +1,144 @@
+@darkest: hsla(291, 60%, 2%, 1);
+@light-blue: #68b2f8;
+@dark-blue: #6200ff;
+@dark-blueA: #6200ff88;
+@darker-purple: #28112c;
+@darker-purpleA: #28112c88;
+@lighter-purple: #dbb1e2;
+@lighter-purpleAA: #dbb1e244;
+@lighter-purpleA: #dbb1e288;
+@neon-purple: #9623af;
+@dark-purple: #5a3960;
+@dark-purpleA: #5a396088;
+@light-purple: #a273ab;
+@light-purpleA: #a273ab88;
+@light-gray: #cbc;
+@dark-grey: #616161;
+@whiteA: #fffd;
+@dark-shadow: 0 0 6px hsla(291, 45%, 9%, 0.5);
+@gradient-start: rgba(40, 17, 44, 0.7) 30%;
+@gradient-end: rgba(40, 17, 44, 0.1) 100%;
+@font-serif: Cambria, 'Hoefler Text', Utopia, 'Liberation Serif',
+  'Nimbus Roman No9 L Regular', Times, 'Times New Roman', serif;
+@font-sans: 'Segoe UI', Candara, 'Bitstream Vera Sans', 'DejaVu Sans',
+  'Bitstream Vera Sans', 'Trebuchet MS', Verdana, 'Verdana Ref', sans-serif;
+@font-mono: Consolas, 'Andale Mono WT', 'Andale Mono', 'Lucida Console',
+  'Lucida Sans Typewriter', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono',
+  'Liberation Mono', 'Nimbus Mono L', Monaco, 'Courier New', Courier, monospace;
+@border-skill: 0.5vmin solid;
+
+body,
+html {
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-wrap: wrap;
+  color: @whiteA;
+  background-color: @darkest;
+  background-image: url(../img/58.webp), url(../img/74.webp),
+    url(../img/106.webp);
+  background-repeat: repeat-x;
+  font-family: @font-serif;
+  text-shadow: 0 0 2px @darkest;
+}
+
+a:link,
+a:visited,
+a:hover,
+a:active {
+  color: @lighter-purple;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+svg {
+  max-width: 30px;
+  max-height: 30px;
+}
+
+.logo-icon {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+}
+
+.fill {
+  fill: @whiteA;
+}
+
+.stroke {
+  stroke: @whiteA;
+}
+
+section {
+  color: @light-gray;
+  z-index: 1;
+  min-height: 100vh;
+  box-sizing: border-box;
+  flex: 85%;
+  min-width: 200px;
+  padding: 3vmin 0vmin 0vmin 3vmin;
+}
+
+h1,
+h2 {
+  line-height: 2.5vmax;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+h1 {
+  font-weight: 700;
+  font-size: calc(1.4vmin + 12px);
+  font-family: 'Palatino Linotype', Palatino, Palladio, 'URW Palladio L',
+    'Book Antiqua', Baskerville, 'Bookman Old Style', 'Bitstream Charter',
+    'Nimbus Roman No9 L', Garamond, 'Apple Garamond', 'ITC Garamond Narrow',
+    'New Century Schoolbook', 'Century Schoolbook', 'Century Schoolbook L',
+    Georgia, serif;
+  text-shadow: 1vmin 1vmin 1vmin rgba(23, 0, 27, 0.5);
+}
+
+h2 {
+  font-size: calc(0.8vmin + 12px);
+  font-weight: 400;
+  margin-left: 3vmin;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+h5 {
+  font-family: @font-sans;
+  font-size: calc(0.1vmin + 10px);
+  color: @light-purple;
+  margin: 0;
+  font-weight: normal;
+  clear: both;
+  padding: 5px 1vmin 0 1vmin;
+}
+
+.mono_small {
+  font-family: @font-mono;
+  font-size: 1.1vmin;
+  color: @dark-purpleA;
+  margin: 0;
+}
+
+.flex_column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.wrap {
+  display: flex;
+  flex-wrap: wrap;
+}

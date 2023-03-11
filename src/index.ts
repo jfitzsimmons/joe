@@ -1,6 +1,6 @@
 import * as PIXI from 'pixi.js'
 import './init.ts'
-import './style.less'
+import './assets/style.less'
 
 interface Bounds {
   top: number
