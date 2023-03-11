@@ -1,12 +1,15 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const ESLintPlugin = require('eslint-webpack-plugin')
 
 module.exports = {
   mode: 'production',
-  entry: './src/index.js',
+  entry: './src/index.ts',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].[contenthash].js',
+    assetModuleFilename: 'assets/img/[name][ext][query]',
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -15,7 +18,15 @@ module.exports = {
       filename: './index.html',
       favicon: './src/assets/favicon.ico',
     }),
+    new CleanWebpackPlugin(),
+    new ESLintPlugin({
+      extensions: ['.tsx', '.ts', '.js'],
+      exclude: 'node_modules',
+    }),
   ],
+  resolve: {
+    extensions: ['.ts', '.js', '...'],
+  },
   optimization: {
     splitChunks: {
       chunks: 'all',
@@ -25,7 +36,6 @@ module.exports = {
     maxEntrypointSize: 912000,
     maxAssetSize: 912000,
   },
-  watch: true,
   devtool: 'source-map',
   devServer: {
     allowedHosts: 'auto',
@@ -45,11 +55,16 @@ module.exports = {
         loader: 'html-loader',
       },
       {
+        test: /\.(ts|tsx)$/,
+        exclude: /node_modules/,
+        use: ['ts-loader'],
+      },
+      {
         test: /\.less$/i,
         use: ['style-loader', 'css-loader', 'less-loader'],
       },
       {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        test: /\.(png|svg|jpg|jpeg|gif|webp)$/i,
         type: 'asset/resource',
       },
     ],
