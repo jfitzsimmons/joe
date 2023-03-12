@@ -1,21 +1,21 @@
 .gallery {
   align-items: center;
   background: @darker-purpleA;
-  box-shadow: inset 2vmin 0vmin 10vmin 10px @darkest;
+  box-shadow: inset 0.5vmin 0vmin 2.5vmin 3px @darkest;
   border-bottom: 1vh solid @light-blue;
   padding-right: 3vmin;
   .gallery__heading {
     font-size: clamp(50px, 12vmin, 92px);
     margin-bottom: -2vh;
     margin-top: 4vh;
-    text-shadow: -3px 6px 9px #000;
+    text-shadow: -1px 3px 6px #000;
   }
   .gallery__ul {
     display: flex;
     max-width: 90%;
     overflow: hidden;
     padding: 0;
-    box-shadow: 0 0 5vmin 0 @light-purpleA;
+    box-shadow: 0 0 1.5vmin 0 @light-purpleA;
   }
   .gallery__item {
     background: @darkest;
@@ -34,7 +34,7 @@
       transition: all 0.5s ease-out;
       filter: blur(0px) brightness(100%);
       .gallery__item {
-        box-shadow: 0 0 16px 4px hsl(291, 60%, 2%);
+        box-shadow: 0 0 8px 2px hsl(291, 60%, 2%);
       }
     }
   }
@@ -99,12 +99,12 @@
     }
   }
   button.prev {
-    box-shadow: 6px -3px 10px 0px @lighter-purpleA,
-      -6px 3px 10px 5px hsla(291, 60%, 2%, 0.5);
+    box-shadow: 5px -3px 8px 0px @lighter-purpleA,
+      -5px 3px 8px 5px hsla(291, 60%, 2%, 0.5);
   }
   button.next {
-    box-shadow: -6px -3px 10px 0px @lighter-purpleA,
-      6px 3px 10px 5px hsla(291, 60%, 2%, 0.5);
+    box-shadow: -5px -3px 8px 0px @lighter-purpleA,
+      5px 3px 8px 5px hsla(291, 60%, 2%, 0.5);
   }
 }
 
