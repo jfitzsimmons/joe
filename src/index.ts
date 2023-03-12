@@ -75,7 +75,7 @@ export default class XorCircles {
             setTimeout(() => {
               this.drapes.push(drape)
               AnimationStage.stage.addChild(drape.sprite)
-            }, Math.round(start * rndmRng(40, 2)))
+            }, Math.round(start * rndmRng(15, 1)))
           )
 
           start += drape.sprite.width
@@ -338,8 +338,8 @@ class Drape {
   bounds: Bounds
   sprite: PIXI.Sprite
   startAngle = 0
-  swing = rndmRng(0.05, 0.005)
-  sway = rndmRng(20, 0)
+  swing = rndmRng(0.06, 0.008)
+  sway = rndmRng(30, 5)
   startX: number
   flipSwing = Math.random() < 0.5 ? 1 : -1
   flipSway = Math.random() < 0.5 ? 1 : -1
@@ -349,8 +349,8 @@ class Drape {
     this.bounds = bounds
     this.sprite = sprite
     this.sprite.height = rndmRng(
-      this.bounds.bottom * 1.8,
-      this.bounds.bottom * 1.5
+      this.bounds.bottom * 1.6,
+      this.bounds.bottom * 1.3
     )
     this.startX = x
     this.sprite.x = x
