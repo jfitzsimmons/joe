@@ -34,6 +34,7 @@ function show(e: MouseEvent) {
   })
   gallery_items[index].scrollIntoView({
     behavior: 'smooth',
+    block: 'center',
     inline: 'center',
   })
   gallery_items[index].parentElement.classList.add('active')
