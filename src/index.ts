@@ -61,9 +61,18 @@ export default class XorCircles {
   createDrapes() {
     const loader = new PIXI.Loader()
     loader
-      .add('d58', `./assets/img/58.webp`)
-      .add('d74', `./assets/img/74.webp`)
-      .add('d106', `./assets/img/106.webp`)
+      .add(
+        'd58',
+        `https://res.cloudinary.com/drrbpdpzn/image/upload/f_auto,q_auto/v1678708424/cv_joe/img/58_bmzmy6.webp`
+      )
+      .add(
+        'd74',
+        `https://res.cloudinary.com/drrbpdpzn/image/upload/f_auto,q_auto/v1678708424/cv_joe/img/74_yfoyra.webp`
+      )
+      .add(
+        'd106',
+        `https://res.cloudinary.com/drrbpdpzn/image/upload/f_auto,q_auto/v1678708424/cv_joe/img/106_sb94aw.webp`
+      )
     loader.load((loader, resources) => {
       const tiles = Object.keys(resources)
       tiles.forEach((t) => {

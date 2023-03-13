@@ -119,11 +119,11 @@
 }
 
 .shrink_move.left {
-  animation: 0.6s ease 0s 1 forwards shrink_move_left;
+  animation: 0.9s ease 0s 1 forwards shrink_move_left;
 }
 
 .shrink_move.right {
-  animation: 0.6s ease 0s 1 forwards shrink_move_right;
+  animation: 0.9s ease 0s 1 forwards shrink_move_right;
 }
 
 @keyframes shrink_move_left {
@@ -137,8 +137,8 @@
   50% {
     padding: 1vmin;
     transform: scale(0.9);
-    margin-left: -1vmin;
-    margin-right: 1vmin;
+    margin-left: 3vmin;
+    margin-right: -3vmin;
     filter: blur(3px) brightness(50%);
   }
   100% {
@@ -161,8 +161,8 @@
   50% {
     padding: 1vmin;
     transform: scale(0.9);
-    margin-left: 1vmin;
-    margin-right: -1vmin;
+    margin-left: -9vmin;
+    margin-right: 9vmin;
     filter: blur(3px) brightness(50%);
   }
   100% {

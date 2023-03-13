@@ -16,7 +16,7 @@ module.exports = {
       hash: true,
       template: './src/index.html',
       filename: './index.html',
-      favicon: './src/assets/favicon.ico',
+      favicon: './src/assets/favicon.png',
     }),
     new CleanWebpackPlugin(),
     new ESLintPlugin({
