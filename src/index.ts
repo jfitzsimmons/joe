@@ -261,7 +261,10 @@ class Circle {
 
   constructor(bounds: Bounds) {
     this.bounds = bounds
-    this.innerCrcmf = rndmRng(105, 18)
+    this.innerCrcmf = rndmRng(
+      Math.round((bounds.right * bounds.bottom) / 120000),
+      Math.round((bounds.right * bounds.bottom) / 15000)
+    )
     this.cx = Math.round(
       rndmRng(
         this.bounds.right - 85 - this.innerCrcmf,
