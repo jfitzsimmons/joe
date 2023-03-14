@@ -1,0 +1,1 @@
+function smoothScroll(t){t.preventDefault();let e=document.getElementById(this.getAttribute("data-href")).offsetTop-.005*window.innerHeight;window.scrollTo({top:e,behavior:"smooth"})}let links=document.querySelectorAll("[data-href]");links.forEach((t=>t.addEventListener("click",smoothScroll)));
