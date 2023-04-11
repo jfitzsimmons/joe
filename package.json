@@ -21,6 +21,8 @@
     "css-loader": "^6.5.1",
     "eslint": "^8.36.0",
     "eslint-webpack-plugin": "^4.0.0",
+    "favicons": "^7.1.2",
+    "favicons-webpack-plugin": "^6.0.0",
     "file-loader": "^6.2.0",
     "html-loader": "^4.2.0",
     "html-webpack-plugin": "^5.5.0",
