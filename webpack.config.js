@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const ESLintPlugin = require('eslint-webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 
 module.exports = {
   mode: 'production',
@@ -10,7 +11,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].[contenthash].js',
-    assetModuleFilename: 'assets/img/[name][ext][query]',
+    assetModuleFilename: 'assets/[path]/[name][ext][query]',
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -29,6 +30,20 @@ module.exports = {
         { from: './v1', to: './v1' },
         { from: './v2', to: './v2' },
       ],
+    }),
+    new FaviconsWebpackPlugin({
+      logo: './src/assets/favicons/logo.png',
+      favicons: {
+        appName: 'Joe Fitzsimmons',
+        appDescription: 'Joe Fitzsimmons Software Engineer',
+        background: '#28112c',
+        theme_color: '#28112c',
+        icons: {
+          coast: false,
+          yandex: false,
+          appleStartup: false,
+        },
+      },
     }),
   ],
   resolve: {
