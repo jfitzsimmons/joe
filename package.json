@@ -37,7 +37,7 @@
   },
   "homepage": "https://jfitzsimmons.github.io/joe",
   "dependencies": {
-    "gh-pages": "^3.2.3",
+    "gh-pages": "^5.0.0",
     "pixi.js": "^6.2.2"
   }
 }
